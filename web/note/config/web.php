@@ -3,13 +3,13 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'notebook',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','commonTools'],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'adfsdf',
+            'cookieValidationKey' => 'yifang*$#yifang',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -38,14 +38,17 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'loginqq' => 'login/loginqq',
             ],
         ],
-        */
+        'commonTools' => [
+            'class' => 'app\components\helpers\CommonTools',
+        ],
     ],
     'params' => $params,
 ];
