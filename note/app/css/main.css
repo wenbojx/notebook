@@ -1,0 +1,379 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  overflow: hidden; /* Prevents rubber-band scrolling of the whole "page" */
+}
+
+body {
+  font: 14px "微软雅黑","宋体",Arial
+}
+html,body{ margin:0px; height:100%;} 
+.clear{
+	clear: both;
+}
+ul,li{ margin:0px;padding:0px;
+	list-style-type: none;
+}
+img{
+	margin: 0;
+	padding: 0;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.f_l{
+	float: left;
+}
+.f_r{
+	float: right;
+}
+
+.head{
+	position: relative;
+	-webkit-app-region: drag;
+	z-index: 1;
+	background-color: #4595e6;
+	height: 46px;
+}
+
+.nav-left{
+	width: 45px;
+}
+
+.avater img{
+		width: 45px;
+	height: 45px;
+	padding: 2px;
+}
+
+.nav-center{
+	
+	width: 280px;
+	margin-left: 20px;
+	-webkit-app-region: no-drag;
+}
+.nav-center li{
+	position: relative;
+	float: left;
+	line-height: 46px;
+	margin: 0 0 0 40px;
+}
+.nav-center a{
+  font-weight: 500;
+  color: #cdddeb;
+}
+.nav-center a:hover,
+.nav-center a:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-center .active {
+  color: #fff;
+}
+.nav-center .active:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  vertical-align: middle;
+  content: " ";
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid;
+  border-left: 5px solid transparent;
+}
+
+
+.nav-right {
+	width: 120px;
+	-webkit-app-region: no-drag;
+	line-height: 46px;
+}
+
+.nav-right .normal,.nav-right .full,.nav-right .close{
+	display: block;
+	width: 15px;
+  height: 15px;
+  margin-right: 15px;
+  margin-top: 12px;
+  cursor: pointer;
+  float: right;
+}
+.nav-right .close{
+	background:transparent url(../img/Btn_Window_Close.png) no-repeat scroll 0px -16px;
+}
+.nav-right .close:hover{
+	background:transparent url(../img/Btn_Window_Close.png) no-repeat scroll 0px 0px;
+}
+.nav-right .full{
+	background:transparent url(../img/Btn_Window_Max.png) no-repeat scroll 0px -16px;
+}
+.nav-right .full:hover{
+	background:transparent url(../img/Btn_Window_Max.png) no-repeat scroll 0px 0px;
+}
+.nav-right .normal{
+	background:transparent url(../img/Btn_Window_Min.png) no-repeat scroll 0px 0px;
+}
+.nav-right .normal:hover{
+	background:transparent url(../img/Btn_Window_Min.png) no-repeat scroll 0px -20px;
+}
+
+
+
+/**************** 写作页 *******************/
+
+
+.note_content{
+	width: 100%;
+	height: 100%;
+}
+.left_bar{
+	position: relative;
+	background: #f5f5f5;
+	width: 50px;
+	height: 100%;
+	border-right: 1px solid gainsboro;
+}
+.left_bar ul{
+}
+.left_bar li {
+	height: 40px;
+	cursor: pointer;
+}
+.left_bar .book_node{
+	display: none;
+}
+.book_node .split_line{
+	width: 5px;
+	height: 100%;
+	background-color:#52cca3;
+}
+.left_bar .book{
+	background: transparent url(../img/quanzi/recent.png) no-repeat scroll 0px 0px;
+}
+.left_bar .book:hover{
+	/*background: transparent url(../img/quanzi/recent-select.png) no-repeat scroll 0px 0px;*/
+}
+.left_bar .volume{
+	background: transparent url(../img/quanzi/recent.png) no-repeat scroll 0px 0px;
+}
+.left_bar .volume:hover{
+	/*background: transparent url(../img/quanzi/recent-select.png) no-repeat scroll 0px 0px;
+	background-color: #428bca;*/
+}
+.left_bar .chapter{
+	background: transparent url(../img/quanzi/recent.png) no-repeat scroll 0px 0px;
+}
+.left_bar .chapter:hover{
+	/*background: transparent url(../img/quanzi/recent-select.png) no-repeat scroll 0px 0px;*/
+}
+.left_bar .share{
+	background: transparent url(../img/quanzi/recent.png) no-repeat scroll 0px 0px;
+}
+.left_bar .share:hover{
+	/*background: transparent url(../img/quanzi/recent-select.png) no-repeat scroll 0px 0px;*/
+}
+.left_bar .delete{
+	background: transparent url(../img/quanzi/recent.png) no-repeat scroll 0px 0px;
+}
+.left_bar .delete:hover{
+	/*background: transparent url(../img/quanzi/recent-select.png) no-repeat scroll 0px 0px;*/
+}
+.synchro{
+	position: absolute;
+	left: 10px;
+	bottom: -5px;
+}
+.synchro img{
+}
+.left_bar .bar_selected{
+	background-color: #52cca3;
+}
+
+.left_column{
+	width: 220px;
+    height: 100%;
+    border-right: 1px solid gainsboro;
+}
+.volume_colume, .chapter_colume, .share_colume, .delete_colume{
+	display: none;
+}
+
+.book_colume .book_head{
+	height: 60px;
+	line-height: 60px;
+}
+.head_line li{
+	display: inline-block;
+	margin: 0 0 0 20px;
+	height: 50px;
+	line-height: 50px;
+	vertical-align:middle;
+}
+.head_line .add-node{
+	display:block;
+	float: left;
+	width: 25px;
+	height: 25px;
+	margin: 12px 0 0 0;
+	background:transparent url(../img/Btn_NewIcon.png) no-repeat scroll 0px 0px;
+}
+.head_line .add-txt{
+	display: block;
+	margin: 0 0 0 10px;
+	float: left;
+}
+.head_line .sort-node{
+	display:block;
+	width: 27px;
+	height: 20px;
+	margin: 17px 20px 0 0;
+	background:transparent url(../img/Btn_View_List.png) no-repeat scroll 0px 0px;
+}
+.book_list{
+	position: relative;
+	overflow: auto;
+}
+.book_list i{
+	display: block;
+    width: 25px;
+    height: 25px;
+    margin: 8px 8px 0 0;
+    float: left;
+    background: transparent url(../img/Icon_Category_Group.png) no-repeat scroll 0px 0px;
+}
+.book_list li{
+	height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+.book_list li:hover{
+	background-color: #f8f8f8;
+}
+
+
+.volume_colume{
+	display: block;
+}
+.volume_colume .volume_head{
+	height: 60px;
+	line-height: 60px;
+}
+.volume_colume .book_info{
+	height: 45px;
+    line-height: 45px;
+    border-bottom: 1px solid lightgray;
+}
+.book_info .arrow_list{
+	display: block;
+	width: 10px;
+	height: 10px;
+	float: right;
+	margin: 15px 15px 0 0;
+	background:transparent url(../img/Btn_New_DropDown.png) no-repeat scroll 0px -10px;
+}
+.book_info i{
+	display: block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px 0 10px;
+    float: left;
+	background:transparent url(../img/Icon_Category_Group.png) no-repeat scroll 0px 0px;
+}
+
+.volume_list{
+	position: relative;
+	overflow: auto;
+}
+.volume_list i{
+	display: block;
+    width: 25px;
+    height: 25px;
+    margin: 8px 8px 0 0;
+    float: left;
+    background: transparent url(../img/Icon_Category.png) no-repeat scroll 0px 0px;
+}
+.volume_list li{
+	height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+.volume_list li:hover{
+	background-color: #f8f8f8;
+}
+
+.chapter_colume .chapter_head{
+	height: 60px;
+	line-height: 60px;
+}
+.chapter_list{
+	position: relative;
+	overflow: auto;
+}
+.chapter_list i{
+	display: block;
+    width: 20px;
+    height: 20px;
+    margin: 8px 8px 0 0;
+    float: left;
+    background: transparent url(../img/chapter_tip.png) no-repeat scroll 0px 0px;
+}
+.chapter_list li{
+	height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+.chapter_list li:hover{
+	background-color: #f8f8f8;
+}
+
+
+
+.right_column{
+	height: 100%;
+}
+.edit_column{
+	margin: 0;
+}
+.edit_head{
+	height: 50px;
+	line-height: 50px;
+	padding: 0 20px;
+}
+.edit_head .title{
+	width: 85%;
+}
+.book_title {
+	height: 35px;
+	width: 100%;
+	border:0px solid #c00;
+	padding: 4px 5px;
+	font-size:20px;
+	font-weight: border; 
+}
+.full_screen{
+	display: block;
+    width: 20px;
+    height: 20px;
+    margin: 20px 0 0 0;
+    background: transparent url(../img/Icon_Toolbar_Show.png) no-repeat scroll 0px 0px;
+}
+.editer_area{
+	width: 100%;
+	margin: 0 auto;
+}
+
+.edit_foot{
+	height: 32px;
+	border-top: 1px solid rgb(238, 238, 238);
+}

@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  overflow: hidden; /* Prevents rubber-band scrolling of the whole "page" */
+}
+
+body {
+  font: 14px "微软雅黑","宋体",Arial
+}
+html,body{ margin:0px; height:100%;} 
+.clear{
+	clear: both;
+}
+ul,li{ margin:0px;padding:0px;
+	list-style-type: none;
+}
+img{
+	margin: 0;
+	padding: 0;
+}
+
+
+.float-left{
+	float: left;
+}
+.float-right{
+	float: right;
+}
+
+.header{
+	position: relative;
+	height: 40px;
+	z-index: 999;
+}
+.header .item{
+	width: 800px;
+	margin: 0 auto;
+}
+.header .setting{
+	margin: 0 300px 0 0;
+	width: 100px;
+	-webkit-app-region: no-drag;
+}
+.header .title, .header .setting{
+	height: 40px;
+	line-height: 40px;
+}
+
+.footer{
+	width: 800px;
+	margin: 0 auto;
+	height: 30px;
+	border-top: 1px solid #F8F8F8;
+}

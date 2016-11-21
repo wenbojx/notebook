@@ -1,0 +1,360 @@
+
+.note-content{
+	position:relative;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}  
+
+.note-left,.note-right{
+	height:100%;
+	overflow:hidden;
+}  
+.note-left{
+	background:#f8f8f8; 
+	float:left;
+	width: 200px;
+}  
+.volume-list{
+	position: relative;
+  height: 100%; 
+  overflow: auto;
+}
+.volume-list li{
+}
+
+.book-info, .book-share, .book-recycle{
+	height: 45px;
+	line-height: 45px;
+	padding-left: 10px;
+}
+.book-info{
+	border-bottom: 1px solid lightgray;
+}
+.book-info i, .book-share i, .book-recycle i{
+	display: block;
+	width: 25px;
+	height: 25px;
+	margin: 10px 5px 0 0;
+	float: left;
+}
+.book-info .arrow-list{
+	width: 10px;
+	height: 10px;
+	margin: 18px 0 0 0;
+	background:transparent url(../img/Btn_New_DropDown.png) no-repeat scroll 0px -10px;
+}
+.book-info i{
+	margin-left: 5px;
+}
+.book-info a{
+	display: block;
+	float: left;
+	margin-left: 5px;
+}
+
+.book-info i{
+	background:transparent url(../img/Icon_Category_Group.png) no-repeat scroll 0px 0px;
+}
+.book-share i{
+	background:transparent url(../img/Icon_Category_Share.png) no-repeat scroll 0px 0px;
+}
+.book-recycle i{
+	background:transparent url(../img/Icon_Category_Trash.png) no-repeat scroll 0px 0px;
+}
+.book-volume{
+	font-size: 12px;
+}
+.book-volume li{
+	height: 40px;
+	line-height: 40px;
+	padding-left: 30px;
+}
+.book-volume i{
+	display: block;
+	width: 25px;
+	height: 25px;
+	margin: 10px 8px 0 0;
+	float: left;
+	background:transparent url(../img/Icon_Category.png) no-repeat scroll 0px 0px;
+}
+.book-volume input{
+	width: 130px;
+	height: 25px;
+}
+
+.volume-list .selected{
+	background-color: #31b0d5;
+}
+.volume-list .selected a{
+	color: white;
+}
+
+.volume-head {
+	height: 60px;
+}
+.volume-head li{
+	display: inline-block;
+	height: 60px;
+	line-height: 60px;
+	vertical-align:middle;
+	margin-left: 20px;
+}
+.volume-head .add-node{
+	display:block;
+	float: left;
+	width: 25px;
+	height: 25px;
+	margin: 17px 0 0 0;
+	background:transparent url(../img/Btn_NewIcon.png) no-repeat scroll 0px 0px;
+}
+.volume-head .add-txt{
+	display: block;
+	margin: 0 0 0 10px;
+	float: left;
+}
+.volume-head .sync-node{
+	display:block;
+	float: left;
+	width: 25px;
+	height: 25px;
+	margin: 17px 0 0 0;
+	background:transparent url(../img/Btn_Syn_Icon.png) no-repeat scroll 0px 0px;
+}
+.volume-head .sync-txt{
+	display: block;
+	margin: 0 0 0 10px;
+	float: left;
+}
+
+.volume-foot {
+	height: 80px;
+	background-color: white;
+	border-top: 1px solid rgb(238, 238, 238);
+}
+.volume-foot ul{
+	position: relative;
+}
+.volume-foot .list-open{
+	height: 15px;
+	background:url(../img/box_open.png) no-repeat center center;
+	background-color: #31b0d5;
+	cursor:pointer;
+	
+}
+
+
+.book-box-tip{
+	text-align: center;
+}
+
+.book-box-tip, .book-box-btn{
+	display: block;
+	font-size: 16px;
+	padding: 5px 0;
+}
+.book-box-tip span{
+	color: gainsboro;
+	font-size: 12px;
+}
+.book-box-tip .book-box-new{
+	color: red;
+	font-size: 14px;
+}
+
+.book-box-list{
+	display: none;
+	position: absolute;
+	top:-360px;
+	left: 0px;
+	height: 300px;
+	background-color: white;
+	border-bottom: 1px solid #31b0d5;
+}
+.book-box-list .list-close{
+	height: 15px;
+	background:url(../img/box_close.png) no-repeat center center;
+	background-color: #31b0d5;
+	cursor:pointer;
+}
+
+.book-box-list li a{
+	font-size: 16px;
+}
+.book-box-list a ,.book-box-list span{
+	margin: 3px 0 3px 10px;
+}
+
+.book-box-list .list_info{
+	position: relative;
+	height: 283px;
+}
+.book-box-list .book-list-info{
+	border-bottom: 1px solid lightgray;
+	height: 65px;
+	padding-top: 3px;
+}
+.book-box-list .book-list-info:hover{
+	background-color: #f8f8f8;
+}
+
+
+.book-box-list span{
+	display: block;
+	font-size: 12px;
+	color: darkgray;
+	margin-top: 5px;
+}
+
+.modal-dialog{
+	width: 450px;
+}
+
+.note-right{
+	float:left;
+	height: 100%;
+	position: relative;
+}  
+
+.drag-line{
+	position:absolute;
+	top:0;
+	left:200px;
+	height:100%;
+	width:3px;
+	overflow:hidden;
+	border-left: solid 1px rgb(238, 238, 238);
+	cursor:w-resize;
+}
+.article-head{
+	height: 60px;
+	line-height: 60px;
+}
+.article-head li{
+	display: inline-block;
+	margin: 0 0 0 20px;
+	height: 60px;
+	line-height: 60px;
+	vertical-align:middle;
+}
+.article-head .add-node{
+	display:block;
+	float: left;
+	width: 25px;
+	height: 25px;
+	margin: 17px 0 0 0;
+	background:transparent url(../img/Btn_NewIcon.png) no-repeat scroll 0px 0px;
+}
+.article-head .add-txt{
+	display: block;
+	margin: 0 0 0 10px;
+	float: left;
+}
+.article-head .sort-node{
+	display:block;
+	width: 27px;
+	height: 20px;
+	margin: 17px 20px 0 0;
+	background:transparent url(../img/Btn_View_List.png) no-repeat scroll 0px 0px;
+}
+
+.article-foot{
+	height: 30px;
+	border-top: 1px solid rgb(238, 238, 238);
+	line-height: 30px;
+	padding-left: 15px;
+	font-size: 12px;
+}
+.article-foot span{
+	color: red;
+}
+.chapter-list{
+	position: relative;
+  height: 100%; 
+  overflow: auto;
+}
+.chapter-list input{
+	width: 180px;
+	height: 25px;
+}
+
+.chapter-list li{
+	height: 35px;
+	border-bottom: 1px solid rgb(238, 238, 238);
+	display:block;
+	line-height:35px;
+}
+.chapter-list i{
+	display: block;
+	width: 20px;
+	height: 20px;
+	float: left;
+	background:transparent url(../img/chapter_tip.png) no-repeat scroll -20px 0px;
+	margin: 7px 8px 0 15px;
+}
+.chapter-list a{
+	display: block;
+	float: left;
+	font-size: 12px;
+}
+
+.chapter-list li:hover{
+	background-color: #f8f8f8;
+}
+.chapter-list .selected{
+	background-color: #f8f8f8;
+}
+.chapter-list .selected:hover{
+	background-color: #f8f8f8;
+}
+.note-edit{
+	width: 99%; 
+	float: right;
+}
+.edit-head{
+	height: 50px;
+	line-height: 50px;
+}
+.edit-head .title a{
+	font-size: 16px;
+	margin-left: 20px;
+	color: black;
+}
+
+.edit-head .setting{
+	margin: 15px 30px 0 0 ;
+}
+.edit-head .setting .full-screen{
+	display: block;
+	width: 20px;
+	height: 20px;
+	background:transparent url(../img/Icon_Toolbar_Show.png) no-repeat scroll 0px 0px;
+}
+.edit-head .setting .full-screen:hover{
+	background:transparent url(../img/Icon_Toolbar_Show.png) no-repeat scroll 0px -20px;
+}
+
+.bgwhite{
+	background-color: white;
+}
+.editer-box{
+}
+
+.btn-toolbar{
+	border-bottom: 1px solid rgb(238, 238, 238);
+	padding-left: 20px;
+}
+
+.ps-scrollbar-y-rail{
+	z-index: 1;
+}
+.ps-scrollbar-y-rail:hover{
+	cursor: default;
+}
+
+.edit-foot {
+	height: 30px;
+	border-top: 1px solid rgb(238, 238, 238);
+	line-height: 30px;
+	padding-left: 20px;
+}

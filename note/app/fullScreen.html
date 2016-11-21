@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="./plugs/umeditor/css/umeditor.css" type="text/css" rel="stylesheet">
+		    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/perfect-scrollbar.css"/>
+    <link type="text/css" rel="stylesheet" href="css/editor.css"/>
+    <link type="text/css" rel="stylesheet" href="css/fullScreen.css"/>
+    
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="./plugs/umeditor/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./plugs/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./plugs/umeditor/editor_api.js"></script>
+    <script type="text/javascript" src="./plugs/umeditor/zh-cn/zh-cn.js"></script>
+    <script src="js/plugs/bootstrap.js"></script>
+    <script src="js/plugs/perfect-scrollbar.jquery.min.js"></script>
+    <script src="js/plugs/vue.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/pages/fullScreen.js"></script>
+    <script src="js/book/bookRender.js"></script>
+	</head>
+	<body>
+	<div class="content" id="content">
+		<div class="header" id="edit-head">
+			<div class="item" id="item">
+				<div class="title float-left" v-cloak>{{title}}</div>
+			</div>
+			<div class="setting float-right">
+					<a href="javascript:void(0)" onclick="exitFullScreen()">退出全屏</a>
+			</div>
+		</div>
+		<div class="editor" id="editer-box">
+			<script type="text/plain" id="editor" class="editor" style="width:800px;height:200px;"><div v-cloak>{{{content}}}</div></script>
+	    </div>
+	    <div class="footer" id="footer"></div>
+    </div>
+    <script type="text/javascript">
+    window.onload = function() {  
+		initEditor("editor");
+		resetHeight();
+		resetWidth();
+		$('#editor').perfectScrollbar();
+		timer();
+    };
+    window.onresize = function(){
+		resetHeight();
+		resetWidth();
+	}
+    
+    </script>
+	</body>
+</html>

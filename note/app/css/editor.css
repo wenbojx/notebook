@@ -1,0 +1,39 @@
+
+.editor{
+	margin: 0 auto;
+}
+.edui-container{
+  border: 0px;
+  box-shadow: 0px 0px 0px white;
+  margin: 0 auto;
+}
+
+.edui-body-container{
+  position: relative;
+}
+.edui-editor-body{
+}
+.edui-editor-body .edui-body-container{
+   padding: 0 10px 0 10px;
+   
+}
+.edui-editor-body .edui-body-container p{
+  line-height: 30px;
+}
+    	
+.edui-container .edui-toolbar{
+  box-shadow: 0px 0px 0px white;
+ 	border-bottom: 1px solid #f8f8f8;
+  background-color: white;
+}
+
+.edui-btn-toolbar{
+	margin: 0 auto;
+}
+
+.edui-btn-name-fontsize .edui-button-label{
+	width: 35px;
+}
+.ps-scrollbar-y-rail{
+
+}

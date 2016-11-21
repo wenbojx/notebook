@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <meta charset="UTF-8">
+	    <title>记事本</title>
+	    <link type="text/css" rel="stylesheet" href="css/main.css"/>
+	    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+	    <link type="text/css" rel="stylesheet" href="css/perfect-scrollbar.css"/>
+	    <link type="text/css" rel="stylesheet" href="css/font-awesome.css"/>
+	    <link type="text/css" rel="stylesheet" href="./plugs/umeditor/css/umeditor.css">
+	    
+	    <link type="text/css" rel="stylesheet" href="css/index.css"/>
+	    <link type="text/css" rel="stylesheet" href="css/editor.css"/>
+	    
+	    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+	    <script src="js/plugs/jquery-3.0.0.min.js"></script>
+	    <script src="js/plugs/jquery.hotkeys.js"></script>
+	    <script src="js/plugs/bootstrap.js"></script>
+	    <script src="js/plugs/perfect-scrollbar.jquery.min.js"></script>
+	    <script src="js/plugs/vue.js"></script>
+	    <script src="js/plugs/bootstrap-contextmenu.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="./plugs/umeditor/umeditor.config.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="./plugs/umeditor/editor_api.js"></script>
+	    <script type="text/javascript" src="./plugs/umeditor/zh-cn/zh-cn.js"></script>
+	    <script src="js/core.js"></script>
+	    <script src="js/pages/index.js"></script>
+	    <script src="js/book/bookRender.js"></script>
+    
+  	</head>
+<body>
+
+
+<div id="head" class="head">
+	<div class="nav-left float-left">
+		<div class="avater"><img src="img/logo.png" /></div>
+	</div>
+	<div class="nav-center float-left">
+		<ul>
+				<li><a class="active" href="#!">测试</a></li>
+	      <li><a class="" href="#!" onclick="goToQuanzi()">测试1</a></li>
+	      <li><a class="" href="#!" onclick="loadpage()">测试2</a></li>
+	  </ul>
+	</div>
+	<div class="nav-right float-right">
+		<ul>
+			<li><a class="close" href="#!" onclick="closeWindow()"></a></li>
+	      	<li><a class="full" href="#!" onclick="restoreWindow()"></a></li>
+	      	<li><a class="normal" href="#!" onclick="miniWindow()"></a></li>
+	  </ul>
+	</div>
+</div> 
+
+
+<div id="note-content" class="note-content">  
+    <div id="note-left" class="note-left"> 
+    	<div id="note_left_sample">
+    		<div class="note_sample_list" id="note_sample_list">
+	    		<ul>
+	    			<li></li>
+	    			<li></li>
+	    		</ul>
+    		</div>
+    	</div>
+    	<div id="note-left-detail">
+	    	<div class="volume-head" id="volume-head">
+	    		<ul>
+	    			<li>
+	    				<a href="#" onclick="creatVolume()">
+	    				<span class="add-node" id="add-node"></span>
+	    				<span class="add-txt">新建</span>
+	    				</a>
+	    			</li>
+	    			<li>
+	    				<a href="#">
+	    					<span class="sync-node"></span>
+	    					<span class="sync-txt">同步</span>
+	    				</a>
+	    			</li>
+	    		</ul>
+	    	</div>
+	    	<div class="volume-list" id="volume-list">
+			    <ul>
+			    	<li class="book-info" id="current-book-name" data-toggle="context" data-id="{{bookId}}">
+			    		<a href="javascript:hide_volume();" class="arrow-list" id="arrow-list"></a>
+			    		<i></i>
+			    		<a id="currentBookNameText" href="javascript:void(0)">
+			    			<div v-cloak>{{bookName}}</div>
+			    		</a>
+			    	</li>
+			    	<div class="clear"></div>
+			    	<li class="book-volume">
+			    		<ul id="book-volume-list">
+			    			<li v-for="list in volumeList" class="volumeNode"  data-toggle="context"	  v-bind:class="{ 'selected': list.$loki===currentvolumeId}" data-id="{{list.$loki}}">
+			    				<i></i>
+			    				<a href="javascript:void(0)" onClick="changeVolumeLable({{list.$loki}})"><div v-cloak>{{list.name}}</div>
+			    				</a>
+			    			</li>
+			    		</ul>
+			    	</li>
+			    	<div class="clear"></div>
+			    	<li class="book-share">
+			    		<i></i>
+			    		<a href="#">分享</a>
+			    	</li>
+			    	<div class="clear"></div>
+			    	<li class="book-recycle">
+			    		<i></i>
+			    		<a href="#">回收站</a>
+			    	</li>
+			    </ul>
+			</div>
+			<div class="volume-foot" id="volume-foot">
+			  	<ul>
+			  		<li class="list-open" id="book_box_list_open" onclick="bookListOpen()"></li>
+			  		<li class="book-box-tip" title="点击查看所有作品">
+			  			<a href="#!" class="book-box-btn" onclick="bookListOpen()">作品库</a>
+			  			<span>总共 <span id="books_count" style="color: red;"></span> 部作品 , 我要<a href="#" data-toggle="modal" 
+	   data-target="#creatBookModal" class="book-box-new"> 新建 </a>作品</span>
+			  		</li>
+			  		<li>
+			  			<ul class="book-box-list" id="book-box-list">
+			  				<li class="list-close" id="book_box_list_open" onclick="bookListOpen()"></li>
+			  				<ul class="list_info" id="list_info">
+				  				<li v-for="info in boxList" class="book-list-info" onclick="getBookById({{info.$loki}})">
+				  					<a href="#" class="book-name">{{info.name}}</a><br>
+				  					<span>
+				  						含{{info.$loki}}卷13章<br>总字数233004
+				  					</span>
+				  				</li>
+			  				</ul>
+			  				
+			  			</ul>
+			  		</li>
+			  	</ul>
+			</div>
+		</div>
+    </div>  
+    <div id="note-right" class="note-right">  
+    	<div id="note-content-child" class="note-content">  
+		    <div id="note-left-child" class="note-left note-left-child bgwhite" style="width: 230px;"> 
+		    	<div class="article-head" id="article-head">
+		    		<ul>
+		    			<li>
+		    				<a href="#" onclick="creatChapter()">
+		    				<span class="add-node" id="add-node"></span>
+		    				<span class="add-txt">新建</span>
+		    				</a>
+		    			</li>
+		    			<li class="float-right">
+		    				<a href="#">
+		    					<span class="sort-node"></span>
+		    				</a>
+		    			</li>
+		    		</ul>
+		    	</div>
+		    	<div class="chapter-list" id="chapter-list">
+		    		<ul id="book-chapter-list">
+		    			<li class="chapterNode" v-for="list in chapterList" data-toggle="context" onClick="changeChapterLable({{list.$loki}})" v-bind:class="{ 'selected': list.$loki===currentChapterId}" data-id="{{list.$loki}}">
+		    				<i></i>
+		    				<a href="javascript:void(0)" onClick="changeChapterLable({{list.$loki}})">
+		    					<div v-cloak>{{list.name}}</div></a>
+		    			</li>
+		    			
+		    		</ul>
+		    	</div>
+		    	<div class="article-foot" id="article-foot">
+		    		总共 <span id="count_chapters"></span> 章节
+		    	</div>
+		    </div>  
+		    <div id="note-right-child" class="note-right bgwhite">  
+		    	<div class="edit-head" id="edit-head">
+		    		<ul>
+		    			<li class="title float-left">
+		    				<a href="javascript:void(0)" v-cloak>{{title}}</a>
+		    			</li>
+		    			<li class="setting float-right">
+		    				<ul>
+		    					<li>
+		    						<a class="full-screen" href="javascript:void(0)" onclick="fullScreen()"></a>
+		    					</li>
+		    				</ul>
+		    			</li>
+		    		</ul>
+		    		
+		    	
+		    	</div>
+
+					<div class="editer-box" id="editer-box">
+						<script type="text/plain" id="editor" class="editor" style="width:500px;height:240px;"><div v-cloak>{{{content}}}</div></script>
+					</div>
+		    	<div class="clear"></div>
+		    	<div class="edit-foot" id="edit-foot"></div>
+		    </div>  
+		    <div id="drag-line-child" class="drag-line" style="left: 230px;"></div>  
+		</div>
+    </div>  
+    <div id="drag-line" class="drag-line"></div>
+</div>
+
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="creatBookModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog">
+      	<div class="modal-content">
+         	<div class="modal-header">
+	            <button type="button" class="close" 
+	               data-dismiss="modal" aria-hidden="true">
+	                  &times;
+	            </button>
+	            <h4 class="modal-title" id="myModalLabel">新建书籍</h4>
+         	</div>
+         	<div class="modal-body">
+				<form role="form">
+					<input type="hidden" name="type" id="formBookType" value="new" />
+				   	<div class="form-group" id="formBookNameBox">
+				      	<input class="form-control" name="formBookName" id="formBookName" type="text" placeholder="书名">
+				      	<span class="help-block">请输入书名</span>
+				   	</div>
+
+				   	<div class="form-group">
+					    <label for="name">简介</label>
+					    <textarea class="form-control" rows="3" name="formBookInfo" id="formBookInfo"></textarea>
+					    <span class="help-block"></span>
+				  	</div>
+				</form>
+         	</div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		        <button type="button" onclick="creatBook()" class="btn btn-primary">保存</button>
+		    </div>
+      	</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+<div id="book-edit-menu">
+	<ul class="dropdown-menu" role="menu">
+    <li><a tabindex="1">编辑</a></li>
+	  <li><a tabindex="2">删除</a></li>
+	  <li class="divider"></li>
+	  <li><a tabindex="3">导出</a></li>
+	</ul>
+</div>
+<div id="volume-edit-menu">
+	<ul class="dropdown-menu" role="menu">
+    <li><a tabindex="1">重命名</a></li>
+	  <li><a tabindex="-1">删除</a></li>
+	  <li class="divider"></li>
+	  <li><a tabindex="-1">导出</a></li>
+	</ul>
+</div>
+<div id="chapter-edit-menu">
+	<ul class="dropdown-menu" role="menu">
+    <li><a tabindex="1">重命名</a></li>
+	  <li><a tabindex="-1">删除</a></li>
+	  <li class="divider"></li>
+	  <li><a tabindex="-1">导出</a></li>
+	  <li><a tabindex="-1">分享</a></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	function loadpage(){
+		htmlobj=$.ajax({url:"login.html",async:false});
+  		$("#note-content").html(htmlobj.responseText);
+	}
+    window.onload = function() {  
+		bindDrag("note-content", "note-left", "note-right", "drag-line");
+		bindDrag("note-content-child", "note-left-child", "note-right-child", "drag-line-child");
+			//var UE = null;
+
+		resetWidth();
+		initEditor("editor");
+		resetHeight();
+			
+		getBookList();
+		getCurrentBook();
+			
+		initScrollbar();
+		timer();
+    };
+    
+    
+window.onresize = function(){
+	resetHeight();
+	resetWidth();
+}
+</script>
+</body>
+</html>

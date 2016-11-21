@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/perfect-scrollbar.css"/>
+   	<link type="text/css" rel="stylesheet" href="css/font-awesome.css"/>
+	<link type="text/css" rel="stylesheet" href="./plugs/umeditor/css/umeditor.css">
+	<link type="text/css" rel="stylesheet" href="css/editor.css"/>
+    
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="js/plugs/jquery-3.0.0.min.js"></script>
+    <script src="js/plugs/jquery.hotkeys.js"></script>
+	<script src="js/plugs/bootstrap.js"></script>
+	<script src="js/plugs/perfect-scrollbar.jquery.min.js"></script>
+	<script src="js/plugs/vue.js"></script>
+	<script src="js/plugs/bootstrap-contextmenu.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugs/umeditor/umeditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugs/umeditor/editor_api.js"></script>
+	<script type="text/javascript" src="./plugs/umeditor/zh-cn/zh-cn.js"></script>
+	<script src="js/core.js"></script>
+	<script src="js/pages/default.js"></script>
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="head" class="head">
+	<div class="nav-left f_l">
+		<div class="avater"><img src="img/logo.png" /></div>
+	</div>
+	<div class="nav-center f_l">
+		<ul>
+			<li><a class="active" href="#!" onclick="goToXiezuo()">记事本</a></li>
+	      	<li><a class="" href="#!" onclick="goToQuanzi()">圈子</a></li>
+	      	<li><a class="" href="#">大杂烩</a></li>
+	  	</ul>
+	</div>
+	<div class="nav-right f_r">
+		<ul>
+			<li><a class="close" href="#!" onclick="javascript:window.close()"></a></li>
+	      	<li><a class="full" href="#!" onclick="alert(222)"></a></li>
+	      	<li><a class="normal" href="#!"></a></li>
+	  </ul>
+	</div>
+</div>
+
+<div class="note_content" id="note_content">
+	<div class="left_bar f_l" id="left_bar">
+		<ul>
+			<li class="book" id="book" title="书" onclick="selectBar('book')"></li>
+			<ul id="book_node" class="book_node">
+				<li class="volume" id="volume" title="卷" onclick="selectBar('volume')">
+					<div class="split_line"></div>
+				</li>
+				<li class="chapter" id="chapter" title="章" onclick="selectBar('chapter')">
+					<div class="split_line"></div>
+				</li>
+			</ul>
+			<li class="share" id="share" title="分享" onclick="selectBar('share')"></li>
+			<li class="delete" id="delete" title="删除" onclick="selectBar('delete')"></li>
+			<li class="synchro" id="synchro"><img src="img/Anmy_Sync.gif"></li>
+		</ul>
+	</div>
+	<div class="left_column f_l" id="left_column">
+		<div class="book_colume" id="book_colume">
+			<div class="book_head" id="book_head">
+				<ul class="head_line">
+	    			<li>
+	    				<a href="#" onclick="creatVolume()">
+	    				<span class="add-node"></span>
+	    				<span class="add-txt">新建书</span>
+	    				</a>
+	    			</li>
+	    			<li class="f_r">
+		    			<a href="#"><span class="sort-node"></span></a>
+		    		</li>
+	    		</ul>
+			</div>
+			<div class="book_list" id="book_list">
+				<ul>
+					<li><a href="#!" onclick="loadBook()"><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+					<li><a href=""><i></i>测试书1</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="volume_colume" id="volume_colume">
+			<div class="volume_head" id="volume_head">
+				<ul class="head_line">
+	    			<li>
+	    				<a href="#" onclick="creatVolume()">
+	    				<span class="add-node"></span>
+	    				<span class="add-txt">新建卷</span>
+	    				</a>
+	    			</li>
+	    			<li class="f_r">
+		    			<a href="#"><span class="sort-node"></span></a>
+		    		</li>
+	    		</ul>
+			</div>
+			<!--
+			<div class="book_info">
+				<a href="#!">
+					<span href="javascript:hide_volume();" class="arrow_list" id="arrow_list"></span>
+					<i></i>
+				    <span>书名</span>
+			    </a>
+			</div>
+			-->
+			<div class="volume_list" id="volume_list">
+				<ul>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+					<li><i></i><a href="">第一卷</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="chapter_colume" id="chapter_colume">
+			<div class="chapter_head" id="chapter_head">
+				<ul class="head_line">
+	    			<li>
+	    				<a href="#" onclick="creatChapter()">
+	    				<span class="add-node"></span>
+	    				<span class="add-txt">新建章</span>
+	    				</a>
+	    			</li>
+	    			<li class="f_r">
+		    			<a href="#"><span class="sort-node"></span></a>
+		    		</li>
+	    		</ul>
+			</div>
+			<div class="chapter_list" id="chapter_list">
+				<ul>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+					<li><i></i><a href="">第一章</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="share_colume" id="share_colume"></div>
+		<div class="delete_colume" id="delete_colume"></div>
+	</div>
+	<div class="right_column f_r" id="right_column">
+		<div class="edit_colume" id="edit_colume">
+			<div class="edit_head" id="edit_head">
+			    <li class="title f_l">
+			    		<input type="text" name="book_title" class="book_title" id="book_title" value="测试章节">
+			    </li>
+			    <li class="setting f_r">
+			    	<a class="full_screen" href="javascript:void(0)" onclick="fullScreen()"></a>
+			    </li>
+			</div>
+			<div class="editer_area" id="editer_area">
+				<script type="text/plain" id="editor" class="editor" style="width:400px;height:200px;"><div v-cloak>{{{content}}}</div></script>
+			</div>
+		</div>
+		<div class="edit_foot" id="edit_foot"></div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+
+window.onload = function() {  
+		resetWidth();
+		initEditor("editor");
+		resetHeight();
+		
+		//getBookList();
+		//getCurrentBook();
+			
+		initScrollbar();
+		//timer();
+}
+window.onresize = function(){
+	resetHeight();
+	resetWidth(true);
+}
+
+</script>
+
+</body>
+</html>
