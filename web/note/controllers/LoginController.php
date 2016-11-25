@@ -46,15 +46,17 @@ class LoginController extends Controller
         return ['code'=>320,'message'=>'true'];
         */
         //$qq_sdk = new Qq_sdk(); 
-        $token = LoginQq::get_access_token($_GET['code']); 
-        print_r($token); 
+        $loginModle = new LoginQq();
 
-        $open_id = Yii::$app->loginqq->get_open_id($token['access_token']); 
+        $token = $loginModle->get_access_token($_GET['code']); 
+        var_dump($token); 
+//exit();
+        $open_id = $loginModle->get_open_id($token['access_token']); 
         print_r($open_id); 
-        $user_info = Yii::$app->loginqq->get_user_info($token['access_token'], $open_id['openid']); 
+        $user_info = $loginModle->get_user_info($token['access_token'], $open_id['openid']); 
         print_r($user_info); 
 
-        return $this->render('login');
+        return $this->render('success');
     }
 
 }

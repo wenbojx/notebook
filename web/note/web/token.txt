@@ -1,0 +1,34 @@
+array(3) {
+  ["access_token"]=>
+  string(32) "7EC89860E361CC179280A6708D2E020B"
+  ["expires_in"]=>
+  string(7) "7776000"
+  ["refresh_token"]=>
+  string(32) "E15D0144A96A1971490EAFCC77C55136"
+}
+Array
+(
+    [client_id] => 101358269
+    [openid] => 2233270B30AB66137AF6A69E6E330249
+)
+Array
+(
+    [ret] => 0
+    [msg] => 
+    [is_lost] => 0
+    [nickname] => 文博
+    [gender] => 男
+    [province] => 上海
+    [city] => 浦东新区
+    [year] => 1983
+    [figureurl] => http://qzapp.qlogo.cn/qzapp/101358269/2233270B30AB66137AF6A69E6E330249/30
+    [figureurl_1] => http://qzapp.qlogo.cn/qzapp/101358269/2233270B30AB66137AF6A69E6E330249/50
+    [figureurl_2] => http://qzapp.qlogo.cn/qzapp/101358269/2233270B30AB66137AF6A69E6E330249/100
+    [figureurl_qq_1] => http://q.qlogo.cn/qqapp/101358269/2233270B30AB66137AF6A69E6E330249/40
+    [figureurl_qq_2] => http://q.qlogo.cn/qqapp/101358269/2233270B30AB66137AF6A69E6E330249/100
+    [is_yellow_vip] => 0
+    [vip] => 0
+    [yellow_vip_level] => 0
+    [level] => 0
+    [is_yellow_year_vip] => 0
+)

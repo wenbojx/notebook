@@ -44,6 +44,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'loginqq' => 'login/loginqq',
+                'login' => 'login/login',
             ],
         ],
         'commonTools' => [
