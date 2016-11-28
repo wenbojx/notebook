@@ -11,6 +11,7 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'yifang*$#yifang',
         ],
+        /*
         'cache' => [
             'class' => 'yii\caching\MemCache',
             'servers' => [
@@ -21,11 +22,12 @@ $config = [
                 ]
             ],
         ],
-
+        
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
+        */
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],

@@ -3,7 +3,7 @@
 namespace app\models\login;
 
 use Yii;
-use yii\model\Ydao;
+use app\models\Ydao;
 
 /**
  * LoginForm is the model behind the login form.
@@ -14,9 +14,17 @@ use yii\model\Ydao;
 class Login extends Ydao
 {
 
-	function __construct() 
+	public function __construct() 
 	{ 
 
 	} 
+	/**
+	* 创建登录所需session
+	*/
+	public function loginSession($uid, $nickname, $figureurl){
+		Yii::$app->session->set('uid', $uid);
+		Yii::$app->session->set('nickname', $nickname);
+		Yii::$app->session->set('figureurl', $figureurl);
+	}
 
 }

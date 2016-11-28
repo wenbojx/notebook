@@ -3,7 +3,7 @@
 namespace app\models\login;
 
 use Yii;
-use yii\model\Ydao;
+use app\models\Ydao;
 
 /**
  * LoginForm is the model behind the login form.
@@ -22,6 +22,40 @@ class LoginQq extends Ydao
 	{ 
 
 	} 
+
+
+	public function getAccessToken($code){
+        if(!$code){
+            return false;
+        }
+        $token = $this->get_access_token($code);
+        if (!is_array($token) || !isset($token['access_token'])) {
+            return false;
+        }
+        return $token['access_token'];
+    }
+
+    public function getOpenId($access_token){
+        if(!$access_token){
+            return false;
+        }
+        $open_id = $this->get_open_id($access_token);
+        if (!is_array($open_id) || !isset($open_id['openid'])) {
+            return false;
+        }
+        return $open_id['openid'];
+    }
+
+    public function getUserInfo($access_token, $open_id){
+        if(!$access_token || !$open_id){
+            return false;
+        }
+        $user_info = $this->get_user_info($access_token, $open_id);
+        if (!is_array($user_info) ) {
+            return false;
+        }
+        return $user_info;
+    }
 
 	/**
 	* [get_access_token 获取access_token]

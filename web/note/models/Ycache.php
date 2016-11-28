@@ -9,7 +9,6 @@ class Ycache extends MemCache{
 
     public function __construct(){
         $this->mCacheFlag = Yii::app()->params['mCacheFlag'];
-        echo 11111;
         return parent::init();
     }
     public function get($key){

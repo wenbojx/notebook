@@ -4,7 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use yii\models\Ycache;
+use app\models\Ycache;
 
 class Ydao extends ActiveRecord{
     private $cache_obj = null;
@@ -13,33 +13,38 @@ class Ydao extends ActiveRecord{
     public $cache_expire_time = 600;
     public $cache_expire_time_pk = 900;
 
+/*
     public function __construct($scenario='insert'){
         parent::__construct($scenario);
     }
-
-    public function tableName(){
+*/
+    public static function tableName(){
         return parent::tableName();
     }
 
-    public function save($runValidation=false,$attributes=null){
-        return parent::save($runValidation,$attributes);
+    public function insert($runValidation=false,$attributes=null){
+        return parent::insert($runValidation,$attributes);
     }
-    public function insert($attributes=null){
-        return parent::insert($attributes);
+    /*
+    public function insert(false, $attributes=null){
+        var_dump($attributes);
+        exit;
+        return parent::insert(false, $attributes);
     }
-    public function update($attributes=null){
+    */
+    public function update($runValidation = false, $attributes=null){
         return parent::update($attributes);
     }
     public function delete(){
         return parent::delete();
     }
-    public function find($condition='',$params=array()){
-        return parent::find($condition, $params);
+    public static function find(){
+        return parent::find();
     }
-    public function findAll($condition='',$params=array()){
+    public static function findAll($condition='',$params=array()){
         return parent::findAll($condition, $params);
     }
-    public function findByPk($pk,$condition='',$params=array()){
+    public static function findByPk($pk,$condition='',$params=array()){
         $key = $this->getPkKey($pk);
         if(!$datas = $this->getCacheObj()->get($key)){
             $datas = parent::findByPk($pk,$condition,$params);
@@ -47,31 +52,31 @@ class Ydao extends ActiveRecord{
         }
         return $datas;
     }
-    public function findAllByPk($pk,$condition='',$params=array()){
+    public static function findAllByPk($pk,$condition='',$params=array()){
         return parent::findAllByPk($pk,$condition,$params);
     }
-    public function findByAttributes($attributes,$condition='',$params=array()){
+    public static function findByAttributes($attributes,$condition='',$params=array()){
         return parent::findByAttributes($attributes,$condition,$params);
     }
-    public function findAllByAttributes($attributes,$condition='',$params=array()){
+    public static function findAllByAttributes($attributes,$condition='',$params=array()){
         return parent::findAllByAttributes($attributes,$condition,$params);
     }
-    public function findBySql($sql,$params=array()){
+    public static function findBySql($sql,$params=array()){
         return parent::findBySql($sql,$params);
     }
-    public function findAllBySql($sql,$params=array()){
+    public static function findAllBySql($sql,$params=array()){
         return parent::findAllBySql($sql,$params);
     }
-    public function count($condition='',$params=array()){
+    public static function count($condition='',$params=array()){
         return parent::count($condition,$params);
     }
-    public function countByAttributes($attributes,$condition='',$params=array()){
+    public static function countByAttributes($attributes,$condition='',$params=array()){
         return parent::countByAttributes($attributes,$condition,$params);
     }
-    public function countBySql($sql,$params=array()){
+    public static function countBySql($sql,$params=array()){
         return parent::countBySql($sql, $params);
     }
-    public function updateByPk($pk,$attributes,$condition='',$params=array()){
+    public static function updateByPk($pk,$attributes,$condition='',$params=array()){
         $key = $this->getPkKey($pk);
         if ($datas = parent::updateByPk($pk,$attributes,$condition,$params)){
             $this->getCacheObj()->remove($key);
@@ -79,19 +84,19 @@ class Ydao extends ActiveRecord{
         }
         return false;
     }
-    public function updateAll($attributes,$condition='',$params=array()){
+    public static function updateAll($attributes,$condition='',$params=array()){
         return parent::updateAll($attributes,$condition,$params);
     }
-    public function deleteByPk($pk,$condition='',$params=array()){
+    public static function deleteByPk($pk,$condition='',$params=array()){
         return parent::deleteByPk($pk,$condition,$params);
     }
-    public function deleteAll($condition='',$params=array()){
+    public static function deleteAll($condition='',$params=array()){
         return parent::deleteAll($condition,$params);
     }
-    public function deleteAllByAttributes($attributes,$condition='',$params=array()){
+    public static function deleteAllByAttributes($attributes,$condition='',$params=array()){
         return parent::deleteAllByAttributes($attributes,$condition,$params);
     }
-    public function getPkKey($pk){
+    public static function getPkKey($pk){
         return self::TALBLE_KEY_PREFIX.$this->tableName().'_pk_'.$pk;
     }
     /**

@@ -3,32 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-//use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\web\Response;
+use app\controllers\YController;
 use app\models\login\LoginQq;
-//use yii\filters\VerbFilter;
-//use app\models\LoginForm;
-//use app\models\ContactForm;
+use app\models\login\Login;
+use app\models\user\User;
+use app\models\user\UserBind;
+use app\models\user\UserInfo;
 
-class LoginController extends Controller
+class LoginController extends YController
 {
 
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
+    
 
     /**
      * Displays homepage.
@@ -37,26 +22,72 @@ class LoginController extends Controller
      */
     public function actionLogin()
     {
+
         return $this->render('login');
+
     }
+    /**
+    * 登录验证
+    */
     public function actionLoginqq()
     {
-        /*
-        Yii::$app->response->format=Response::FORMAT_JSON;
-        return ['code'=>320,'message'=>'true'];
-        */
-        //$qq_sdk = new Qq_sdk(); 
-        $loginModle = new LoginQq();
-
-        $token = $loginModle->get_access_token($_GET['code']); 
-        var_dump($token); 
-//exit();
-        $open_id = $loginModle->get_open_id($token['access_token']); 
-        print_r($open_id); 
-        $user_info = $loginModle->get_user_info($token['access_token'], $open_id['openid']); 
-        print_r($user_info); 
-
+        $code = Yii::$app->request->get('code', 0);
+        
+        if (!$code) {
+            return $this->render('failed');
+        }
+        $login_qq_obj = new LoginQq();
+        //获取access_token
+        $access_token = $login_qq_obj->getAccessToken($code);
+        if (!$access_token) {
+            return $this->render('failed');
+        }
+        $open_id = $login_qq_obj->getOpenId($access_token);
+        if (!$open_id) {
+            return $this->render('failed');
+        }
+        //判断用户是否注册过
+        $user_bind_db = new UserBind();
+        $bind_datas = $user_bind_db->getBindByOauthId($open_id);
+        $user_info_db = new UserInfo();
+        //如果没绑定，先绑定
+        if(!$bind_datas){
+            //注册用户
+            $uid = $this->createUser($open_id, 0, 2);
+            //绑定用户
+            $bind = $user_bind_db->bindUser($uid, 1, $open_id, $access_token);
+            //获取用户资料
+            $user_info = $login_qq_obj->getUserInfo($access_token, $open_id);
+            if ($user_info) {
+                
+                $user_info_db ->addUserInfo($uid, $user_info);
+            }
+        }
+        else{
+            $uid = $bind_datas['uid'];
+            //获取用户详细信息
+            $user_info = $user_info_db->getByUid($uid);
+        }
+        $login_mod = new Login();
+        $login_mod->loginSession($uid, $user_info['nickname'], $user_info['figureurl']);
+        $session = Yii::$app->session;
+        var_dump($session);
+        $user_id = $session->get('uid');
+        $this->redirect('http://www.yiluhao.com/login');
+        //return $this->render('success');
+    }
+    /**
+    * 登录成功
+    */
+    public function actionSuccess(){
         return $this->render('success');
+    }
+    private function createUser($user_name, $passwd, $status){
+        $user_db = new User();
+        $datas['username'] = $user_name;
+        $datas['passwd'] = $passwd;
+        $datas['status'] = 2;
+        return $user_db->addUser($datas);
     }
 
 }
