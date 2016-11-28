@@ -3,7 +3,7 @@
 namespace app\models\login;
 
 use Yii;
-use yii\base\Model;
+use yii\model\Ydao;
 
 /**
  * LoginForm is the model behind the login form.
@@ -11,7 +11,7 @@ use yii\base\Model;
  * @property User|null $user This property is read-only.
  *
  */
-class LoginQq extends Model
+class LoginQq extends Ydao
 {
 	//配置APP参数
 	private $app_id = 101358269;
