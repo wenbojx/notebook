@@ -10,6 +10,31 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'yifang*$#yifang',
+            'enableCookieValidation' => false,
+        ],
+        /*
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => '127.0.0.1',
+            'port' => 6379,
+            'database' => 0,
+        ],
+        */
+        'cache' => [
+            'class' => 'yii\redis\Cache',
+             'redis' => [
+                'hostname' => 'localhost',
+                'port' => 6379,
+                'database' => 0,
+            ],
+        ],
+        'session' => [
+            'class' => 'yii\redis\Session',
+             'redis' => [
+                'hostname' => 'localhost',
+                'port' => 6379,
+                'database' => 0,
+            ],
         ],
         /*
         'cache' => [
@@ -55,6 +80,7 @@ $config = [
             'rules' => [
                 'loginqq' => 'login/loginqq',
                 'login' => 'login/login',
+                'info' => 'api/userinfo/info',
             ],
         ],
         'commonTools' => [

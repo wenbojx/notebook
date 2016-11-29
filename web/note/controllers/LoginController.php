@@ -9,6 +9,8 @@ use app\models\login\Login;
 use app\models\user\User;
 use app\models\user\UserBind;
 use app\models\user\UserInfo;
+use yii\redis\Cache;
+use yii\redis\Connection;
 
 class LoginController extends YController
 {
@@ -31,6 +33,17 @@ class LoginController extends YController
     */
     public function actionLoginqq()
     {
+        /*
+        $redis = Yii::$app->cache;
+        //echo $redis->set('key','v111');
+        //echo $redis->get('key1');
+        $session = Yii::$app->session;
+        //var_dump($session);
+        echo $session->set('uid','1234567890');
+        //echo $session->get('uid');
+        exit();
+        */
+        
         $code = Yii::$app->request->get('code', 0);
         
         if (!$code) {
@@ -70,11 +83,34 @@ class LoginController extends YController
         }
         $login_mod = new Login();
         $login_mod->loginSession($uid, $user_info['nickname'], $user_info['figureurl']);
-        $session = Yii::$app->session;
-        var_dump($session);
-        $user_id = $session->get('uid');
+        //$session = Yii::$app->session;
+        //var_dump($session);
+        //$user_id = $session->get('uid');
+        //echo $uid;
+        $this->saveLoginState($uid, $user_info['nickname'], $user_info['figureurl']);
         $this->redirect('http://www.yiluhao.com/login');
         //return $this->render('success');
+    }
+    /**
+    */
+    private function saveLoginState($uid, $nickname, $figureurl){
+        $cookies = Yii::$app->response->cookies;
+        $time = time()+3600*24*30;
+        $cookies->add(new \yii\web\Cookie([
+            'name' => 'uid',
+            'value' => $uid,
+            'expire'=>$time
+        ]));
+        $cookies->add(new \yii\web\Cookie([
+            'name' => 'nickname',
+            'value' => $nickname,
+            'expire'=>$time
+        ]));
+        $cookies->add(new \yii\web\Cookie([
+            'name' => 'figureurl',
+            'value' => $figureurl,
+            'expire'=>$time
+        ]));
     }
     /**
     * 登录成功

@@ -29,58 +29,63 @@ try {
 } catch (err) {}
 
 function createWindow() {
-	win = new BrowserWindow({
-	    
-	width: 1000,
-	height: 650,
-	'min-width': os.platform() === 'win32' ? 780 : 800,
-	'min-height': os.platform() === 'win32' ? 400 : 700,
-	'standard-window': false,
-	resizable: true,
-	frame: false,
-    //show: false
+	win = new BrowserWindow({ 
+		width: 1000,
+		height: 650,
+		'min-width': os.platform() === 'win32' ? 780 : 800,
+		'min-height': os.platform() === 'win32' ? 400 : 700,
+		'standard-window': false,
+		resizable: true,
+		frame: false,
+	    //show: false
     
-});
-//win.setFullScreen(true);
-//win.setAlwaysOnTop(true);
-win.webContents.openDevTools();
-//win.loadURL(`file://${__dirname}/app/login.html`);
-win.loadURL(`http://www.yiluhao.com`);
-win.on('closed', () => {
-	win = null;
-});
+	});
+	checkLogin();
+	//win.setFullScreen(true);
+	//win.setAlwaysOnTop(true);
+	win.webContents.openDevTools();
+	//win.loadURL(`file://${__dirname}/app/login.html`);
+	win.loadURL(`http://www.yiluhao.com/login`);
+	win.on('closed', () => {
+		win = null;
+	});
   
-win.webContents.on('did-finish-load', function() {
-	initMainPage();
-});
+	win.webContents.on('did-finish-load', function() {
+		initMainPage();
+	});
 
-win.webContents.on('new-window', function (event,url,fname,disposition,options) {
-    var exec = require('child_process').exec; 
-    //拦截url调用外部浏览器打开
-    console.log(url);
-    exec('start '+url, function(err,stdout,stderr){});
-    event.preventDefault();
-});
+	win.webContents.on('new-window', function (event,url,fname,disposition,options) {
+	    var exec = require('child_process').exec; 
+	    //拦截url调用外部浏览器打开
+	    console.log(url);
+	    exec('start '+url, function(err,stdout,stderr){});
+	    event.preventDefault();
+	});
 
-
-tray = new Tray(path.join(__dirname, '/app/img/mini_logo.ico'))//右下角的图标
-//console.log(path.join(__dirname, '/app/img/mini_logo.ico'));
-//console.log("sdfs");
-const contextMenu = Menu.buildFromTemplate([//右键菜单项 可以是多个 这里只有关闭一个项
-{label: '关闭', click: function(){
-	app.quit();
-}},
-    //{label: 'Item2', type: 'radio'},
-]);
-tray.setContextMenu(contextMenu);
-tray.on('double-click',function(){
-  	win.show();
-  })
+	tray = new Tray(path.join(__dirname, '/app/img/mini_logo.ico'))//右下角的图标
+	//console.log(path.join(__dirname, '/app/img/mini_logo.ico'));
+	//console.log("sdfs");
+	const contextMenu = Menu.buildFromTemplate([//右键菜单项 可以是多个 这里只有关闭一个项
+		{label: '关闭', click: function(){
+			app.quit();
+		}},
+		    //{label: 'Item2', type: 'radio'},
+	]);
+	tray.setContextMenu(contextMenu);
+	tray.on('double-click',function(){
+	  	win.show();
+	})
 }
-
-
-
-
+//验证登录
+function checkLogin(){
+	const filter = {
+	  	//domain: 'www.yiluhao.com',
+	 	//name:'PHPSESSID'
+	}
+	electron.session.defaultSession.cookies.get(filter, (error, cookies) => {
+	  console.log(error, cookies);
+	})
+}
 
 app.on('ready', createWindow);
 // Quit when all windows are closed.
@@ -111,15 +116,9 @@ app.on('will-quit', function () {
 
 
 function initMainPage(){
-//const {session} = require('electron')
-//electron.session.defaulSession.cookies
-const filter = {
-  //urls: ['http://www.yiluhao.com/*', '*://www.yiluhao.com']
-  name:'PHPSESSID'
-}
-electron.session.defaultSession.cookies.get(filter, (error, cookies) => {
-  console.log(error, cookies);
-})
+	//const {session} = require('electron')
+	//electron.session.defaulSession.cookies
+	
 
 }
 
