@@ -69,7 +69,7 @@ class LoginQq extends Ydao
 		$token_url = "https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id={$this->app_id}&redirect_uri=".urlencode($this->redirect)."&client_secret={$this->app_secret}&code={$code}"; 
 		$token = array(); 
 		//expires_in 为access_token 有效时间增量 
-		$content = Yii::$app->commonTools->curl_get_content($token_url);
+		$content = Yii::$app->commonTools->curlGetContent($token_url);
 
 		parse_str($content, $token); 
 
@@ -85,7 +85,7 @@ class LoginQq extends Ydao
 
 	function get_open_id($token) 
 	{ 
-		$str = Yii::$app->commonTools->curl_get_content('https://graph.qq.com/oauth2.0/me?access_token=' . $token);
+		$str = Yii::$app->commonTools->curlGetContent('https://graph.qq.com/oauth2.0/me?access_token=' . $token);
 		if (strpos($str, "callback") !== false) { 
 			$lpos = strpos($str, "("); 
 			$rpos = strrpos($str, ")"); 
@@ -109,7 +109,7 @@ class LoginQq extends Ydao
 		//组装URL
 		$user_info_url = 'https://graph.qq.com/user/get_user_info?'. 'access_token=' . $token . '&oauth_consumer_key=' . $this->app_id . '&openid=' . $open_id . '&format=json'; 
 
-		$info = json_decode(Yii::$app->commonTools->curl_get_content($user_info_url), TRUE); 
+		$info = json_decode(Yii::$app->commonTools->curlGetContent($user_info_url), TRUE); 
 		return $info; 
 	} 
 }

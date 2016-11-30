@@ -22,9 +22,10 @@ class Login extends Ydao
 	* 创建登录所需session
 	*/
 	public function loginSession($uid, $nickname, $figureurl){
-		Yii::$app->session->set('uid', $uid);
-		Yii::$app->session->set('nickname', $nickname);
-		Yii::$app->session->set('figureurl', $figureurl);
+		$session = Yii::$app->session;
+		$session->set('uid', $uid);
+		$session->set('nickname', $nickname);
+		$session->set('figureurl', $figureurl);
 	}
 
 }

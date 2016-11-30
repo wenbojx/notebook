@@ -38,28 +38,38 @@ class User extends Ydao
         unset($user_datas['passwd']);
         return $user_datas;
     }
-    public function addUser($datas){
-        if(!$datas['username'] ){
+    public function getByUid($uid){
+        if (!$uid) {
+            return false;
+        }
+        $datas = $this->find()
+            ->where(['id'=>$uid])->one();
+        if(!$datas){
+            return false;
+        }
+        return $datas;
+
+    }
+    public function addUser($username, $status, $passwd, $createtime){
+        if(!$username ){
             return false;
         }
 
-        $this->username = $datas['username'];
-        $this->status = isset($datas['status'])?$datas['status']:1;
-        if( $this->status == 1){
-        	$this->passwd = $this->encrypt($datas['passwd']);
-    	}
-    	else{
-    		$this->passwd = 0;
-    	}
-        $this->createtime = time();
+        $this->username = $username;
+        $this->status = isset($status)?$status:1;
+        $this->createtime = $createtime;
+        $this->passwd = $this->encrypt($passwd, $this->createtime);
+        
         if( $this->save() ){
         	return $this->attributes['id'];
         }
         return false;
     }
-    public function encrypt($passwd){
-
-        $passwd .= Yii::$app->params['encryptPrefix'];
+    /**
+    用户注册时间作为盐
+    */
+    public function encrypt($passwd, $salt){
+        $passwd .= Yii::$app->params['encryptPrefix'].$salt;
         return md5($passwd);
     }
 }
