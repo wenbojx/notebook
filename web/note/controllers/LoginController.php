@@ -115,9 +115,10 @@ class LoginController extends YController
             'value' => $figureurl,
             'expire'=>$time
         ]));
-        $prefix = Yii::$app->params['encryptPrefix'];
-        $datas  = array('uid' =>$uid , 'salt'=>$createtime, 'time'=>$time, 'prefix'=>$prefix);
-        $token = Yii::$app->commonTools->encryptToken($datas);
+
+        $datas  = array('uid' =>$uid , 'time'=>$time);
+        $token = Yii::$app->commonTools->encryptToken($datas, $createtime);
+        $token = base64_encode($token);
         $cookies->add(new \yii\web\Cookie([
             'name' => 'token',
             'value' => $token,

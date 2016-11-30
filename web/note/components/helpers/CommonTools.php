@@ -14,9 +14,9 @@ class CommonTools extends Component
 	/**
     加密验证字符串
     */
-    public function encryptToken($datas){
+    public function encryptToken($datas, $salt){
     	$string = serialize($datas);
-        $prefix = Yii::$app->params['encryptPrefix'];
+        $prefix = Yii::$app->params['encryptPrefix'] . $salt;
         $value = Yii::$app->getSecurity()->hashData($string, $prefix);
         return $value;
     }
