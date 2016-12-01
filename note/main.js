@@ -1,6 +1,7 @@
 ﻿const fs = require('fs');
 const os = require('os');
 var path = require('path');
+var crypto = require('crypto');
 
 global.APP_PATH = __dirname;
 var pinyin = require("pinyin");
@@ -20,6 +21,8 @@ const {Menu,Tray, MenuItem} = electron;
 const dialog = electron.dialog
 const globalShortcut = electron.globalShortcut
 const ipcMain = electron.ipcMain;
+const encryptPrefixLocal = '$@yi!lu*hao@';
+
 
 //let win;
 var win = null;
@@ -79,11 +82,28 @@ function createWindow() {
 //验证登录
 function checkLogin(){
 	const filter = {
-	  	//domain: 'www.yiluhao.com',
-	 	//name:'PHPSESSID'
+	  	domain: 'www.yiluhao.com',
+	 	name:'localtoken'
 	}
 	electron.session.defaultSession.cookies.get(filter, (error, cookies) => {
-	  console.log(error, cookies);
+	  if (!error) {
+	  	var value = new Buffer(cookies[0].value, 'base64').toString();
+	  	var dataString = value.substring(32);
+	  	
+	 	var content = dataString + encryptPrefixLocal;
+	  	var md5 = crypto.createHash('md5');
+	  	md5.update(content);
+		var code = md5.digest('hex');
+	  	var validate = value.substring(0,32);
+	  	if (code != validate) {
+	  		//验证失败，重新登录
+	  	}
+	  	//验证时间，看是否过期
+	  	console.log(dataString);
+	  	var userDatas = JSON.parse(dataString);
+	  	console.log(userDatas.time, userDatas.uid);
+	  }
+	  
 	})
 }
 

@@ -10,7 +10,12 @@ use yii\base\InvalidConfigException;
 */
 class CommonTools extends Component
 {
-	
+	public function encryptLocalToken($datas){
+        $string = json_encode($datas);
+        $string .= Yii::$app->params['encryptPrefixLocal'];
+        $value = md5($string);
+        return base64_encode($value . $string);
+    }
 	/**
     加密验证字符串
     */
@@ -18,12 +23,13 @@ class CommonTools extends Component
     	$string = serialize($datas);
         $prefix = Yii::$app->params['encryptPrefix'] . $salt;
         $value = Yii::$app->getSecurity()->hashData($string, $prefix);
-        return $value;
+        return base64_encode($value);
     }
     /**
 	解密验证字符串
     */
     public function dencryptToken($string){
+        $string = base64_decode($string);
     	$prefix = Yii::$app->params['encryptPrefix'];
         $value = Yii::$app->getSecurity()->validateData($string, $prefix);
         $datas = unserialize($value);

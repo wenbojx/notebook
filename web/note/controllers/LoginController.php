@@ -99,7 +99,7 @@ class LoginController extends YController
     */
     private function saveLoginState($uid, $nickname, $figureurl, $createtime){
         $cookies = Yii::$app->response->cookies;
-        $time = time()+3600*24*30;
+        $time = time()+3600*24*7;
         $cookies->add(new \yii\web\Cookie([
             'name' => 'uid',
             'value' => $uid,
@@ -117,13 +117,19 @@ class LoginController extends YController
         ]));
 
         $datas  = array('uid' =>$uid , 'time'=>$time);
+        $local_token = Yii::$app->commonTools->encryptLocalToken($datas);
+        $cookies->add(new \yii\web\Cookie([
+            'name' => 'localtoken',
+            'value' => $local_token,
+            'expire'=>$time
+        ]));
         $token = Yii::$app->commonTools->encryptToken($datas, $createtime);
-        $token = base64_encode($token);
         $cookies->add(new \yii\web\Cookie([
             'name' => 'token',
             'value' => $token,
             'expire'=>$time
         ]));
+        
     }
     /**
     * 登录成功
