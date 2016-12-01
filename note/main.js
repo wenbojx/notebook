@@ -88,8 +88,9 @@ function checkLogin(){
 	electron.session.defaultSession.cookies.get(filter, (error, cookies) => {
 	  if (!error) {
 	  	var value = new Buffer(cookies[0].value, 'base64').toString();
+	  	console.log(value);
 	  	var dataString = value.substring(32);
-	  	
+	  	console.log(dataString);
 	 	var content = dataString + encryptPrefixLocal;
 	  	var md5 = crypto.createHash('md5');
 	  	md5.update(content);

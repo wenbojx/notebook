@@ -12,8 +12,8 @@ class CommonTools extends Component
 {
 	public function encryptLocalToken($datas){
         $string = json_encode($datas);
-        $string .= Yii::$app->params['encryptPrefixLocal'];
-        $value = md5($string);
+        $string_pre = $string . Yii::$app->params['encryptPrefixLocal'];
+        $value = md5($string_pre);
         return base64_encode($value . $string);
     }
 	/**
