@@ -3,6 +3,7 @@ function getElement(element){
 	return document.getElementById(element);
 }
 
+
 //最小化
 function miniWindow(){
 	ipcRenderer.send('miniWindow', null);

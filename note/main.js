@@ -5,6 +5,7 @@ var crypto = require('crypto');
 
 global.APP_PATH = __dirname;
 var pinyin = require("pinyin");
+var userJs = require("./app/js/tools.js");
 var bookJs = require("./app/js/book/book.js");
 var userJs = require("./app/js/user/user.js");
 
@@ -25,14 +26,18 @@ const encryptPrefixLocal = '$@yi!lu*hao@';
 
 
 //let win;
-var win = null;
+var mainWindow = null;
 var size = {}
+var uid = null;
 try {
   size = JSON.parse(fs.readFileSync(path.join(app.getPath('userData'), 'size')));
 } catch (err) {}
 
 function createWindow() {
-	win = new BrowserWindow({ 
+	var shouldQuit = makeSingleInstance()
+  	if (shouldQuit) return app.quit()
+
+	mainWindow = new BrowserWindow({ 
 		width: 1000,
 		height: 650,
 		'min-width': os.platform() === 'win32' ? 780 : 800,
@@ -44,20 +49,29 @@ function createWindow() {
     
 	});
 	checkLogin();
-	//win.setFullScreen(true);
-	//win.setAlwaysOnTop(true);
-	win.webContents.openDevTools();
+	//mainWindow.setFullScreen(true);
+	//mainWindow.setAlwaysOnTop(true);
+	mainWindow.webContents.openDevTools();
 	//win.loadURL(`file://${__dirname}/app/login.html`);
-	win.loadURL(`http://www.yiluhao.com/login`);
-	win.on('closed', () => {
-		win = null;
+	//win.loadURL('http://www.yiluhao.com/login');
+	mainWindow.loadURL(`file://${__dirname}/app/default.html`);
+	mainWindow.on('closed', () => {
+		mainWindow = null;
 	});
   
-	win.webContents.on('did-finish-load', function() {
+	mainWindow.webContents.on('did-finish-load', function() {
 		initMainPage();
+		var filter = {
+		  	domain: 'www.yiluhao.com',
+		 	name:'localtoken'
+		}
+		electron.session.defaultSession.cookies.get(filter, (error, cookies) => {
+			console.log(cookies);
+		})
+
 	});
 
-	win.webContents.on('new-window', function (event,url,fname,disposition,options) {
+	mainWindow.webContents.on('new-window', function (event,url,fname,disposition,options) {
 	    var exec = require('child_process').exec; 
 	    //拦截url调用外部浏览器打开
 	    console.log(url);
@@ -76,36 +90,55 @@ function createWindow() {
 	]);
 	tray.setContextMenu(contextMenu);
 	tray.on('double-click',function(){
-	  	win.show();
+	  	mainWindow.show();
 	})
 }
 //验证登录
 function checkLogin(){
-	const filter = {
+	var filter = {
 	  	domain: 'www.yiluhao.com',
 	 	name:'localtoken'
 	}
 	electron.session.defaultSession.cookies.get(filter, (error, cookies) => {
 	  if (!error) {
+	  	 if(typeof(cookies[0]) == "undefined"){
+	  	 	return;
+	  	 }
 	  	var value = new Buffer(cookies[0].value, 'base64').toString();
-	  	console.log(value);
+	  	if (!value) {
+	  		console.log("error");
+	  		return;
+	  	}
 	  	var dataString = value.substring(32);
-	  	console.log(dataString);
+	  	//console.log(dataString);
 	 	var content = dataString + encryptPrefixLocal;
 	  	var md5 = crypto.createHash('md5');
 	  	md5.update(content);
 		var code = md5.digest('hex');
 	  	var validate = value.substring(0,32);
-	  	if (code != validate) {
-	  		//验证失败，重新登录
-	  	}
-	  	//验证时间，看是否过期
-	  	console.log(dataString);
+	  	var time = Date.parse(new Date())/1000;
 	  	var userDatas = JSON.parse(dataString);
-	  	console.log(userDatas.time, userDatas.uid);
+	  	//验证时间，看是否过期
+	  	if (code != validate || userDatas.time<time) {
+	  		//验证失败，重新登录
+	  		console.log("error");
+	  		return;
+	  	}
+	  	uid = userDatas.uid;
 	  }
 	  
 	})
+}
+
+function makeSingleInstance () {
+  if (process.mas) return false
+
+  return app.makeSingleInstance(function () {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore()
+      mainWindow.focus()
+    }
+  })
 }
 
 app.on('ready', createWindow);
@@ -149,15 +182,15 @@ ipcMain.on('closeWindow', function(event, datas) {
 });
 //最小化窗口
 ipcMain.on('miniWindow', function(event, datas) {
-	win.setSkipTaskbar(true);
-	win.minimize();
+	mainWindow.setSkipTaskbar(true);
+	mainWindow.minimize();
 });
 //常规大小窗口
 ipcMain.on('restoreWindow', function(event, datas) {
-	if(win.isMaximized()){
-        win.restore();  
+	if(mainWindow.isMaximized()){
+        mainWindow.restore();  
     }else{
-        win.maximize(); 
+        mainWindow.maximize(); 
     }
 });
 
@@ -167,7 +200,7 @@ ipcMain.on('getBookList', function(event, datas) {
 	bookJs.book.getBookList(getBookListCallBack);
 	function getBookListCallBack(datas){
 		//console.log(datas);
-		win.webContents.send('getBookList', datas);
+		mainWindow.webContents.send('getBookList', datas);
 	}
 });
 //获取当前书籍信息
@@ -181,7 +214,7 @@ function getCurrentBook(){
 		if(!datas.bookId){
 			return
 		}
-		win.webContents.send('currentBookInfo', datas);
+		mainWindow.webContents.send('currentBookInfo', datas);
 		//获取书籍详细信息
 		getBookInfo(datas.bookId);
 		//获取卷列表信息
@@ -216,7 +249,7 @@ function getBookByBid(bookId){
 		//获取章节列表信息
 		getChapterList(bookId, volumeId, getChapterListCallBack);
 		console.log("getBookByBidSuccess");
-		win.webContents.send('getBookByBidSuccess', null);
+		mainWindow.webContents.send('getBookByBidSuccess', null);
 	}
 	function getChapterListCallBack(datas){
 		if(datas.length <1 ){
@@ -235,7 +268,7 @@ function getBookInfo(bookId){
 		function getBookBaseInfoCallBack(datas){
 			console.log("getBookInfo");
 			//console.log(datas);
-			win.webContents.send('renderBookInfo', datas);
+			mainWindow.webContents.send('renderBookInfo', datas);
 		}
 }
 //获取指定书卷信息
@@ -251,7 +284,7 @@ function getVolumeList(bookId, callBack){
 		function getVolumeListCallBack(datas){
 			console.log("getBookVolumes");
 			//console.log(datas);
-			win.webContents.send('renderVolumeList', datas);
+			mainWindow.webContents.send('renderVolumeList', datas);
 			if(callBack){
 				callBack(datas);
 			}
@@ -267,7 +300,7 @@ function getChapterList(bookId, volumeId, callBack){
 		function getChapterListCallBack(datas){
 			//console.log(datas);
 			console.log("getBookChapters");
-			win.webContents.send('renderChapterList', datas);
+			mainWindow.webContents.send('renderChapterList', datas);
 			if(callBack){
 				callBack(datas);
 			}
@@ -282,7 +315,7 @@ function getChapterContent(bookId, chapterId){
 		function getChapterContentCallBack(datas){
 			//console.log(datas);
 			console.log("getChaptersContent");
-			win.webContents.send('renderChapterContent', datas);
+			mainWindow.webContents.send('renderChapterContent', datas);
 		}
 }
 
@@ -296,7 +329,7 @@ ipcMain.on('creatBook', function(event, datas) {
 			return ;
 		}
 		//getBookByBid(datas.bookId);
-		win.webContents.send('creatBookSuccess', datas);
+		mainWindow.webContents.send('creatBookSuccess', datas);
 	}
 });
 
@@ -305,7 +338,7 @@ ipcMain.on('editBook', function(event, datas) {
 	bookJs.book.editBook(event, datas, callBack);
 	function callBack(datas){
 		console.log("editBookSuccess");
-		win.webContents.send('editBookSuccess', datas);
+		mainWindow.webContents.send('editBookSuccess', datas);
 	}
 });
 
@@ -326,7 +359,7 @@ ipcMain.on('creatVolume', function(event, datas){
 		console.log("create Volume");
 		if(datas){
 			//console.log(datas);
-			win.webContents.send('creatVolumeSuccess', datas);
+			mainWindow.webContents.send('creatVolumeSuccess', datas);
 		}
 	}
 })
@@ -336,7 +369,7 @@ ipcMain.on('editVolume', function(event, datas) {
 	function callBack(datas){
 		console.log("editVolumeSuccess");
 		//console.log(datas);
-		win.webContents.send('editVolumeSuccess', datas);
+		mainWindow.webContents.send('editVolumeSuccess', datas);
 	}
 });
 
@@ -353,7 +386,7 @@ ipcMain.on('creatChapter', function(event, datas){
 	bookJs.book.creatChapter(event, chapter, creatChapterCallBack);
 	function creatChapterCallBack(datas){
 		console.log("create Chapter");
-		win.webContents.send('creatChapterSuccess', datas);
+		mainWindow.webContents.send('creatChapterSuccess', datas);
 	}
 })
 //编辑章节
@@ -363,7 +396,7 @@ ipcMain.on('editChapter', function(event, datas) {
 	function callBack(datas){
 		console.log("editChapterSuccess");
 		//console.log(datas);
-		win.webContents.send('editChapterSuccess', datas);
+		mainWindow.webContents.send('editChapterSuccess', datas);
 	}
 });
 
@@ -394,10 +427,10 @@ ipcMain.on('fullScreen', function(event, datas){
 		return;
 	}
 	fullScreenModel = true;
-	win.setFullScreen(true);
-	win.loadURL(`file://${__dirname}/app/fullScreen.html`);
+	mainWindow.setFullScreen(true);
+	mainWindow.loadURL(`file://${__dirname}/app/fullScreen.html`);
 	
-	win.webContents.on('did-finish-load', function() {
+	mainWindow.webContents.on('did-finish-load', function() {
     getChapterContent(datas.bookId, datas.chapterId);
   });
   
@@ -410,19 +443,19 @@ ipcMain.on('exitFullScreen', function(event, datas){
 	}
 	console.log("exitFullScreen!");
 	fullScreenModel = false;
-	win.setFullScreen(false);
-	win.loadURL(`file://${__dirname}/app/index.html`);
+	mainWindow.setFullScreen(false);
+	mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 })
 
 ipcMain.on('goToQuanzi', function(event, datas){
 
-	win.setFullScreen(false);
-	win.loadURL(`file://${__dirname}/app/quanzi.html`);
+	mainWindow.setFullScreen(false);
+	mainWindow.loadURL(`file://${__dirname}/app/quanzi.html`);
 })
 ipcMain.on('goToXiezuo', function(event, datas){
 
-	win.setFullScreen(false);
-	win.loadURL(`file://${__dirname}/app/index.html`);
+	mainWindow.setFullScreen(false);
+	mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 })
 
 
