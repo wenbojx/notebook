@@ -40,7 +40,7 @@ function initialize () {
 
     mainWindow = new BrowserWindow(windowOptions)
     //mainWindow.loadURL(path.join('file://', __dirname, '/login.html'))
-    mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
+    mainWindow.loadURL(path.join('file://', __dirname, '/welcome.html'))
     //mainWindow.loadURL('http://www.yiluhao.com/login')
 
     // Launch fullscreen with DevTools open, usage: npm run debug
