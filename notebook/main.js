@@ -2,6 +2,9 @@
 const glob = require('glob')
 const electron = require('electron')
 const autoUpdater = require('./auto-updater')
+const ipcMain = require('electron').ipcMain;
+global.APP_PATH = __dirname;
+global.UID = null;
 
 const BrowserWindow = electron.BrowserWindow
 const app = electron.app
@@ -10,7 +13,11 @@ const debug = /--debug/.test(process.argv[2])
 
 if (process.mas) app.setName('记事本')
 
+global.COMMON = require(path.join(global.APP_PATH, './main-process/common.js'));
+global.ENCRYPTPREFIXLOCAL = '$@yi!lu*hao@';
+
 var mainWindow = null
+
 
 function initialize () {
   var shouldQuit = makeSingleInstance()
@@ -32,7 +39,9 @@ function initialize () {
     }
 
     mainWindow = new BrowserWindow(windowOptions)
+    //mainWindow.loadURL(path.join('file://', __dirname, '/login.html'))
     mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
+    //mainWindow.loadURL('http://www.yiluhao.com/login')
 
     // Launch fullscreen with DevTools open, usage: npm run debug
     mainWindow.webContents.openDevTools()
@@ -51,6 +60,8 @@ function initialize () {
   app.on('ready', function () {
     createWindow()
     autoUpdater.initialize()
+    global.COMMON.checkLogin(loginSucess, loginFail)
+
   })
 
   app.on('window-all-closed', function () {
@@ -66,6 +77,13 @@ function initialize () {
   })
 }
 
+function loginSucess(){
+  console.log('loginSucess')
+  console.log(global.UID);
+}
+function loginFail(){
+  console.log('loginFail')
+}
 // Make this app a single instance app.
 //
 // The main window will be restored and focused instead of a second window
@@ -108,3 +126,8 @@ switch (process.argv[1]) {
   default:
     initialize()
 }
+
+
+ipcMain.on('welcomeFinish', function(event, datas) {
+  mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
+});

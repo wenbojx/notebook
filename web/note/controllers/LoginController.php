@@ -92,7 +92,7 @@ class LoginController extends YController
         $login_mod = new Login();
         $login_mod->loginSession($uid, $user_info['nickname'], $user_info['figureurl']);
         $this->saveLoginState($uid, $user_info['nickname'], $user_info['figureurl'], $createtime);
-        $this->redirect('http://www.yiluhao.com/login');
+        $this->redirect('http://www.yiluhao.com/login/success');
         //return $this->render('success');
     }
     /**
