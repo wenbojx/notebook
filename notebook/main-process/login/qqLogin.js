@@ -23,6 +23,7 @@ ipcMain.on('qqLogin', function(event, datas) {
 
 			childWin = new BrowserWindow(winOptions)
 			childWin.loadURL('http://www.yiluhao.com/login')
+			childWin.webContents.openDevTools()
 			childWin.once('ready-to-show', () => {
 			  childWin.show()
 			})
@@ -34,7 +35,7 @@ function loginSucess(){
   console.log('loginSucess')
   console.log(global.UID);
   parentWin.loadURL(path.join('file://', global.APP_PATH, '/index.html'))
-  childWin.close();
+  //childWin.close();
 }
 function loginFail(){
   console.log('loginFail')

@@ -80,9 +80,11 @@ function initialize () {
 function loginSucess(){
   console.log('loginSucess')
   console.log(global.UID);
+  mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
 }
 function loginFail(){
   console.log('loginFail')
+  mainWindow.loadURL(path.join('file://', __dirname, '/login.html'))
 }
 // Make this app a single instance app.
 //
@@ -129,5 +131,5 @@ switch (process.argv[1]) {
 
 
 ipcMain.on('welcomeFinish', function(event, datas) {
-  mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
+  //mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
 });
