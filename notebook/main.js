@@ -79,7 +79,7 @@ function initialize () {
 
 function loginSucess(){
   console.log('loginSucess')
-  console.log(global.UID);
+  console.log("uid+"+global.UID);
   mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
 }
 function loginFail(){

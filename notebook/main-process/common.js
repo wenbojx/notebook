@@ -1,6 +1,23 @@
 const electron = require('electron')
 var crypto = require('crypto');
 var common = {};
+
+//数据库数据转换
+common.convertDb = function(datas){
+	console.log('common.convertDb');
+	if (typeof(datas[0]) == 'undefined' || typeof(datas[0].values) == 'undefined' ) {
+		return new Array();
+	}
+	var convertDatas = new Array();
+	for (var i = 0; i < datas[0].values.length; i++) {
+		convertDatas[i] = {};
+		for (var j = 0; j < datas[0].columns.length; j++) {
+			var pre = datas[0].columns[j];
+			convertDatas[i][pre] = datas[0].values[i][j];
+		}
+	}
+	return convertDatas;
+}
 /*
 common.getCookie = function(){
 	var filter = {
@@ -16,7 +33,6 @@ common.getUid = function (){
 	common.getCookie();
 }
 */
-
 //验证登录
 common.checkLogin = function (loginSucess, loginFail){
 	var filter = {

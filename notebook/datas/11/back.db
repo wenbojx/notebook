@@ -1,0 +1,41 @@
+
+-- Table: book
+CREATE TABLE book ( 
+    id           INTEGER          PRIMARY KEY AUTOINCREMENT,
+    bookid       INT( 10 )        DEFAULT ( 0 ),
+    title        VARCHAR( 50 ),
+    shorttitle   VARCHAR( 50 ),
+    intro        VARCHAR( 1000 ),
+    type         INT( 2 ),
+    tags         VARCHAR( 200 ),
+    countVolume  INT( 3 )         DEFAULT ( 0 ),
+    countChapter INT( 5 )         DEFAULT ( 0 ),
+    countWord    INT( 10 )        DEFAULT ( 0 ),
+    creatTime    INT( 10 ),
+    updateTime   INT( 10 ),
+    status       INT( 1 )         DEFAULT ( 1 ) 
+);
+
+INSERT INTO [book] ([id], [bookid], [title], [shorttitle], [intro], [type], [tags], [countVolume], [countChapter], [countWord], [creatTime], [updateTime], [status]) VALUES (3, 222, '²âÊÔ', '²âÊÔ¶Ì', '¼ò½é', 2, '¶¹¸¯', 22, 333, 44444, 2443344433, 3345443456, 1);
+INSERT INTO [book] ([id], [bookid], [title], [shorttitle], [intro], [type], [tags], [countVolume], [countChapter], [countWord], [creatTime], [updateTime], [status]) VALUES (4, 223, '²âÊÔ2', '²âÊÔ¶Ì¶Ì', '¼ò½é2', 2, '´ó´ó', 33, 55, 555, 2222222222, 222222222, 1);
+INSERT INTO [book] ([id], [bookid], [title], [shorttitle], [intro], [type], [tags], [countVolume], [countChapter], [countWord], [creatTime], [updateTime], [status]) VALUES (5, 224, '²âÊÔ3', '²âÊÔ¶Ì', '¼ô¼­', 3, '´ó´ó', 2233, 222, 44444, 2222222222, 4444444444, 2);
+
+-- Table: chapter
+CREATE TABLE chapter ( 
+    id         INTEGER          PRIMARY KEY AUTOINCREMENT,
+    bid        INT( 5 ),
+    bookid     INT( 10 ),
+    fid        INT( 7 )         DEFAULT ( 1 ),
+    title      VARCHAR( 50 ),
+    intro      VARCHAR( 1000 ),
+    createtime INT( 10 ),
+    updatetime INT( 10 ),
+    status     INT( 1 )         DEFAULT ( 1 ) 
+);
+
+
+-- Index: idx_chapter
+CREATE INDEX idx_chapter ON chapter ( 
+    bid 
+);
+

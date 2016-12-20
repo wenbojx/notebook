@@ -1,4 +1,6 @@
-const ipcRenderer = require('electron').ipcRenderer;
+var uid = '';
+var bid = '';
+
 function getElement(element){
 	return document.getElementById(element);
 }
@@ -9,31 +11,15 @@ function loadPage(url){
 		$("#content").html(result);
   	});
 }
-
-//最小化
-function miniWindow(){
-	ipcRenderer.send('miniWindow', null);
-}
-
-function closeWindow(){
-	ipcRenderer.send('closeWindow', null);
-}
-function restoreWindow(){
-	ipcRenderer.send('restoreWindow', null);
-}
-
-
 /************** 全屏模式 start ********************/
-function fullScreen(){
+function fullScreenAction(){
 	var datas = {};
 	datas.chapterId = getCurrentChapterId();
 	datas.bookId = getCurrentBookId();
-	ipcRenderer.send('fullScreen', datas);
+	fullScreenIpc();
 	//重置内容绑定
 	chapterContentVue = null;
 	chapterInfoVue = null;
 }
-function exitFullScreen(){
-	ipcRenderer.send('exitFullScreen', true);
-}
+
 

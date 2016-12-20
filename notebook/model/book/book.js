@@ -1,6 +1,7 @@
 var fs = require('fs');
 var sql = require('sql.js');
-
+var path = require('path');
+var common = require(path.join(global.APP_PATH, './main-process/common.js'));
 var book = {};
 
 /***************** 书相关 start ***************/
@@ -18,6 +19,53 @@ book.getBookDbPath = function (){
 	}
 	return dataPath + '/books.db';
 }
+var book_db = null;
+book.initBookDb = function (){
+	if (book_db) {
+		return book_db;
+	}
+	var bookListDBPath = book.getBookDbPath();
+	var filebuffer = fs.readFileSync(bookListDBPath);
+	// Load the db
+	book_db = new SQL.Database(filebuffer);
+	return book_db;
+}
+//获取书籍列表
+book.getBookList = function (){
+	console.log("getBookList");
+	var db = book.initBookDb();
+	var res = db.exec("SELECT * FROM book WHERE status = 1");
+
+	var datas = common.convertDb(res);
+	//console.log(res[0].values);
+	return datas;
+
+}
+//获取书基本信息
+book.getBookInfo = function (bid){
+	if (!bid) {return false;}
+	console.log("getBookInfo");
+	var db = book.initBookDb();
+	var res = db.exec("SELECT * FROM book WHERE id = "+bid+" limit 1");
+	var datas = common.convertDb(res);
+	return datas[0];
+}
+//获取章节
+book.getChapterList = function (bid){
+	if (!bid) {return false;}
+	console.log("getChapterList");
+	var db = book.initBookDb();
+	var res = db.exec("SELECT * FROM chapter WHERE bid = "+bid);
+	var datas = common.convertDb(res);
+	return datas;
+}
+
+
+
+
+
+//////////////////////////////
+
 
 //创建书籍
 book.creatBook = function(event, datas, callBack){
@@ -109,11 +157,7 @@ book.editBook = function(event, datas, callBack){
 
 //var db = null;
 //初始化书籍详细
-function initDB(bookId){
-	var dbPath = book.getBookDbPath(bookId);
-	var db = new loki(dbPath);
-	return db;
-}
+
 //初始化章节内容DB
 function initChapterDB(bookId, chapterId){
 	var dbPath = book.getChapterDbPath(bookId, chapterId);
@@ -363,33 +407,7 @@ book.saveChapterContent = function (event, datas, callBack){
     });
 }
 
-//获取书籍列表
-book.getBookList = function (){
-	console.log("getBookList");
-	var bookListDBPath = book.getBookDbPath();
-	console.log(bookListDBPath);
-	var filebuffer = fs.readFileSync(bookListDBPath);
-	// Load the db
-	var db = new SQL.Database(filebuffer);
-	var res = db.exec("SELECT * FROM book");
-	//console.log(res[0].values);
-	return res[0].values;
 
-}
-//获取书基本信息
-book.getBookBaseInfo = function (bookId, callBack){
-	var db = initDB(bookId);
-    db.loadDatabase({}, function () {
-      var coll = db.getCollection(bookInfoCoName);
-      if(!coll){
-      	callBack(false);
-      	return;
-      }
-	  var bookInfo = coll.get(1);
-      callBack(bookInfo);
-      db.close();
-    });
-}
 
 //获取卷列表信息
 book.getVolumeList = function (bookId, callBack){
@@ -409,6 +427,7 @@ book.getVolumeList = function (bookId, callBack){
     });
 }
 
+/*
 //获取章节列表信息
 book.getChapterList = function (bookId, volumeId, callBack){
 	var db = initDB(bookId);
@@ -426,6 +445,7 @@ book.getChapterList = function (bookId, volumeId, callBack){
       	db.close();
     });
 }
+*/
 //获取章节内容
 book.getChapterContent = function (bookId, chapterId, callBack){
 	var db = initChapterDB(bookId, chapterId);
