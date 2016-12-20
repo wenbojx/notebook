@@ -210,14 +210,7 @@ img{
     height: 100%;
     border-right: 1px solid gainsboro;
 }
-.volume_colume, .chapter_colume, .share_colume, .delete_colume{
-	display: none;
-}
 
-.book_colume .book_head{
-	height: 60px;
-	line-height: 60px;
-}
 .head_line li{
 	display: inline-block;
 	margin: 0 0 0 20px;
@@ -245,62 +238,8 @@ img{
 	margin: 17px 20px 0 0;
 	background:transparent url(../img/Btn_View_List.png) no-repeat scroll 0px 0px;
 }
-.book_list{
-	position: relative;
-	overflow: auto;
-}
-.book_list i{
-	display: block;
-    width: 25px;
-    height: 25px;
-    margin: 8px 8px 0 0;
-    float: left;
-    background: transparent url(../img/Icon_Category_Group.png) no-repeat scroll 0px 0px;
-}
-.book_list li{
-	height: 40px;
-    line-height: 40px;
-    padding-left: 20px;
-    border-bottom: 1px solid rgb(238, 238, 238);
-}
-.book_list li:hover{
-	background-color: #f8f8f8;
-}
 
 
-.volume_colume{
-	display: block;
-}
-.volume_colume .volume_head{
-	height: 60px;
-	line-height: 60px;
-}
-.volume_colume .book_info{
-	height: 45px;
-    line-height: 45px;
-    border-bottom: 1px solid lightgray;
-}
-.book_info .arrow_list{
-	display: block;
-	width: 10px;
-	height: 10px;
-	float: right;
-	margin: 15px 15px 0 0;
-	background:transparent url(../img/Btn_New_DropDown.png) no-repeat scroll 0px -10px;
-}
-.book_info i{
-	display: block;
-    width: 25px;
-    height: 25px;
-    margin: 10px 5px 0 10px;
-    float: left;
-	background:transparent url(../img/Icon_Category_Group.png) no-repeat scroll 0px 0px;
-}
-
-.volume_list{
-	position: relative;
-	overflow: auto;
-}
 .volume_list i{
 	display: block;
     width: 25px;
@@ -309,15 +248,7 @@ img{
     float: left;
     background: transparent url(../img/Icon_Category.png) no-repeat scroll 0px 0px;
 }
-.volume_list li{
-	height: 40px;
-    line-height: 40px;
-    padding-left: 20px;
-    border-bottom: 1px solid rgb(238, 238, 238);
-}
-.volume_list li:hover{
-	background-color: #f8f8f8;
-}
+
 
 .chapter_colume .chapter_head{
 	height: 60px;
@@ -327,22 +258,38 @@ img{
 	position: relative;
 	overflow: auto;
 }
-.chapter_list i{
+.chapter_list .list{
+	width: 100%;
+}
+.chapter_list li{
+	height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+.chapter_list li:hover{
+	background-color: #f8f8f8;
+}
+.chapter_list .volume li{
+	padding-left: 10px;
+}
+.chapter_list .volume li i{
+	display: block;
+    width: 25px;
+    height: 25px;
+    margin: 8px 8px 0 0;
+    float: left;
+    background: transparent url(../img/Icon_Category.png) no-repeat scroll 0px 0px;
+}
+.chapter_list .chapter li{
+	padding-left: 20px;
+}
+.chapter_list .chapter i{
 	display: block;
     width: 20px;
     height: 20px;
     margin: 8px 8px 0 0;
     float: left;
     background: transparent url(../img/chapter_tip.png) no-repeat scroll 0px 0px;
-}
-.chapter_list li{
-	height: 40px;
-    line-height: 40px;
-    padding-left: 20px;
-    border-bottom: 1px solid rgb(238, 238, 238);
-}
-.chapter_list li:hover{
-	background-color: #f8f8f8;
 }
 
 

@@ -1,7 +1,5 @@
 
 function initScrollbar(){
-	$('#book_list').perfectScrollbar();
-	$('#volume_list').perfectScrollbar();
 	$('#chapter_list').perfectScrollbar();
 	$('#editor').perfectScrollbar();
 }
