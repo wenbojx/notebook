@@ -1,7 +1,6 @@
 
-function initScrollbar(){
-	$('#chapter_list').perfectScrollbar();
-	$('#editor').perfectScrollbar();
+function initScrollbar(node){
+	$('#'+node).perfectScrollbar();
 }
 //设置高度
 function resetHeight(){
@@ -52,6 +51,7 @@ function initEditor(editor){
             initialFrameHeight:300
             //更多其他参数，请参考umeditor.config.js中的配置项
        });
+	initScrollbar('editor');
 }
 function setEditorContent(content){
 	UM.getEditor('editor').setContent(content);

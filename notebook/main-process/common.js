@@ -16,6 +16,7 @@ common.convertDb = function(datas){
 			convertDatas[i][pre] = datas[0].values[i][j];
 		}
 	}
+	//console.log(convertDatas);
 	return convertDatas;
 }
 /*

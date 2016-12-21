@@ -21,4 +21,8 @@ ipcMain.on('getChapterList', function(event, bid) {
 	//console.log(datas);
 	BrowserWindow.getFocusedWindow().webContents.send('getChapterList', datas);
 });
-
+ipcMain.on('getChapterContent', function(event, cid) {
+	var datas = book.getChapterContent(cid);
+	//console.log(datas+cid);
+	BrowserWindow.getFocusedWindow().webContents.send('getChapterContent', datas);
+});

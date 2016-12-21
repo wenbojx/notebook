@@ -239,24 +239,19 @@ img{
 	background:transparent url(../img/Btn_View_List.png) no-repeat scroll 0px 0px;
 }
 
-
-.volume_list i{
-	display: block;
-    width: 25px;
-    height: 25px;
-    margin: 8px 8px 0 0;
-    float: left;
-    background: transparent url(../img/Icon_Category.png) no-repeat scroll 0px 0px;
-}
-
-
 .chapter_colume .chapter_head{
 	height: 60px;
 	line-height: 60px;
 }
 .chapter_list{
 	position: relative;
-	overflow: auto;
+}
+.chapter_list .list{
+	position: relative;
+	overflow-y: auto;
+}
+.chapter_list .volume, .chapter_list .chapter{
+	margin: 0px
 }
 .chapter_list .list{
 	width: 219px;
@@ -272,6 +267,9 @@ img{
 .chapter_list .volume li{
 	padding-left: 10px;
 }
+.chapter_list .volume .chapter li{
+	padding-left: 20px;
+}
 .chapter_list .volume li i{
 	display: block;
     width: 25px;
@@ -281,9 +279,9 @@ img{
     background: transparent url(../img/Icon_Category.png) no-repeat scroll 0px 0px;
 }
 .chapter_list .chapter li{
-	padding-left: 20px;
+	padding-left: 10px;
 }
-.chapter_list .chapter i{
+.chapter_list .chapter li i{
 	display: block;
     width: 20px;
     height: 20px;
