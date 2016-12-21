@@ -9,42 +9,50 @@
 			<li class="synchro" id="synchro"><img src="assets/default/img/Anmy_Sync.gif"></li>
 		</ul>
 	</div>
-	<div class="left_column f_l" id="left_column">
-		<div class="chapter_colume" id="chapter_colume">
-			<div class="chapter_head" id="chapter_head">
-				<ul class="head_line">
-	    			<li>
-	    				<a href="#">
-	    				<span class="add-node"></span>
-	    				<span class="add-txt">新建卷/章</span>
-	    				</a>
-	    			</li>
-	    			<li class="f_r">
-		    			<a href="#"><span class="sort-node"></span></a>
-		    		</li>
-	    		</ul>
-			</div>
-			<div class="chapter_list">
-				<div class="list" id="chapter_list">
+	<div id="work_space">
+		<div class="left_column f_l" id="left_column">
+			<div class="chapter_colume" id="chapter_colume">
+				<div class="chapter_head" id="chapter_head">
+					<ul class="head_line">
+		    			<li>
+		    				<a href="#">
+		    				<span class="add-node"></span>
+		    				<span class="add-txt">新建</span>
+		    				</a>
+		    				<ul>
+		    					<li>新建卷</li>
+		    					<li>新建章</li>
+		    					<li>新建大纲</li>
+		    				</ul>
+		    			</li>
+		    			<li class="f_r">
+			    			<a href="#"><span class="sort-node"></span></a>
+			    		</li>
+		    		</ul>
+				</div>
+				<div class="chapter_list">
+					<div class="list" id="chapter_list">
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="right_column f_r" id="right_column">
-		<div class="edit_colume" id="edit_colume">
-			<div class="edit_head" id="edit_head">
-			    <li class="title f_l">
-			    		<input type="text" name="book_title" class="book_title" id="book_title" value="测试章节">
-			    </li>
-			    <li class="setting f_r">
-			    	<a class="full_screen" href="javascript:void(0)" onclick="fullScreen()"></a>
-			    </li>
+		<div class="right_column f_r" id="right_column">
+			<div class="edit_colume" id="edit_colume">
+				<div class="edit_head" id="edit_head">
+				    <li class="title f_l">
+				    		<input type="text" name="chapter_title" class="chapter_title" id="chapter_title" value="">
+				    		<input type="hidden" name="chapter_id" value="" id="chapter_id">
+				    </li>
+				    <li class="setting f_r">
+				    	<a class="full_screen" href="javascript:void(0)" onclick="fullScreen()"></a>
+				    </li>
+				</div>
+				<div class="editer_area" id="editer_area">
+					<script type="text/plain" id="editor" class="editor" style="width:400px;height:200px;"><div v-cloak>{{{content}}}</div></script>
+				</div>
 			</div>
-			<div class="editer_area" id="editer_area">
-				<script type="text/plain" id="editor" class="editor" style="width:400px;height:200px;"><div v-cloak>{{{content}}}</div></script>
-			</div>
+			<div class="edit_foot" id="edit_foot"></div>
 		</div>
-		<div class="edit_foot" id="edit_foot"></div>
 	</div>
 </div>
 
@@ -59,7 +67,7 @@ function bookInit() {
 		getChapterListIpc(bid);
 
 		
-		//timer();
+		timer();
 }
 bookInit();
 window.onresize = function(){

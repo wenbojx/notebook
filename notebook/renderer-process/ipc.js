@@ -29,6 +29,9 @@ function getChapterListIpc(bid){
 function getChapterContentIpc(cid){
 	ipcRenderer.send('getChapterContent', cid);
 }
+function saveChapterContentIPC(datas){
+	ipcRenderer.send('saveChapterContent', datas);
+}
 /*
 function loadBookPageIpc(datas){
 	ipcRenderer.send('getBookList', datas);

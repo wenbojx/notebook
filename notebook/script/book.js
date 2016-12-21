@@ -56,6 +56,10 @@ function initEditor(editor){
 function setEditorContent(content){
 	UM.getEditor('editor').setContent(content);
 }
+function setChapterId(id){
+	$("#chapter_id").val(id);
+}
+
 //计算字数
 function getWords(editor){
 	var content = UM.getEditor(editor).getContentTxt();
@@ -65,4 +69,33 @@ function getWords(editor){
 	content = content.replace("\r", "");
 	content = content.replace("\n", "");
 	return content.length;
+}
+
+
+
+/************* 定时器 ****************/
+function timer(){
+	self.setInterval("showWords()",500);
+	self.setInterval("autoSave()",5000);
+}
+function showWords(){
+  var num = getWords('editor');
+  $("#edit_foot").html("字数:"+num);
+}
+function autoSave(){
+	var datas = {};
+	autoSaveContent('editor', datas);
+}
+//3秒保存一次内容
+var lastContent = null;
+function autoSaveContent(editor, datas){
+	var content = UM.getEditor(editor).getContent();
+  	if (content != lastContent) {
+  	datas.content = content;
+  	datas.title = $("#chapter_title").val();;
+  	datas.cid = $("#chapter_id").val();
+  	datas.countWord = getWords(editor);
+  	saveChapterContent(datas);
+  	lastContent = content;
+  }
 }

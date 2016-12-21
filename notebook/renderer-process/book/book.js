@@ -6,7 +6,7 @@ function callBackGetBookInfo(datas){
 	var src = "datas/images/" + datas['pic'] ;
 	$("#book_book_pic").attr('src', src);
 }
-
+//////////////////////////////////////////
 ipcRenderer.on('getChapterList', function(event, datas) {
 	callBackGetChapterList(datas);
 });
@@ -50,6 +50,7 @@ function callBackGetChapterList(datas){
 	initScrollbar('chapter_list');
 	
 }
+
 function childClickHandler(event){
 	var id= event.data.id;  
 	getChapterContentIpc(id);
@@ -63,18 +64,6 @@ function nodeClickHandler(event){
 	}
 	initScrollbar('chapter_list');
 }
-
-ipcRenderer.on('getChapterContent', function(event, datas) {
-	callBackGetChapterContent(datas);
-});
-function callBackGetChapterContent(datas){
-	var content = '';
-	if (datas != null && typeof(datas['content']) != 'undefined') {
-		content = datas['content'];
-	}
-	setEditorContent(content);
-}
-
 function sortChaterDatas(datas, sort){
 	var sortData = new Array();
 	var sortPre = new Array();
@@ -121,4 +110,27 @@ function sortChaterDatas(datas, sort){
 
 	return sortData;
 }
+///////////////////////////////////////
+ipcRenderer.on('getChapterContent', function(event, datas) {
+	callBackGetChapterContent(datas);
+});
+function callBackGetChapterContent(datas){
+	var content = '';
+	if (datas != null && typeof(datas['content']) != 'undefined') {
+		content = datas['content'];
+	}
+	setEditorContent(content);
+	setChapterId(datas['cid']);
+}
+////////////////////////////////////////////////////
+function saveChapterContent(datas){
+	saveChapterContentIPC(datas);
+}
+ipcRenderer.on('saveChapterContent', function(event, datas) {
+	callBackSaveChapterContent(datas);
+});
+function callBackSaveChapterContent(datas){
+	
+}
+////////////////////////////////////////////////
 

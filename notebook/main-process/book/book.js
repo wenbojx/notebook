@@ -26,3 +26,8 @@ ipcMain.on('getChapterContent', function(event, cid) {
 	//console.log(datas+cid);
 	BrowserWindow.getFocusedWindow().webContents.send('getChapterContent', datas);
 });
+ipcMain.on('saveChapterContent', function(event, cid) {
+	var datas = book.saveChapterContent(cid);
+	//console.log(datas+cid);
+	BrowserWindow.getFocusedWindow().webContents.send('saveChapterContent', datas);
+});

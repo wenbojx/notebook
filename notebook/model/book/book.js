@@ -30,6 +30,12 @@ book.initBookDb = function (){
 	book_db = new SQL.Database(filebuffer);
 	return book_db;
 }
+book.saveDb = function (db){
+	var data = db.export();
+	var buffer = new Buffer(data);
+	var bookListDBPath = book.getBookDbPath();
+	fs.writeFileSync(bookListDBPath, buffer);
+}
 //获取书籍列表
 book.getBookList = function (){
 	console.log("getBookList");
@@ -69,7 +75,24 @@ book.getChapterContent = function (cid){
 	var datas = common.convertDb(res);
 	return datas[0];
 }
-
+book.saveChapterContent = function(datas){
+	console.log("saveChapterContent");
+	if (datas == null || datas.cid == null){
+		return false;
+	}
+	var db = book.initBookDb();
+	var chapter = book.getChapterContent(datas.cid);
+	var sql = "";
+	if (!chapter) {
+		sql = "INSERT INTO content VALUES(null, "+ datas.cid +", "+datas.content+")";
+		var res = db.run(sql);
+	}
+	console.log(sql);
+	sql = "UPDATE chapter SET title = '"+datas.title+"', countword = '"+datas.countWord+"' limit 1";
+	var res = db.run(sql);
+	console.log(res);
+	book.saveDb(db);
+}
 
 
 module.exports = book;
