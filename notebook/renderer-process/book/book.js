@@ -28,7 +28,7 @@ function callBackGetChapterList(datas){
 		string += '</div>';
 		$("#chapter_list").append(string);
 		if(node['type'] == 2){
-			$('#chapter_node_'+node['id']).bind("click", {id: node['id']}, childClickHandler);  
+			$('#chapter_node_'+node['id']).bind("click", {id: node['id'], title:node['title']}, childClickHandler);  
 		}
 		else{
 			$('#chapter_node_'+node['id']).bind("click", {id: node['id']}, nodeClickHandler);
@@ -43,7 +43,7 @@ function callBackGetChapterList(datas){
 				string += '<i></i><a href="javascript:void(0)">'+child[j]['title']+'</a></li>';
 
 				$('#chapter_child_'+node['id']).append(string);
-				$('#chapter_child_li_'+child[j]['id']).bind("click", {id: child[j]['id']}, childClickHandler);  
+				$('#chapter_child_li_'+child[j]['id']).bind("click", {id: child[j]['id'], title:child[j]['title']}, childClickHandler);  
 			}
 		}
 	}
@@ -52,8 +52,14 @@ function callBackGetChapterList(datas){
 }
 
 function childClickHandler(event){
-	var id= event.data.id;  
+	var id= event.data.id;
+	var title = event.data.title;
+	if(!id || !title){
+		return false;
+	}
 	getChapterContentIpc(id);
+	setChapterId(id);
+	setChapterTitle(title);
 }
 function nodeClickHandler(event){
 	var id= event.data.id;  
@@ -120,7 +126,6 @@ function callBackGetChapterContent(datas){
 		content = datas['content'];
 	}
 	setEditorContent(content);
-	setChapterId(datas['cid']);
 }
 ////////////////////////////////////////////////////
 function saveChapterContent(datas){
@@ -130,7 +135,7 @@ ipcRenderer.on('saveChapterContent', function(event, datas) {
 	callBackSaveChapterContent(datas);
 });
 function callBackSaveChapterContent(datas){
-	
+	console.log(datas);
 }
 ////////////////////////////////////////////////
 

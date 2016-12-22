@@ -2,6 +2,17 @@ const electron = require('electron')
 var crypto = require('crypto');
 var common = {};
 
+common.log = function(string){
+	console.log(string);
+}
+common.dbEncode = function(string){
+	string.replace("'", '&#39;');
+	string.replace('"', '&quot;');
+}
+common.dbDecode = function(string){
+	string.replace("&#39;", "'");
+	string.replace("&quot;", '"');
+}
 //数据库数据转换
 common.convertDb = function(datas){
 	console.log('common.convertDb');
