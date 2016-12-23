@@ -1,4 +1,44 @@
+function bindAction(){
+	bindCreatNode();
+	bindRightClick();
+}
+function bindCreatNode(){
+	$("#create_node").click(function(){
+		if($("#creat_node_box").is(":hidden")){
+		    $("#creat_node_box").show();
+		}else{
+		    $("#creat_node_box").hide(); 
+		}
+	})
+}
+//绑定页面中点击事件
+function bindRightClick(){
+	$("#create_volume").click(function(e){
 
+	})
+	$("#create_chapter").click(function(e){
+		
+	})
+	$("#create_dagang").click(function(e){
+		
+	})
+	$("#create_volume_id").click(function(e){
+		console.log(e);
+	})
+	$("#create_chapter_id").click(function(e){
+		
+	})
+	$("#create_dagang_id").click(function(e){
+		
+	})
+	$("#chapter_list").mousedown(function(e) {
+		if (3 == e.which) {
+	        rightClickAction(e);
+	    }
+	})
+}
+
+//////////////////////////////////////////////////
 function initScrollbar(node){
 	$('#'+node).perfectScrollbar();
 }
@@ -26,7 +66,7 @@ function resetWidth(reset){
 	var width = $("#editer_area").width();
 	$(".edui-container").width(width);
 	if (reset) {
-		width = width-20;
+		width = width-40;
 	}
 	$("#editor").width(width);
 	//console.log(width);
@@ -101,4 +141,70 @@ function saveContent(editor, datas){
 	  	saveChapterContent(datas);
 	  	lastContent = content;
 	}
+}
+
+/*********** *****************/
+
+function childClickHandler(id, title){
+	if(!id || !title){
+		return false;
+	}
+	getChapterContentIpc(id);
+	setChapterId(id);
+	setChapterTitle(title);
+	
+}
+function nodeClickHandler(id){
+	//console.log(id);
+	if($("#chapter_child_"+id).is(":hidden")){
+	    $("#chapter_child_"+id).show();
+	}else{
+	    $("#chapter_child_"+id).hide(); 
+	}
+	initScrollbar('chapter_list');
+}
+function clickHandler(e){
+	    //console.log(e.which);
+	    //左键为1
+	    var id = $(e.currentTarget).attr("d-id");
+	    var fid = $(e.currentTarget).attr("d-fid");
+		var type = $(e.currentTarget).attr("d-type");
+	    if (1 == e.which) {
+	    	console.log(e);
+	    	
+			var title = $(e.currentTarget).attr("d-title");
+			//console.log(fid+type+title);
+			if ((fid=="0" && type=="2") || (fid!="0" && type=="2")) {
+				childClickHandler(id, title);
+			}
+			else{
+				nodeClickHandler(id);
+			}
+			addSelectClass(e.currentTarget.id);
+			return;
+
+	    } else if (3 == e.which) {
+	        //右键为3
+	        //console.log(e);
+	        rightClickAction(e);
+	    }
+}
+function rightClickAction(e){
+	var offset = $("#chapter_list_contianer").offset();
+	        console.log(offset);
+	        var x = e.clientX - offset.left+5;
+	        var y = e.clientY - offset.top+5;
+	        //console.log(x+" "+y);
+	        $("#right_click_column").css('left', x+"px");
+	        $("#right_click_column").css('top',y+"px");
+	        $("#right_click_column").show();
+}
+var lastNode = ''; //上一个点击的元素
+function addSelectClass(node){
+	if (!node) {return false;} 
+	if (lastNode) {
+		$("#"+lastNode).removeClass("selected");
+	}
+	$("#"+node).addClass("selected");
+	lastNode = node;
 }

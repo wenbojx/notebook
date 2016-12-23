@@ -23,27 +23,31 @@ function callBackGetChapterList(datas){
 		string = '';
 		string += '<div class="'+ className + '">';
 		
-		string += '<li id="chapter_node_'+node['id']+'">';
+		string += '<li id="chapter_node_'+node['id']+'" d-id="'+node['id']+'" d-title="'+node['title']+'" d-fid="'+node['fid']+'" d-type="'+node['type']+'">';
 		string += '<i></i><a href="javascript:void(0)">'+node['title']+'</a></li>';
 		string += '</div>';
 		$("#chapter_list").append(string);
-		if(node['type'] == 2){
-			$('#chapter_node_'+node['id']).bind("click", {id: node['id'], title:node['title']}, childClickHandler);  
-		}
-		else{
-			$('#chapter_node_'+node['id']).bind("click", {id: node['id']}, nodeClickHandler);
-		}
+		//绑定事件
+		//$('#chapter_node_'+node['id']).bind("click", {}, nodeClickHandler);
+		$('#chapter_node_'+node['id']).mousedown(function(e) {
+			clickHandler(e);
+		})
+
 		string = "";
 		if(child.length >0 ) {
 			string = '<ul style="display:none" class="chapter" id="chapter_child_'+node['id']+'"></ul>';
 			$('#chapter_node_'+node['id']).after(string);
 			string = '';
 			for (var j in child) {
-				string = '<li id="chapter_child_li_'+child[j]['id']+'">';
-				string += '<i></i><a href="javascript:void(0)">'+child[j]['title']+'</a></li>';
+				var childNode = child[j];
+				string = '<li id="chapter_child_li_'+childNode['id']+'" d-id="'+childNode['id']+'" d-title="'+childNode['title']+'" d-fid="'+childNode['fid']+'"" d-type="'+childNode['type']+'">';
+				string += '<i></i><a href="javascript:void(0)">'+childNode['title']+'</a></li>';
 
 				$('#chapter_child_'+node['id']).append(string);
-				$('#chapter_child_li_'+child[j]['id']).bind("click", {id: child[j]['id'], title:child[j]['title']}, childClickHandler);  
+				//$('#chapter_child_li_'+childNode['id']).bind("click", {}, childClickHandler);  
+				$('#chapter_child_li_'+childNode['id']).mousedown(function(e) {
+					clickHandler(e);
+				})
 			}
 		}
 	}
@@ -51,25 +55,7 @@ function callBackGetChapterList(datas){
 	
 }
 
-function childClickHandler(event){
-	var id= event.data.id;
-	var title = event.data.title;
-	if(!id || !title){
-		return false;
-	}
-	getChapterContentIpc(id);
-	setChapterId(id);
-	setChapterTitle(title);
-}
-function nodeClickHandler(event){
-	var id= event.data.id;  
-	if($("#chapter_child_"+id).is(":hidden")){
-	    $("#chapter_child_"+id).show();
-	}else{
-	    $("#chapter_child_"+id).hide(); 
-	}
-	initScrollbar('chapter_list');
-}
+
 function sortChaterDatas(datas, sort){
 	var sortData = new Array();
 	var sortPre = new Array();
@@ -134,6 +120,7 @@ function saveChapterContent(datas){
 ipcRenderer.on('saveChapterContent', function(event, datas) {
 	callBackSaveChapterContent(datas);
 });
+//保存成功回调
 function callBackSaveChapterContent(datas){
 	console.log(datas);
 }
