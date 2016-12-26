@@ -306,6 +306,18 @@ img{
     float: left;
     background: transparent url(../img/Icon_Category.png) no-repeat scroll 0px 0px;
 }
+.chapter_list .volume input{
+	width: 135px;
+	height: 30px;
+	border: 1px solid #f8f8f8;
+	padding: 0 2px;
+}
+.chapter_list .volume img{
+	width: 20px;
+	height: 20px;
+	margin: 0px 0 0 10px;
+	cursor: pointer;
+}
 .chapter_list .selected {
 	background-color: #f8f8f8;
 }

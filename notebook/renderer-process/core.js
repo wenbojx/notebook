@@ -1,5 +1,6 @@
 var uid = '';
 var bid = '';
+var bookid = 0;
 
 function getElement(element){
 	return document.getElementById(element);

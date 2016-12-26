@@ -16,12 +16,13 @@ function callBackGetChapterList(datas){
 	}
 	var chapterDatas = sortChaterDatas(datas, "asc");
 	var string = "";
+	$("#chapter_list").html("");
 	for (var i in chapterDatas) {
 		var node = chapterDatas[i]['node'];
 		var child = chapterDatas[i]['child'];
 		var className = node['type'] == 1 ? 'volume':'chapter';
 		string = '';
-		string += '<div class="'+ className + '">';
+		string += '<div class="'+ className + '" d-id="'+node['id']+'">';
 		
 		string += '<li id="chapter_node_'+node['id']+'" d-id="'+node['id']+'" d-title="'+node['title']+'" d-fid="'+node['fid']+'" d-type="'+node['type']+'">';
 		string += '<i></i><a href="javascript:void(0)">'+node['title']+'</a></li>';
@@ -40,7 +41,9 @@ function callBackGetChapterList(datas){
 			string = '';
 			for (var j in child) {
 				var childNode = child[j];
-				string = '<li id="chapter_child_li_'+childNode['id']+'" d-id="'+childNode['id']+'" d-title="'+childNode['title']+'" d-fid="'+childNode['fid']+'"" d-type="'+childNode['type']+'">';
+				string = '<li id="chapter_child_li_'+childNode['id']+'" ';
+				string += 'd-id="'+childNode['id']+'" d-title="'+childNode['title']+'" ';
+				string += 'd-fid="'+childNode['fid']+'" d-type="'+childNode['type']+'">';
 				string += '<i></i><a href="javascript:void(0)">'+childNode['title']+'</a></li>';
 
 				$('#chapter_child_'+node['id']).append(string);
@@ -125,4 +128,15 @@ function callBackSaveChapterContent(datas){
 	console.log(datas);
 }
 ////////////////////////////////////////////////
-
+function creatVolume(datas){
+	creatVolumeIPC(datas);
+}
+function creatChapter(datas){
+	creatChapterIPC(datas);
+}
+ipcRenderer.on('creatVolume', function(event, datas) {
+	callBackCreatVolume(datas);
+});
+function callBackCreatVolume(){
+	getChapterListIpc(bid);
+}

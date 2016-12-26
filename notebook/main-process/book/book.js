@@ -29,6 +29,15 @@ ipcMain.on('getChapterContent', function(event, cid) {
 ipcMain.on('saveChapterContent', function(event, cid) {
 	console.log("saveChapterContent");
 	var datas = book.saveChapterContent(cid);
-	console.log(datas);
 	BrowserWindow.getFocusedWindow().webContents.send('saveChapterContent', datas);
+});
+ipcMain.on('creatVolume', function(event, datas) {
+	console.log("creatVolume");
+	var datas = book.creatVolume(datas);
+	BrowserWindow.getFocusedWindow().webContents.send('creatVolume', datas);
+});
+ipcMain.on('creatChapter', function(event, cid) {
+	console.log("creatChapter");
+	var datas = book.creatChapter(datas);
+	BrowserWindow.getFocusedWindow().webContents.send('creatChapter', datas);
 });

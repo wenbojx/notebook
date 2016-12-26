@@ -38,7 +38,7 @@ book.saveDb = function (){
 }
 //获取书籍列表
 book.getBookList = function (){
-	console.log("getBookList");
+	common.log("getBookList");
 	book.initBookDb();
 	var res = db.exec("SELECT * FROM book WHERE status = 1");
 
@@ -50,7 +50,7 @@ book.getBookList = function (){
 //获取书基本信息
 book.getBookInfo = function (bid){
 	if (!bid) {return false;}
-	console.log("getBookInfo");
+	common.log("getBookInfo");
 	book.initBookDb();
 	var res = db.exec("SELECT * FROM book WHERE id = "+bid+" limit 1");
 	var datas = common.convertDb(res);
@@ -59,7 +59,7 @@ book.getBookInfo = function (bid){
 //获取章节
 book.getChapterList = function (bid){
 	if (!bid) {return false;}
-	console.log("getChapterList");
+	common.log("getChapterList");
 	book.initBookDb();
 	var sql = "SELECT * FROM chapter WHERE bid = "+bid+" order by id asc";
 	//console.log(sql);
@@ -78,31 +78,17 @@ book.getChapterContent = function (cid){
 	var datas = common.convertDb(res);
 	return datas[0];
 }
-book.addChapter = function(datas){
-	common.log('addChapter');
-	data.bid = datas.bid;
-	data.bookid = datas.bookid;
-	data.type = datas.type;
-	data.fid = datas.fid;
-	data.title = datas.title;
-	data.intro = datas.intro;
-	data.countword = datas.countword;
-	data.createtime = Date.now();
-	data.updatetime = data.createtime;
-	data.status = 1;
-	var sql = "INSERT INTO chapter";
-	sql += " VALUES (null, "+data.bid+", "+data.bookid+", "+data.type+", '"+data.fid+"', '"+data.title+"', "+data.intro+", "+data.countword+", "+data.createtime+", "+data.updatetime+", "+data.status+")";
-	common.log(sql);
-	res = db.run(sql);
-	if (!res) {
-		return false;
-	}
-	book.saveDb();
-	return true;
+//获取insert后的id
+book.getChapterLastId = function(){
+	book.initBookDb();
+	var res = db.exec("SELECT * FROM chapter order by id desc limit 1");
+	var datas = common.convertDb(res);
+	//common.log(datas[0]);
+	return datas[0]['id'];
 }
 book.updatChapter = function(cid, datas, saveflag){
 	common.log('updatChapter');
-	if(!cid || datas=="" || !datas.title){
+	if(!cid || datas==""){
 		return false;
 	}
 	var sql = "UPDATE chapter SET ";
@@ -160,6 +146,58 @@ book.saveChapterContent = function(datas){
 	return true;
 }
 
+book.creatVolume = function (datas){
+	common.log(datas);
+	datas.fid = 0;
+	datas.countword = 0;
+	datas.intro = '';
+	var id = book.creatChapterAction(datas);
+	//common.log(id);
+	var next = {};
+	next.next = id;
+	book.updatChapter(datas.pre, next, false);
+	var pre = {};
+	pre.pre = id;
+	book.updatChapter(datas.next, pre, false);
+	book.saveDb();
+	return id;
+}
+book.creatChapter = function (datas){
+	
+}
+book.creatChapterAction = function (datas){
+	if (!datas.bid || !datas.title) {
+		return false;
+	}
+	var data = {};
+	common.log(datas);
+	data.bid = datas.bid;
+	data.bookid = datas.bookid;
+	data.type = datas.type;
+	data.fid = datas.fid;
+	data.title = datas.title;
+	data.intro = datas.intro;
+	data.countword = datas.countword;
+	data.createtime = Date.now();
+	data.updatetime = data.createtime;
+	data.status = 1;
+	data.pre = datas.pre;
+	data.next = datas.next;
+	
+	var sql = "INSERT INTO chapter ";
+	sql += "('id', 'bid', 'bookid', 'type', 'fid', 'title', 'intro', 'countword', 'createtime', 'updatetime', 'status', 'pre', 'next')";
+	sql += " VALUES (null, "+data.bid+", "+data.bookid+", "+data.type+", '"+data.fid+"', ";
+	sql += "'"+data.title+"', '"+data.intro+"', "+data.countword+", "+data.createtime+", ";
+	sql += data.updatetime+", "+data.status+","+data.pre+", "+data.next+")";
+	//common.log(sql);
+	res = db.run(sql);
+	if (!res) {
+		return false;
+	}
+	var lastId = book.getChapterLastId();
+	
+	return lastId;
+}
 
 
 module.exports = book;

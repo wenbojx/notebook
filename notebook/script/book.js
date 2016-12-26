@@ -1,6 +1,7 @@
 function bindAction(){
 	bindCreatNode();
 	bindRightClick();
+	hideRightClickClumn();
 }
 function bindCreatNode(){
 	$("#create_node").click(function(){
@@ -22,11 +23,13 @@ function bindRightClick(){
 	$("#create_dagang").click(function(e){
 		
 	})
+
 	$("#create_volume_id").click(function(e){
-		console.log(e);
+		createVolume(e);
 	})
 	$("#create_chapter_id").click(function(e){
-		
+		//console.log(e);
+		createChapter(e);
 	})
 	$("#create_dagang_id").click(function(e){
 		
@@ -37,7 +40,63 @@ function bindRightClick(){
 	    }
 	})
 }
+function hideRightClickClumn(){
+	$("body").click(function(event){
+		$("#right_click_column").hide(); 
+	}); 
+}
+/************* 创建动作 *******************/
+var createVolumeFlag = false;
+function createVolume(e){
+	console.log(lastNode);
+	if (createVolumeFlag) {
+		return false;
+	}
+	var string = '<div class="volume" id="creatVolumeDiv">';
+	string += '<li>';
+	string += '<i></i>';
+	string += '<input type="text" name="volume_name" id="volume_name_input" value="卷名"/>';
+	string += '<img src="assets/default/img/save_datas.png" onclick="createVolumeAction()"/></li></div>';
+	$("#"+lastNode).parent().after(string);
+	console.log(lastNode);
+	createVolumeFlag = true;
+}
+function createVolumeAction(){
+	var datas = {};
+	var pre = $("#creatVolumeDiv").prev().attr("d-id");
+	var next = $("#creatVolumeDiv").next().attr("d-id");
+	//console.log(pre+"-"+next);
+	datas.pre = pre;
+	datas.next = next;
+	datas.bid = bid;
+	datas.bookid = bookid;
+	datas.type = 1;
+	datas.title = $("#volume_name_input").val();
+	creatVolume(datas);
+}
 
+function createChapter(e){
+	console.log(lastNode);
+	var id = $("#"+lastNode).attr('d-id');
+	string = '<li>';
+	string += '<i></i>';
+	string += '<input type="text" name="chapter_name" id="chapter_name_input" value="章名"/>';
+	string +='<img src="assets/default/img/save_datas.png" onclick="createChapterAction()"/></li>';
+	$('#chapter_child_'+id).append(string);
+}
+function createChapterAction(){
+	var datas = {};
+	var pre = $("#creatVolumeDiv").prev().attr("d-id");
+	var next = $("#creatVolumeDiv").next().attr("d-id");
+	//console.log(pre+"-"+next);
+	datas.pre = pre;
+	datas.next = next;
+	datas.bid = bid;
+	datas.bookid = bookid;
+	datas.type = 1;
+	datas.title = $("#chapter_name_input").val();
+	creatVolume(datas);
+}
 //////////////////////////////////////////////////
 function initScrollbar(node){
 	$('#'+node).perfectScrollbar();
@@ -170,7 +229,7 @@ function clickHandler(e){
 	    var fid = $(e.currentTarget).attr("d-fid");
 		var type = $(e.currentTarget).attr("d-type");
 	    if (1 == e.which) {
-	    	console.log(e);
+	    	//console.log(e);
 	    	
 			var title = $(e.currentTarget).attr("d-title");
 			//console.log(fid+type+title);
@@ -180,26 +239,30 @@ function clickHandler(e){
 			else{
 				nodeClickHandler(id);
 			}
-			addSelectClass(e.currentTarget.id);
-			return;
+			//添加选中效果
+			//addSelectClass(e.currentTarget.id);
+			//return;
 
 	    } else if (3 == e.which) {
 	        //右键为3
 	        //console.log(e);
 	        rightClickAction(e);
 	    }
+	    //添加选中效果
+	    addSelectClass(e.currentTarget.id);
 }
 function rightClickAction(e){
 	var offset = $("#chapter_list_contianer").offset();
-	        console.log(offset);
-	        var x = e.clientX - offset.left+5;
-	        var y = e.clientY - offset.top+5;
-	        //console.log(x+" "+y);
-	        $("#right_click_column").css('left', x+"px");
-	        $("#right_click_column").css('top',y+"px");
-	        $("#right_click_column").show();
+	//console.log(offset);
+	var x = e.clientX - offset.left+5;
+	var y = e.clientY - offset.top+5;
+	//console.log(x+" "+y);
+	$("#right_click_column").css('left', x+"px");
+	$("#right_click_column").css('top',y+"px");
+	$("#right_click_column").show();
 }
 var lastNode = ''; //上一个点击的元素
+//var currentNode = '';//当前元素
 function addSelectClass(node){
 	if (!node) {return false;} 
 	if (lastNode) {

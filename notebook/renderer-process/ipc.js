@@ -32,6 +32,12 @@ function getChapterContentIpc(cid){
 function saveChapterContentIPC(datas){
 	ipcRenderer.send('saveChapterContent', datas);
 }
+function creatVolumeIPC(datas){
+	ipcRenderer.send('creatVolume', datas);
+}
+function creatChapterIPC(datas){
+	ipcRenderer.send('creatChapter', datas);
+}
 /*
 function loadBookPageIpc(datas){
 	ipcRenderer.send('getBookList', datas);
