@@ -42,7 +42,7 @@ function bindRightClick(){
 		delete_chapter(e);
 	})
 	
-	$("#chapter_list").mousedown(function(e) {
+	$("#chapter_list_box").mousedown(function(e) {
 		if (3 == e.which) {
 	        rightClickAction(e);
 	    }
@@ -109,12 +109,14 @@ function createChapter(e){
 	if (clickRoot) {
 		string += '</div>';
 	}
+	console.log(right_click_child_id);
 	var fdStart = right_click_child_id.indexOf("chapter_child_li_");
+	//var fvStart = right_click_child_id.indexOf("chapter_child_li_");
 	if(fdStart == 0){
 	   	var id = $("#"+right_click_child_id).attr('d-id');
 		$("#chapter_child_li_"+id).after(string);
 	}
-	else if (right_click_child_id == 'chapter_list') {
+	else if (clickRoot) {
 		$("#"+right_click_child_id).append(string);
 	}
 	else{
@@ -125,12 +127,19 @@ function createChapter(e){
 }
 function createChapterAction(){
 	var fid = 0;
+	var pre = 0;
+	var next = 0;
 	if (right_click_child_id != 'chapter_list') {
-		$("#"+right_click_child_id).append(string);
+		fid = $("#creatChapterDiv").parent().parent().attr("d-id");
+		pre = $("#creatChapterDiv").prev().attr("d-id");
+		next = $("#creatChapterDiv").next().attr("d-id");
+	}
+	else{
+		pre = $("#creatChapterDiv").parent().prev().attr("d-id");
+		next = $("#creatChapterDiv").parent().next().attr("d-id");
 	}
 	var datas = {};
-	var pre = $("#creatChapterDiv").parent().prev().attr("d-id");
-	var next = $("#creatChapterDiv").parent().next().attr("d-id");
+	
 	//console.log(pre+"-"+next);
 	datas.pre = pre?pre:0;
 	datas.next = next?next:0;
@@ -296,11 +305,15 @@ function clickHandler(e){
 	        rightClickAction(e);
 	    }
 	    //添加选中效果
-	    addSelectClass(e.currentTarget.id);
+	    addSelectClass(e.target.id);
 }
 var right_click_child_id = '';
 function rightClickAction(e){
-	right_click_child_id = e.currentTarget.id;
+	console.log(e);
+	right_click_child_id = e.target.id;
+	if (right_click_child_id == "chapter_list_box"){
+		right_click_child_id = "chapter_list";
+	}
 	var offset = $("#chapter_box").offset();
 	//console.log(offset);
 	var x = e.clientX - offset.left+5;
