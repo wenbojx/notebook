@@ -52,7 +52,7 @@ function callBackGetChapterList(datas){
 			}
 		}
 	}
-	initScrollbar('chapter_list');
+	initScrollbar('chapter_list_box');
 }
 
 function sortArray(data){
@@ -72,7 +72,7 @@ function sortArray(data){
 	return result;
 }
 function sortChaterDatas(datas, sort){
-	//console.log(datas);
+	console.log(datas);
 	var topLevel = new Array();
 	var secendLevel = new Array();
 	var j = 0;
@@ -92,6 +92,7 @@ function sortChaterDatas(datas, sort){
 		}
 	}
 	topLevel = sortArray(topLevel);
+	console.log(topLevel);
 	var sortDatas = new Array();
 	for (var i = 0; i < topLevel.length; i++) {
 		sortDatas[i] = new Array();
@@ -105,54 +106,9 @@ function sortChaterDatas(datas, sort){
 			sortDatas[i]['child'] = secendLevel[id];
 		}
 	}
-	console.log(sortDatas);
+	//console.log(sortDatas);
 	return sortDatas;
-	//console.log(secendLevel);
-	//return false;
-	var sortData = new Array();
-	var sortPre = new Array();
-	var j = 0;
-	for (i in datas) {
-		var fid = datas[i]['fid'];
-		if (fid == 0) {
-			//console.log(datas[i]);
-			var id = datas[i]['id'];
-			if (typeof(sortData[id]) == "undefined") {
-				sortData[id] = new Array();
-			}
-			sortData[id]['node'] = datas[i];
-			if (typeof(sortData[id]['child']) == "undefined") {
-				sortData[id]['child'] = new Array();
-			}
-			sortPre[j] = id;
-			j++;
-		}
-		else{
-			if (typeof(sortData[fid]) == "undefined") {
-				sortData[fid] = new Array();
-				
-			}
-			if (typeof(sortData[fid]['child']) == "undefined"){
-				sortData[fid]['child'] = new Array();
-			}
-			var length = sortData[fid]['child'].length;
-			
-			sortData[fid]['child'][length] = datas[i];
-		}
-	}
-	if (sort == 'desc') {
-		var sortDescData = new Array();
-		var length = sortPre.length-1;
-		var j = 0;
-		for (var i = length; i >=0 ; i--) {
-			var k = sortPre[i];
-			sortDescData[j] = sortData[k];
-			j++;
-		}
-		sortData = sortDescData;
-	}
-
-	return sortData;
+	
 }
 ///////////////////////////////////////
 ipcRenderer.on('getChapterContent', function(event, datas) {
@@ -185,7 +141,7 @@ ipcRenderer.on('creatVolume', function(event, datas) {
 });
 function callBackCreatVolume(){
 	getChapterListIpc(bid);
-	createVolumeFlag = false;
+	createNodeFlag = false;
 }
 function creatChapter(datas){
 	creatChapterIPC(datas);
@@ -195,5 +151,5 @@ ipcRenderer.on('creatChapter', function(event, datas) {
 });
 function callBackcreatChapter(){
 	getChapterListIpc(bid);
-	createChapterFlag = false;
+	createNodeFlag = false;
 }
