@@ -58,8 +58,8 @@ book.getBookInfo = function (bid){
 }
 //获取章节
 book.getChapterList = function (bid){
+	common.log("getChapterList"+bid);
 	if (!bid) {return false;}
-	common.log("getChapterList");
 	book.initBookDb();
 	var sql = "SELECT * FROM chapter WHERE bid = "+bid+" order by id asc";
 	//console.log(sql);
@@ -147,7 +147,8 @@ book.saveChapterContent = function(datas){
 }
 
 book.creatVolume = function (datas){
-	common.log(datas);
+	common.log("creatVolume");
+	//common.log(datas);
 	datas.fid = 0;
 	datas.countword = 0;
 	datas.intro = '';
@@ -155,15 +156,37 @@ book.creatVolume = function (datas){
 	//common.log(id);
 	var next = {};
 	next.next = id;
-	book.updatChapter(datas.pre, next, false);
+	if (datas.pre !=0 ) {
+		book.updatChapter(datas.pre, next, false);
+	}
 	var pre = {};
 	pre.pre = id;
-	book.updatChapter(datas.next, pre, false);
+	if (datas.next !=0 ) {
+		book.updatChapter(datas.next, pre, false);
+	}
 	book.saveDb();
 	return id;
 }
 book.creatChapter = function (datas){
-	
+	common.log("creatChapter");
+	common.log(datas);
+	datas.countword = 0;
+	datas.intro = '';
+
+	var id = book.creatChapterAction(datas);
+	//common.log(id);
+	var next = {};
+	next.next = id;
+	if (datas.pre !=0 ) {
+		book.updatChapter(datas.pre, next, false);
+	}
+	var pre = {};
+	pre.pre = id;
+	if (datas.next !=0 ) {
+		book.updatChapter(datas.next, pre, false);
+	}
+	book.saveDb();
+	return id;
 }
 book.creatChapterAction = function (datas){
 	if (!datas.bid || !datas.title) {
@@ -189,7 +212,7 @@ book.creatChapterAction = function (datas){
 	sql += " VALUES (null, "+data.bid+", "+data.bookid+", "+data.type+", '"+data.fid+"', ";
 	sql += "'"+data.title+"', '"+data.intro+"', "+data.countword+", "+data.createtime+", ";
 	sql += data.updatetime+", "+data.status+","+data.pre+", "+data.next+")";
-	//common.log(sql);
+	common.log(sql);
 	res = db.run(sql);
 	if (!res) {
 		return false;

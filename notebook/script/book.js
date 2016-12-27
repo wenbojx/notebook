@@ -34,6 +34,15 @@ function bindRightClick(){
 	$("#create_dagang_id").click(function(e){
 		
 	})
+	$("#flash_chapter_list").click(function(e){
+		createVolumeFlag = false;
+		createChapterFlag = false;
+		getChapterListIpc(bid);
+	})
+	$("#delete_chapter").click(function(e){
+		delete_chapter(e);
+	})
+	
 	$("#chapter_list").mousedown(function(e) {
 		if (3 == e.which) {
 	        rightClickAction(e);
@@ -48,7 +57,6 @@ function hideRightClickClumn(){
 /************* 创建动作 *******************/
 var createVolumeFlag = false;
 function createVolume(e){
-	console.log(lastNode);
 	if (createVolumeFlag) {
 		return false;
 	}
@@ -66,36 +74,61 @@ function createVolumeAction(){
 	var pre = $("#creatVolumeDiv").prev().attr("d-id");
 	var next = $("#creatVolumeDiv").next().attr("d-id");
 	//console.log(pre+"-"+next);
-	datas.pre = pre;
-	datas.next = next;
+	datas.pre = pre?pre:0;
+	datas.next = next?next:0;
 	datas.bid = bid;
 	datas.bookid = bookid;
 	datas.type = 1;
 	datas.title = $("#volume_name_input").val();
 	creatVolume(datas);
 }
-
+var createChapterFlag = false;
 function createChapter(e){
+	//console.log(e);
+	if (createChapterFlag) {
+		return false;
+	}
 	console.log(lastNode);
-	var id = $("#"+lastNode).attr('d-id');
-	string = '<li>';
+	var id = '';
+	var clickChapter = false;
+	var fdStart = lastNode.indexOf("chapter_child_li_");
+	if(fdStart == 0){
+		clickChapter = true;
+	   id = $("#"+lastNode).attr('d-fid');
+	}
+	else{
+		id = $("#"+lastNode).attr('d-id');
+	}
+	string = '<li id="creatChapterDiv">';
 	string += '<i></i>';
 	string += '<input type="text" name="chapter_name" id="chapter_name_input" value="章名"/>';
 	string +='<img src="assets/default/img/save_datas.png" onclick="createChapterAction()"/></li>';
-	$('#chapter_child_'+id).append(string);
+	if (clickChapter) {
+		var click_id = $("#"+lastNode).attr('d-id');
+		$("#chapter_child_li_"+click_id).after(string);
+	}
+	else{
+		$('#chapter_child_'+id).append(string);
+	}
+	createChapterFlag = true;
 }
 function createChapterAction(){
+	var fid = $("#creatChapterDiv").parent().parent().attr("d-id");
 	var datas = {};
-	var pre = $("#creatVolumeDiv").prev().attr("d-id");
-	var next = $("#creatVolumeDiv").next().attr("d-id");
+	var pre = $("#creatChapterDiv").prev().attr("d-id");
+	var next = $("#creatChapterDiv").next().attr("d-id");
 	//console.log(pre+"-"+next);
-	datas.pre = pre;
-	datas.next = next;
+	datas.pre = pre?pre:0;
+	datas.next = next?next:0;
 	datas.bid = bid;
+	datas.fid = fid;
 	datas.bookid = bookid;
-	datas.type = 1;
+	datas.type = 2;
 	datas.title = $("#chapter_name_input").val();
-	creatVolume(datas);
+	creatChapter(datas);
+}
+function delete_chapter(e){
+	
 }
 //////////////////////////////////////////////////
 function initScrollbar(node){

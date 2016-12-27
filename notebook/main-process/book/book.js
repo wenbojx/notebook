@@ -18,7 +18,7 @@ ipcMain.on('getBookInfo', function(event, bid) {
 });
 ipcMain.on('getChapterList', function(event, bid) {
 	var datas = book.getChapterList(bid);
-	//console.log(datas);
+	console.log(datas);
 	BrowserWindow.getFocusedWindow().webContents.send('getChapterList', datas);
 });
 ipcMain.on('getChapterContent', function(event, cid) {
@@ -36,7 +36,7 @@ ipcMain.on('creatVolume', function(event, datas) {
 	var datas = book.creatVolume(datas);
 	BrowserWindow.getFocusedWindow().webContents.send('creatVolume', datas);
 });
-ipcMain.on('creatChapter', function(event, cid) {
+ipcMain.on('creatChapter', function(event, datas) {
 	console.log("creatChapter");
 	var datas = book.creatChapter(datas);
 	BrowserWindow.getFocusedWindow().webContents.send('creatChapter', datas);

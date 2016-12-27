@@ -33,11 +33,9 @@ function callBackGetChapterList(datas){
 		$('#chapter_node_'+node['id']).mousedown(function(e) {
 			clickHandler(e);
 		})
-
-		string = "";
-		if(child.length >0 ) {
-			string = '<ul style="display:none" class="chapter" id="chapter_child_'+node['id']+'"></ul>';
+		string = '<ul style="display:none" class="chapter" id="chapter_child_'+node['id']+'"></ul>';
 			$('#chapter_node_'+node['id']).after(string);
+		if(child.length >0 ) {
 			string = '';
 			for (var j in child) {
 				var childNode = child[j];
@@ -55,11 +53,62 @@ function callBackGetChapterList(datas){
 		}
 	}
 	initScrollbar('chapter_list');
-	
 }
 
-
+function sortArray(data){
+    var next=0,result=[],id_arr=[];//photo_id_arr保存所有的photo_id
+	data.sort(function(a,b){//排序只是为了保证data[0]取到的是链表的头元素
+		return a.pre-b.pre;
+	});
+	for (i in data) {
+		id_arr.push(data[i].id);
+	}
+	
+	while(next!=-1){//如果元素的next(即下一个photo_id)在photo_id_arr中存在
+		var cur=data[next];
+		result.push(cur);
+		next=id_arr.indexOf(cur.next);
+	}
+	return result;
+}
 function sortChaterDatas(datas, sort){
+	//console.log(datas);
+	var topLevel = new Array();
+	var secendLevel = new Array();
+	var j = 0;
+	var k = 0;
+	for (var i = 0; i < datas.length; i++) {
+		var fid = datas[i]['fid'];
+		if (fid == 0) {
+			topLevel[j] = datas[i];
+			j++;
+		}
+		else{
+			if (typeof(secendLevel[fid]) == "undefined") {
+				secendLevel[fid] = new Array();
+			}
+			secendLevel[fid][k] = datas[i];
+			k++;
+		}
+	}
+	topLevel = sortArray(topLevel);
+	var sortDatas = new Array();
+	for (var i = 0; i < topLevel.length; i++) {
+		sortDatas[i] = new Array();
+		sortDatas[i]['node'] = topLevel[i];
+		sortDatas[i]['child'] = new Array();
+		var id = topLevel[i]['id'];
+
+		if (typeof(secendLevel[id]) != "undefined") {
+			//console.log(secendLevel[id]);
+			secendLevel[id] = sortArray(secendLevel[id]);
+			sortDatas[i]['child'] = secendLevel[id];
+		}
+	}
+	console.log(sortDatas);
+	return sortDatas;
+	//console.log(secendLevel);
+	//return false;
 	var sortData = new Array();
 	var sortPre = new Array();
 	var j = 0;
@@ -131,12 +180,20 @@ function callBackSaveChapterContent(datas){
 function creatVolume(datas){
 	creatVolumeIPC(datas);
 }
-function creatChapter(datas){
-	creatChapterIPC(datas);
-}
 ipcRenderer.on('creatVolume', function(event, datas) {
 	callBackCreatVolume(datas);
 });
 function callBackCreatVolume(){
 	getChapterListIpc(bid);
+	createVolumeFlag = false;
+}
+function creatChapter(datas){
+	creatChapterIPC(datas);
+}
+ipcRenderer.on('creatChapter', function(event, datas) {
+	callBackcreatChapter(datas);
+});
+function callBackcreatChapter(){
+	getChapterListIpc(bid);
+	createChapterFlag = false;
 }
