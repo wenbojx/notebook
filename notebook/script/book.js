@@ -35,15 +35,14 @@ function bindRightClick(){
 		
 	})
 	$("#flash_chapter_list").click(function(e){
-		createVolumeFlag = false;
-		createChapterFlag = false;
+		createNodeFlag = false;
 		getChapterListIpc(bid);
 	})
 	$("#delete_chapter").click(function(e){
 		delete_chapter(e);
 	})
 	
-	$("#chapter_list").mousedown(function(e) {
+	$("#chapter_list_box").mousedown(function(e) {
 		if (3 == e.which) {
 	        rightClickAction(e);
 	    }
@@ -55,9 +54,10 @@ function hideRightClickClumn(){
 	}); 
 }
 /************* 创建动作 *******************/
-var createVolumeFlag = false;
+var createNodeFlag = false;
 function createVolume(e){
-	if (createVolumeFlag) {
+	//console.log(e);
+	if (createNodeFlag) {
 		return false;
 	}
 	var string = '<div class="volume" id="creatVolumeDiv">';
@@ -65,9 +65,15 @@ function createVolume(e){
 	string += '<i></i>';
 	string += '<input type="text" name="volume_name" id="volume_name_input" value="卷名"/>';
 	string += '<img src="assets/default/img/save_datas.png" onclick="createVolumeAction()"/></li></div>';
-	$("#"+lastNode).parent().after(string);
-	console.log(lastNode);
-	createVolumeFlag = true;
+	if(right_click_child_id == 'chapter_list'){
+		$("#"+right_click_child_id).append(string);
+	}
+	else{
+		$("#"+right_click_child_id).parent().after(string);
+	}
+	
+	console.log(right_click_child_id);
+	createNodeFlag = true;
 }
 function createVolumeAction(){
 	var datas = {};
@@ -82,41 +88,58 @@ function createVolumeAction(){
 	datas.title = $("#volume_name_input").val();
 	creatVolume(datas);
 }
-var createChapterFlag = false;
 function createChapter(e){
 	//console.log(e);
-	if (createChapterFlag) {
+	if (createNodeFlag) {
 		return false;
 	}
-	console.log(lastNode);
-	var id = '';
-	var clickChapter = false;
-	var fdStart = lastNode.indexOf("chapter_child_li_");
-	if(fdStart == 0){
-		clickChapter = true;
-	   id = $("#"+lastNode).attr('d-fid');
+	var clickRoot = false;
+	if (right_click_child_id == 'chapter_list'){
+		clickRoot = true;
 	}
-	else{
-		id = $("#"+lastNode).attr('d-id');
+
+	var string = "";
+	if (clickRoot) {
+		string += '<div class="chapter">';
 	}
-	string = '<li id="creatChapterDiv">';
+	string += '<li id="creatChapterDiv">';
 	string += '<i></i>';
 	string += '<input type="text" name="chapter_name" id="chapter_name_input" value="章名"/>';
 	string +='<img src="assets/default/img/save_datas.png" onclick="createChapterAction()"/></li>';
-	if (clickChapter) {
-		var click_id = $("#"+lastNode).attr('d-id');
-		$("#chapter_child_li_"+click_id).after(string);
+	if (clickRoot) {
+		string += '</div>';
+	}
+	console.log(right_click_child_id);
+	var fdStart = right_click_child_id.indexOf("chapter_child_li_");
+	//var fvStart = right_click_child_id.indexOf("chapter_child_li_");
+	if(fdStart == 0){
+	   	var id = $("#"+right_click_child_id).attr('d-id');
+		$("#chapter_child_li_"+id).after(string);
+	}
+	else if (clickRoot) {
+		$("#"+right_click_child_id).append(string);
 	}
 	else{
+		var id = $("#"+right_click_child_id).attr('d-id');
 		$('#chapter_child_'+id).append(string);
 	}
-	createChapterFlag = true;
+	createNodeFlag = true;
 }
 function createChapterAction(){
-	var fid = $("#creatChapterDiv").parent().parent().attr("d-id");
+	var fid = 0;
+	var pre = 0;
+	var next = 0;
+	if (right_click_child_id != 'chapter_list') {
+		fid = $("#creatChapterDiv").parent().parent().attr("d-id");
+		pre = $("#creatChapterDiv").prev().attr("d-id");
+		next = $("#creatChapterDiv").next().attr("d-id");
+	}
+	else{
+		pre = $("#creatChapterDiv").parent().prev().attr("d-id");
+		next = $("#creatChapterDiv").parent().next().attr("d-id");
+	}
 	var datas = {};
-	var pre = $("#creatChapterDiv").prev().attr("d-id");
-	var next = $("#creatChapterDiv").next().attr("d-id");
+	
 	//console.log(pre+"-"+next);
 	datas.pre = pre?pre:0;
 	datas.next = next?next:0;
@@ -144,7 +167,7 @@ function resetHeight(){
 	var volumeListHeight = noteContentHeight - $("#volume_head").height();
 	$("#volume_list").height(volumeListHeight);
 	var chapterListHeight = noteContentHeight - $("#chapter_head").height();
-	$("#chapter_list").height(chapterListHeight);
+	$("#chapter_list_box").height(chapterListHeight);
 
 	var height = noteContentHeight-$("#edit_head").height()-$("#edit_foot").height()-32;
 	$("#editor").height(height);
@@ -253,7 +276,7 @@ function nodeClickHandler(id){
 	}else{
 	    $("#chapter_child_"+id).hide(); 
 	}
-	initScrollbar('chapter_list');
+	initScrollbar('chapter_list_box');
 }
 function clickHandler(e){
 	    //console.log(e.which);
@@ -282,10 +305,16 @@ function clickHandler(e){
 	        rightClickAction(e);
 	    }
 	    //添加选中效果
-	    addSelectClass(e.currentTarget.id);
+	    addSelectClass(e.target.id);
 }
+var right_click_child_id = '';
 function rightClickAction(e){
-	var offset = $("#chapter_list_contianer").offset();
+	console.log(e);
+	right_click_child_id = e.target.id;
+	if (right_click_child_id == "chapter_list_box"){
+		right_click_child_id = "chapter_list";
+	}
+	var offset = $("#chapter_box").offset();
 	//console.log(offset);
 	var x = e.clientX - offset.left+5;
 	var y = e.clientY - offset.top+5;
