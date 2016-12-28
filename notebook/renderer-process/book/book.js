@@ -20,12 +20,15 @@ function callBackGetChapterList(datas){
 	for (var i in chapterDatas) {
 		var node = chapterDatas[i]['node'];
 		var child = chapterDatas[i]['child'];
-		var className = node['type'] == 1 ? 'volume':'chapter';
+		var className = 'volume';
+		if (node['type'] != 1) {
+			className = 'chapter';
+		}
 		string = '';
 		string += '<div class="'+ className + '" d-id="'+node['id']+'">';
 		
 		string += '<li id="chapter_node_'+node['id']+'" d-id="'+node['id']+'" d-title="'+node['title']+'" d-fid="'+node['fid']+'" d-type="'+node['type']+'">';
-		string += '<i></i><a href="javascript:void(0)">'+node['title']+'</a></li>';
+		string += '<i></i><span class="node_text" id="node_text_'+node['id']+'">'+node['title']+'</span></li>';
 		string += '</div>';
 		$("#chapter_list").append(string);
 		//绑定事件
@@ -33,8 +36,10 @@ function callBackGetChapterList(datas){
 		$('#chapter_node_'+node['id']).mousedown(function(e) {
 			clickHandler(e);
 		})
-		string = '<ul style="display:none" class="chapter" id="chapter_child_'+node['id']+'"></ul>';
+		if (node['type'] == 1) {
+			string = '<ul style="display:none" class="chapter" id="chapter_child_'+node['id']+'"></ul>';
 			$('#chapter_node_'+node['id']).after(string);
+		}
 		if(child.length >0 ) {
 			string = '';
 			for (var j in child) {
@@ -42,7 +47,7 @@ function callBackGetChapterList(datas){
 				string = '<li id="chapter_child_li_'+childNode['id']+'" ';
 				string += 'd-id="'+childNode['id']+'" d-title="'+childNode['title']+'" ';
 				string += 'd-fid="'+childNode['fid']+'" d-type="'+childNode['type']+'">';
-				string += '<i></i><a href="javascript:void(0)">'+childNode['title']+'</a></li>';
+				string += '<i></i><span class="node_text" id="node_text_'+childNode['id']+'">'+childNode['title']+'</span></li>';
 
 				$('#chapter_child_'+node['id']).append(string);
 				//$('#chapter_child_li_'+childNode['id']).bind("click", {}, childClickHandler);  
@@ -72,7 +77,7 @@ function sortArray(data){
 	return result;
 }
 function sortChaterDatas(datas, sort){
-	console.log(datas);
+	//console.log(datas);
 	var topLevel = new Array();
 	var secendLevel = new Array();
 	var j = 0;
@@ -92,7 +97,7 @@ function sortChaterDatas(datas, sort){
 		}
 	}
 	topLevel = sortArray(topLevel);
-	console.log(topLevel);
+	//console.log(topLevel);
 	var sortDatas = new Array();
 	for (var i = 0; i < topLevel.length; i++) {
 		sortDatas[i] = new Array();
@@ -130,7 +135,7 @@ ipcRenderer.on('saveChapterContent', function(event, datas) {
 });
 //保存成功回调
 function callBackSaveChapterContent(datas){
-	console.log(datas);
+	//console.log(datas);
 }
 ////////////////////////////////////////////////
 function creatVolume(datas){

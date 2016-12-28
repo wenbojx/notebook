@@ -275,6 +275,9 @@ img{
 }
 .chapter_box{
 }
+.chapter_box .node_text{
+	cursor: default;
+}
 .chapter_box .chapter_list_box{
 	position: relative;
 	overflow-y: auto;

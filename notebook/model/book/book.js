@@ -115,6 +115,16 @@ book.updatChapter = function(cid, datas, saveflag){
 	}
 	return true;
 }
+//删除章节
+book.deleteChapter = function(cid){
+	if(!cid){
+		return;
+	}
+	var data = {}
+	data.status = 2;
+	book.updatChapter(cid, data, true);
+}
+
 book.saveChapterContent = function(datas){
 	common.log("saveChapterContent");
 	if (datas == null || datas.cid == null || datas.cid==''){

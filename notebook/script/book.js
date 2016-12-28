@@ -60,18 +60,30 @@ function createVolume(e){
 	if (createNodeFlag) {
 		return false;
 	}
+	//1根目录  2子章节  3其它
+	var clickType = 3;
+	if (right_click_child_id == 'chapter_list') {
+		clickType = 1;
+	}
+	var fdStart = right_click_child_id.indexOf("chapter_child_li_");
+	if (fdStart == 0) {
+		clickType = 2;
+	}
+
 	var string = '<div class="volume" id="creatVolumeDiv">';
 	string += '<li>';
 	string += '<i></i>';
 	string += '<input type="text" name="volume_name" id="volume_name_input" value="卷名"/>';
 	string += '<img src="assets/default/img/save_datas.png" onclick="createVolumeAction()"/></li></div>';
-	if(right_click_child_id == 'chapter_list'){
-		$("#"+right_click_child_id).append(string);
+	if(clickType == 1){
+		$("#chapter_list").append(string);
+	}
+	else if(clickType == 2){
+		$("#"+right_click_child_id).parent().parent().after(string);
 	}
 	else{
 		$("#"+right_click_child_id).parent().after(string);
 	}
-	
 	console.log(right_click_child_id);
 	createNodeFlag = true;
 }
@@ -93,8 +105,26 @@ function createChapter(e){
 	if (createNodeFlag) {
 		return false;
 	}
+	//1、点击根元素 2、点击根章节  3、点击根卷   4、点击子章节
+	var clickType = 1;
+	var fdStart = right_click_child_id.indexOf("chapter_child_li_");
+	if (fdStart == 0) {
+		clickType = 4;
+	}
+	if (right_click_child_id == 'chapter_list') {
+		clickType = 1;
+	}
+	var fvStart = right_click_child_id.indexOf("chapter_node_");
+	if (fvStart == 0) {
+		if ($("#"+right_click_child_id).attr('d-type') == 1) {
+			clickType = 3;
+		}
+		else{
+			clickType = 2;
+		}
+	}
 	var clickRoot = false;
-	if (right_click_child_id == 'chapter_list'){
+	if (clickType == 1 || clickType == 2){
 		clickRoot = true;
 	}
 
@@ -105,39 +135,45 @@ function createChapter(e){
 	string += '<li id="creatChapterDiv">';
 	string += '<i></i>';
 	string += '<input type="text" name="chapter_name" id="chapter_name_input" value="章名"/>';
-	string +='<img src="assets/default/img/save_datas.png" onclick="createChapterAction()"/></li>';
+	string +='<img c_type="'+clickType+'" id="save_chapter_btn" src="assets/default/img/save_datas.png" onclick="createChapterAction()"/></li>';
 	if (clickRoot) {
 		string += '</div>';
 	}
-	console.log(right_click_child_id);
-	var fdStart = right_click_child_id.indexOf("chapter_child_li_");
-	//var fvStart = right_click_child_id.indexOf("chapter_child_li_");
-	if(fdStart == 0){
+	//console.log(right_click_child_id);
+	
+	if(clickType == 4){
 	   	var id = $("#"+right_click_child_id).attr('d-id');
 		$("#chapter_child_li_"+id).after(string);
 	}
-	else if (clickRoot) {
-		$("#"+right_click_child_id).append(string);
+	else if(clickType == 2){
+		$("#"+right_click_child_id).parent().after(string);
 	}
-	else{
+	else if (clickType == 1) {
+		$("#chapter_list").append(string);
+	}
+	else if (clickType == 3){
 		var id = $("#"+right_click_child_id).attr('d-id');
 		$('#chapter_child_'+id).append(string);
 	}
 	createNodeFlag = true;
 }
+//clickType = 1、点击根元素 2、点击根章节  3、点击根卷   4、点击子章节
 function createChapterAction(){
+	var clickType = $("#save_chapter_btn").attr('c_type');
 	var fid = 0;
 	var pre = 0;
 	var next = 0;
-	if (right_click_child_id != 'chapter_list') {
+
+	if (clickType == 1 || clickType==2) {
+		pre = $("#creatChapterDiv").parent().prev().attr("d-id");
+		next = $("#creatChapterDiv").parent().next().attr("d-id");
+	}
+	else{
 		fid = $("#creatChapterDiv").parent().parent().attr("d-id");
 		pre = $("#creatChapterDiv").prev().attr("d-id");
 		next = $("#creatChapterDiv").next().attr("d-id");
 	}
-	else{
-		pre = $("#creatChapterDiv").parent().prev().attr("d-id");
-		next = $("#creatChapterDiv").parent().next().attr("d-id");
-	}
+	console.log(right_click_child_id);
 	var datas = {};
 	
 	//console.log(pre+"-"+next);
@@ -151,6 +187,7 @@ function createChapterAction(){
 	creatChapter(datas);
 }
 function delete_chapter(e){
+	var fvStart = right_click_child_id.indexOf("chapter_node_");
 	
 }
 //////////////////////////////////////////////////
@@ -309,11 +346,15 @@ function clickHandler(e){
 }
 var right_click_child_id = '';
 function rightClickAction(e){
-	console.log(e);
 	right_click_child_id = e.target.id;
 	if (right_click_child_id == "chapter_list_box"){
 		right_click_child_id = "chapter_list";
 	}
+	var fvStart = right_click_child_id.indexOf("node_text_");
+	if (fvStart == 0) {
+		right_click_child_id = $("#"+right_click_child_id).parent().attr("id");
+	}
+	console.log(right_click_child_id);
 	var offset = $("#chapter_box").offset();
 	//console.log(offset);
 	var x = e.clientX - offset.left+5;
