@@ -448,7 +448,6 @@ ipcMain.on('exitFullScreen', function(event, datas){
 })
 
 ipcMain.on('goToQuanzi', function(event, datas){
-
 	mainWindow.setFullScreen(false);
 	mainWindow.loadURL(`file://${__dirname}/app/quanzi.html`);
 })

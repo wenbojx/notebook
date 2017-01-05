@@ -44,3 +44,8 @@ ipcMain.on('creatChapter', function(event, datas) {
 	var datas = book.creatChapter(datas);
 	BrowserWindow.getFocusedWindow().webContents.send('creatChapter', datas);
 });
+ipcMain.on('deleteChapter', function(event, datas) {
+	common.log("deleteChapter");
+	var datas = book.deleteChapter(datas.id);
+	BrowserWindow.getFocusedWindow().webContents.send('deleteChapter', datas);
+});

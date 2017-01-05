@@ -1,8 +1,21 @@
+/********* 全屏模式 *************/
+function fullScreen(){
+	var datas = {};
+	datas.cid = getCurrentCid();
+	datas.bid = getCurrentBid();
+	fullScreenIpc(datas);
+}
+function exitFullScreen(){
+	exitFullScreenIpc();
+}
+
+
 function bindAction(){
 	bindCreatNode();
 	bindRightClick();
 	hideRightClickClumn();
 }
+
 function bindCreatNode(){
 	$("#create_node").click(function(){
 		if($("#creat_node_box").is(":hidden")){
@@ -40,6 +53,9 @@ function bindRightClick(){
 	})
 	$("#delete_chapter").click(function(e){
 		delete_chapter(e);
+	})
+	$("#share_chapter_id").click(function(e){
+		alert("share");
 	})
 	
 	$("#chapter_list_box").mousedown(function(e) {
@@ -187,8 +203,16 @@ function createChapterAction(){
 	creatChapter(datas);
 }
 function delete_chapter(e){
-	var fvStart = right_click_child_id.indexOf("chapter_node_");
-	
+	console.log(right_click_child_id);
+	//var fvStart = right_click_child_id.indexOf("chapter_child_li");
+	//chapter_node
+	var id = $("#"+right_click_child_id).attr("d-id");
+	if (!id) {
+		return;
+	}
+	var datas = {};
+	datas.id = id;
+	deleteChapterIPC(datas);
 }
 //////////////////////////////////////////////////
 function initScrollbar(node){

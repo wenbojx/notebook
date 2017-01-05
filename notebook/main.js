@@ -133,3 +133,6 @@ switch (process.argv[1]) {
 ipcMain.on('welcomeFinish', function(event, datas) {
   //mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
 });
+
+
+

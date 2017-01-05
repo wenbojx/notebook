@@ -154,7 +154,14 @@ function creatChapter(datas){
 ipcRenderer.on('creatChapter', function(event, datas) {
 	callBackcreatChapter(datas);
 });
-function callBackcreatChapter(){
+function callBackcreatChapter(datas){
 	getChapterListIpc(bid);
 	createNodeFlag = false;
+}
+ipcRenderer.on('deleteChapter', function(event, datas) {
+	callBackDeleteChapter(datas);
+});
+function callBackDeleteChapter(datas){
+	getChapterListIpc(bid);
+	//createNodeFlag = false;
 }

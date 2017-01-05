@@ -4,5 +4,13 @@
 </div>
 <script src="renderer-process/home/home.js"></script>
 <script type="text/javascript">
-	getBookListIpc(null);
+	var page = getQueryString("page");
+	var bid = getQueryString("bid");
+	console.log(page+"-"+bid);
+	if (page == null) {
+		getBookListIpc(null);
+	}
+	else {
+		loadBookPage(bid);
+	}
 </script>

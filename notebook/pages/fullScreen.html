@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link type="text/css" rel="stylesheet" href="../assets/default/css/fullscreen.css"/>
+
+		<link type="text/css" rel="stylesheet" href="../script/plugs/umeditor/css/umeditor.css">
+		<link type="text/css" rel="stylesheet" href="../assets/default/css/editor.css"/>
+		<link type="text/css" rel="stylesheet" href="../assets/default/css/bootstrap.min.css">
+    	<link type="text/css" rel="stylesheet" href="../assets/default/css/perfect-scrollbar.css"/>
+	    
+	    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+	    <script src="../script/plugs/jquery-3.0.0.min.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="../script/plugs/umeditor/umeditor.config.js"></script>
+	    <script type="text/javascript" charset="utf-8" src="../script/plugs/umeditor/editor_api_full.js"></script>
+		<script type="text/javascript" src="../script/plugs/umeditor/zh-cn/zh-cn.js"></script>
+	    <script src="../script/plugs/bootstrap.js"></script>
+		<script src="../script/plugs/perfect-scrollbar.jquery.min.js"></script>
+	    <script src="../renderer-process/core.js"></script>
+		<script src="../renderer-process/ipc.js"></script>
+		<script src="../script/book.js"></script>
+		<script src="../renderer-process/book/book.js"></script>
+
+	</head>
+	<body>
+	<div class="content" id="content">
+		<div class="header" id="edit-head">
+			<div class="item" id="item">
+				<div class="title float-left" v-cloak>{{title}}</div>
+			</div>
+			<div class="setting float-right">
+					<a onclick="exitFullScreen()">退出全屏</a>
+			</div>
+		</div>
+		<div class="editor" id="editer-box">
+			<script type="text/plain" id="editor" class="editor" style="width:800px;height:200px;"><div></div></script>
+	    </div>
+	    <div class="footer" id="footer"></div>
+    </div>
+	<script type="text/javascript">
+	    //const ipcRenderer = require('electron').ipcRenderer;
+		function exitFullScreen(){
+			ipcRenderer.send('exitFullScreen', true);
+		}
+    
+	    window.onload = function() {  
+			initEditor("editor");
+			//resetHeight();
+			//resetWidth();
+			$('#editor').perfectScrollbar();
+			//timer();
+	    };
+	    window.onresize = function(){
+			//resetHeight();
+			//resetWidth();
+		}
+    
+    </script>
+	</body>
+</html>

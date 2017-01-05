@@ -56,12 +56,12 @@ book.getBookInfo = function (bid){
 	var datas = common.convertDb(res);
 	return datas[0];
 }
-//获取章节
+//获取正常章节
 book.getChapterList = function (bid){
 	common.log("getChapterList"+bid);
 	if (!bid) {return false;}
 	book.initBookDb();
-	var sql = "SELECT * FROM chapter WHERE bid = "+bid+" order by id asc";
+	var sql = "SELECT * FROM chapter WHERE bid = "+bid+" AND status=1 order by id asc";
 	//console.log(sql);
 	var res = db.exec(sql);
 	var datas = common.convertDb(res);
@@ -78,6 +78,14 @@ book.getChapterContent = function (cid){
 	var datas = common.convertDb(res);
 	return datas[0];
 }
+//获取单章信息
+book.getChapterInfo = function (id){
+	book.initBookDb();
+	var res = db.exec("SELECT * FROM chapter WHERE id="+id+" limit 1");
+	var datas = common.convertDb(res);
+	common.log(datas[0]);
+	return datas[0];
+}
 //获取insert后的id
 book.getChapterLastId = function(){
 	book.initBookDb();
@@ -86,7 +94,9 @@ book.getChapterLastId = function(){
 	//common.log(datas[0]);
 	return datas[0]['id'];
 }
+//saveflag = true 保存
 book.updatChapter = function(cid, datas, saveflag){
+	book.initBookDb();
 	common.log('updatChapter');
 	if(!cid || datas==""){
 		return false;
@@ -116,13 +126,26 @@ book.updatChapter = function(cid, datas, saveflag){
 	return true;
 }
 //删除章节
-book.deleteChapter = function(cid){
-	if(!cid){
+book.deleteChapter = function(id){
+	common.log("deleteChapter");
+	if(!id){
 		return;
 	}
 	var data = {}
 	data.status = 2;
-	book.updatChapter(cid, data, true);
+	book.updatChapter(id, data, true);
+	//更新前后章节的排序
+	var chapterInfo = book.getChapterInfo(id);
+	if (chapterInfo['pre'] != 0) {
+		var preData = {}
+		preData.next = chapterInfo['next'];
+		book.updatChapter(chapterInfo['pre'], preData, true);
+	}
+	if (chapterInfo['next'] != 0) {
+		var nextData = {}
+		nextData.pre = chapterInfo['pre'];
+		book.updatChapter(chapterInfo['next'], nextData, true);
+	}
 }
 
 book.saveChapterContent = function(datas){
@@ -158,6 +181,7 @@ book.saveChapterContent = function(datas){
 
 book.creatVolume = function (datas){
 	common.log("creatVolume");
+	book.initBookDb();
 	//common.log(datas);
 	datas.fid = 0;
 	datas.countword = 0;
@@ -180,6 +204,7 @@ book.creatVolume = function (datas){
 book.creatChapter = function (datas){
 	common.log("creatChapter");
 	common.log(datas);
+	book.initBookDb();
 	datas.countword = 0;
 	datas.intro = '';
 

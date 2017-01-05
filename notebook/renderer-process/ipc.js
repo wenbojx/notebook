@@ -14,7 +14,7 @@ function exitFullScreenIpc(){
 	ipcRenderer.send('exitFullScreen', true);
 }
 /************** 全屏模式 start ********************/
-function fullScreenIpc(){
+function fullScreenIpc(datas){
 	ipcRenderer.send('fullScreen', datas);
 }
 function getBookListIpc(datas){
@@ -37,6 +37,9 @@ function creatVolumeIPC(datas){
 }
 function creatChapterIPC(datas){
 	ipcRenderer.send('creatChapter', datas);
+}
+function deleteChapterIPC(datas){
+	ipcRenderer.send('deleteChapter', datas);
 }
 /*
 function loadBookPageIpc(datas){

@@ -4,6 +4,12 @@ ipcRenderer.on('getBookList', function(event, datas) {
 	callBackGetBookList(datas);
 
 });
+function getQueryString(name) { 
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+	var r = window.location.search.substr(1).match(reg); 
+	if (r != null) return unescape(r[2]); return null; 
+}
+
 function callBackGetBookList(datas) {
 	
 	if (datas.length<1) { 
@@ -17,9 +23,12 @@ function callBackGetBookList(datas) {
 		string += '</li>';
 		$("#home_book_list").append(string);
 		$("#home_book_"+n['id']).click(function(){
-			bid = n['id'];
-			var loadpage = "pages/book.html";
-			loadPage(loadpage);
+			loadBookPage(n['id']);
 		})
 	});
+}
+function loadBookPage(b_id){
+	bid = b_id;
+	var loadpage = "pages/book.html";
+	loadPage(loadpage);
 }
