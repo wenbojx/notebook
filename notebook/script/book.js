@@ -294,8 +294,8 @@ function getWords(editor){
 
 /************* 定时器 ****************/
 function timer(){
-	self.setInterval("showWords()",500);
-	self.setInterval("autoSave()",5000);
+	self.setInterval("showWords()",200);
+	self.setInterval("autoSave()",1000);
 }
 function showWords(){
   var num = getWords('editor');
@@ -314,6 +314,7 @@ function saveContent(editor, datas){
 	  	datas.title = $("#chapter_title").val();
 	  	datas.cid = $("#chapter_id").val();
 	  	datas.countword = getWords('editor');
+	  	console.log(datas);
 	  	saveChapterContent(datas);
 	  	lastContent = content;
 	}
@@ -328,7 +329,6 @@ function childClickHandler(id, title){
 	getChapterContentIpc(id);
 	setChapterId(id);
 	setChapterTitle(title);
-	
 }
 function nodeClickHandler(id){
 	//console.log(id);

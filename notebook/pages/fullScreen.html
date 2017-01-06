@@ -3,12 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link type="text/css" rel="stylesheet" href="../assets/default/css/fullscreen.css"/>
-
 		<link type="text/css" rel="stylesheet" href="../script/plugs/umeditor/css/umeditor.css">
 		<link type="text/css" rel="stylesheet" href="../assets/default/css/editor.css"/>
 		<link type="text/css" rel="stylesheet" href="../assets/default/css/bootstrap.min.css">
     	<link type="text/css" rel="stylesheet" href="../assets/default/css/perfect-scrollbar.css"/>
+    	<link type="text/css" rel="stylesheet" href="../assets/default/css/fullscreen.css"/>
 	    
 	    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
@@ -22,73 +21,36 @@
 		<script src="../renderer-process/ipc.js"></script>
 		<script src="../script/book.js"></script>
 		<script src="../renderer-process/book/book.js"></script>
-
+		<script src="../script/fullScreen.js"></script>
 	</head>
 	<body>
 	<div class="content" id="content">
-		<div class="header" id="edit-head">
-			<div class="item" id="item">
-				<div class="title float-left" v-cloak>{{title}}</div>
+		<div class="header" id="edit_head">
+			<div class="title f_left" id="title">
+				<input type="text" name="chapter_title" class="chapter_title" id="chapter_title" value="">
+				<input type="hidden" name="chapter_id" value="" id="chapter_id">
 			</div>
-			<div class="setting float-right">
-					<a onclick="exitFullScreen()">退出全屏</a>
+			<div class="setting f_right">
+				<a href="#!" onclick="exitFullScreen()">退出全屏</a>
 			</div>
 		</div>
-		<div class="editor" id="editer-box">
+		<div class="editor" id="editer_box">
 			<script type="text/plain" id="editor" class="editor" style="width:800px;height:200px;"><div></div></script>
 	    </div>
 	    <div class="footer" id="footer"></div>
     </div>
 	<script type="text/javascript">
-	    //const ipcRenderer = require('electron').ipcRenderer;
-		function exitFullScreen(){
-			ipcRenderer.send('exitFullScreen', true);
-		}
-    
 	    window.onload = function() {  
 			initEditor("editor");
-			//resetHeight();
-			//resetWidth();
+			resetHeight();
+			resetWidth();
 			$('#editor').perfectScrollbar();
-			//timer();
+			timerFull();
 	    };
 	    window.onresize = function(){
-			//resetHeight();
-			//resetWidth();
+			resetHeight();
+			resetWidth();
 		}
-		
-    
-function timer(){
-	self.setInterval("showWords()",200);
-	self.setInterval("autoSave()",1000);
-}
-function showWords(){
-  var num = getWords('editor');
-  $("#footer").html("字数:"+num);
-}
-function autoSave(){
-	var datas = {};
-	datas.bookId = ChapterDatas.bookId;
-	datas.name = ChapterDatas.name;
-	datas.chapterId = ChapterDatas.chapterId;
-	autoSaveContent('editor', datas);
-}
-
-//设置高度
-function resetHeight(){
-	var height = $(document.body).height() - $("#edit-head").height() - $("#footer").height() -30;
-	$("#editor").height(height);
-
-}
-//设置宽度
-function resetWidth(){
-	var width = $(document).width();
-	$(".edui-container").width(width);
-	$(".edui-toolbar").width(width);
-	$(".edui-btn-toolbar").width($("#item").width());
-	$("#editor").width($("#item").width());
-}
-
     </script>
 	</body>
 </html>

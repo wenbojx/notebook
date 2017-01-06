@@ -22,11 +22,15 @@ img{
 	padding: 0;
 }
 
+.content{
+	width: 800px;
+	margin: 0 auto;
+}
 
-.float-left{
+.f_left{
 	float: left;
 }
-.float-right{
+.f_right{
 	float: right;
 }
 
@@ -35,18 +39,19 @@ img{
 	height: 40px;
 	z-index: 999;
 }
-.header .item{
-	width: 800px;
-	margin: 0 auto;
+.header .title{
+
 }
 .header .setting{
-	margin: 0 300px 0 0;
 	width: 100px;
 	-webkit-app-region: no-drag;
 }
 .header .title, .header .setting{
 	height: 40px;
 	line-height: 40px;
+}
+.edui-editor-body .edui-body-container{
+	padding: 0 10px 0 0;
 }
 
 .footer{

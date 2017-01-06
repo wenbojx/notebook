@@ -8,11 +8,10 @@ var fullscreen = null;
 var bid = 0;
 
 ipcMain.on('fullScreen', function(event, datas) {
-	console.log("111");
 	common.log("fullScreen!");
 	bid = datas.bid;
 	fullScreenWin = BrowserWindow.getFocusedWindow();
-	//fullScreenWin.setFullScreen(true);
+	fullScreenWin.setFullScreen(true);
 	fullScreenWin.loadURL(path.join('file://', global.APP_PATH, '/pages/fullScreen.html'));
 })
 
