@@ -12,7 +12,7 @@ ipcMain.on('fullScreen', function(event, datas) {
 	bid = datas.bid;
 	fullScreenWin = BrowserWindow.getFocusedWindow();
 	fullScreenWin.setFullScreen(true);
-	fullScreenWin.loadURL(path.join('file://', global.APP_PATH, '/pages/fullScreen.html'));
+	fullScreenWin.loadURL(path.join('file://', global.APP_PATH, '/pages/book/fullScreen.html'));
 })
 
 ipcMain.on('exitFullScreen', function(event, datas){

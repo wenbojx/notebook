@@ -54,8 +54,12 @@
 <script type="text/javascript">
 	window.onload = function() {  
 		//加载书架页
-		var loadpage = "pages/home.html";
-		loadPage(loadpage);
+		var loadpage = "pages/home/home.html";
+		var callBackLoadPage = function (result){
+			$("#content").html(result);
+		}
+		loadPage(loadpage, callBackLoadPage);
+		
 	}
 
 </script>

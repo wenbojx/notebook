@@ -1,0 +1,33 @@
+<div class="book_content" id="book_content">
+	<div class="left_bar f_l" id="left_bar">
+		<ul>
+			<li class="book" id="book_book" title="书"><img id="book_book_pic" src="assets/default/img/bookpic.jpg"></li>
+			<li class="chapter" id="bar_chapter" title="卷/章"></li>
+			<li class="share" id="bar_share" title="分享"></li>
+			<li class="delete" id="bar_delete" title="回收站"></li>
+			<li class="synchro" id="bar_synchro"><img src="assets/default/img/Anmy_Sync.gif"></li>
+		</ul>
+	</div>
+	<div id="work_space">
+		<div class="left_column f_l" id="left_column">
+			
+		</div>
+		<div class="right_column f_r" id="right_column">
+		</div>
+	</div>
+</div>
+<!--
+<script src="./script/book.js"></script>
+-->
+<script src="./renderer-process/book/book.js"></script>
+<script type="text/javascript">
+
+chapterListInit();
+bindAction_book();
+/*
+window.onresize = function(){
+	//resetHeight();
+	//resetWidth(true);
+}
+*/
+</script>

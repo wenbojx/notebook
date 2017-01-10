@@ -1,0 +1,31 @@
+<div class="edit_colume" id="edit_colume">
+				<div class="edit_head" id="edit_head">
+				    <li class="title f_l">
+				    		<input type="text" name="chapter_title" class="chapter_title" id="chapter_title" value="">
+				    		<input type="hidden" name="chapter_id" value="" id="chapter_id">
+				    </li>
+				    <li class="setting f_r">
+				    	<a class="full_screen" href="javascript:void(0)" onclick="fullScreen()"></a>
+				    </li>
+				</div>
+				<div class="editer_area" id="editer_area">
+					<script type="text/plain" id="editor" class="editor" style="width:400px;height:200px;"></script>
+				</div>
+			</div>
+			<div class="edit_foot" id="edit_foot"></div>
+			
+<script src="./renderer-process/book/editor.js"></script>
+<script type="text/javascript">
+initEditor("editor");
+resetHeight_editor();
+resetWidth_editor(true);
+timer();
+
+$(window).resize(
+	function(){
+		resetHeight_editor();
+		resetWidth_editor(true);
+	}
+)
+
+</script>

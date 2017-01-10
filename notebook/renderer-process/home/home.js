@@ -29,6 +29,9 @@ function callBackGetBookList(datas) {
 }
 function loadBookPage(b_id){
 	bid = b_id;
-	var loadpage = "pages/book.html";
-	loadPage(loadpage);
+	var loadpage = "pages/book/book.html";
+	loadPage(loadpage, callBackLoadPage);
+	function callBackLoadPage(result){
+		$("#content").html(result);
+	}
 }
