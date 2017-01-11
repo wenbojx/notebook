@@ -68,6 +68,19 @@ book.getChapterList = function (bid){
 	//console.log(datas);
 	return datas;
 }
+//获取已删除章节
+book.getDeleteChapterList = function (bid){
+	common.log("getChapterList"+bid);
+	if (!bid) {return false;}
+	book.initBookDb();
+	var sql = "SELECT * FROM chapter WHERE bid = "+bid+" AND status=2 order by id asc";
+	//console.log(sql);
+	var res = db.exec(sql);
+	var datas = common.convertDb(res);
+	//console.log(datas);
+	return datas;
+}
+
 book.getChapterContent = function (cid){
 	common.log("getChapterContent"+cid);
 	if (!cid) {

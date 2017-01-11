@@ -41,6 +41,10 @@ function creatChapterIPC(datas){
 function deleteChapterIPC(datas){
 	ipcRenderer.send('deleteChapter', datas);
 }
+function getDeleteChapterListIpc(bid){
+	ipcRenderer.send('getDeleteChapterList', bid);
+}
+
 /*
 function loadBookPageIpc(datas){
 	ipcRenderer.send('getBookList', datas);
