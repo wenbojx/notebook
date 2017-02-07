@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="./assets/default/css/main.css"/>
-    
     
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-    <script src="./script/plugs/jquery-3.0.0.min.js"></script>
-	<script src="./renderer-process/core.js"></script>
+    <script src="/assets/script/jquery-3.0.0.min.js"></script>
     <title>Title</title>
 </head>
 <body>
@@ -18,10 +15,9 @@
 
 <script type="text/javascript">
 const ipcRenderer = require('electron').ipcRenderer;
-	$("#qqLogin").click(function(){
-		ipcRenderer.send('qqLogin', null);
-	})
+    $("#qqLogin").click(function(){
+        ipcRenderer.send('qqLogin', null);
+    })
 </script>
 </body>
 </html>
-

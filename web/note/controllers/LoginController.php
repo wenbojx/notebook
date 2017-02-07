@@ -23,10 +23,30 @@ class LoginController extends YController
      *
      * @return string
      */
-    public function actionLogin()
+    public function actionDesktoplogin()
     {
 
-        return $this->render('login');
+        return $this->render('desktopLogin');
+
+    }
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionLoginbridge()
+    {
+
+        $type = Yii::$app->request->get('type');
+        switch ($type) {
+            case 'qq':
+                $url = Yii::$app->params['qqLoginUrl'];
+                header("Location:$url");
+                break;
+            case 'weixin':
+                echo 'error';
+                break;
+        }
 
     }
 

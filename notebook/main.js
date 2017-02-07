@@ -61,7 +61,7 @@ function initialize () {
     createWindow()
     autoUpdater.initialize()
     global.COMMON.checkLogin(loginSucess, loginFail)
-
+    //global.COMMON.checkLogin(loginFail, loginFail)
   })
 
   app.on('window-all-closed', function () {
@@ -84,7 +84,7 @@ function loginSucess(){
 }
 function loginFail(){
   console.log('loginFail')
-  mainWindow.loadURL(path.join('file://', __dirname, '/login.html'))
+  mainWindow.loadURL('http://www.yiluhao.com/login/desktoplogin/')
 }
 // Make this app a single instance app.
 //

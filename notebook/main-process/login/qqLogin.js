@@ -16,19 +16,18 @@ ipcMain.on('qqLogin', function(event, datas) {
 		      	width: 800,
 		      	minWidth: 600,
 		      	height: 600,
-		      	title:'QQ登录',
+		      	title:'登录',
 		      	autoHideMenuBar: true,
 		    }
 		    winOptions.modal = true;
 
 			childWin = new BrowserWindow(winOptions)
-			childWin.loadURL('http://www.yiluhao.com/login')
+			childWin.loadURL('http://www.yiluhao.com/login/loginbridge?type=qq')
 			childWin.webContents.openDevTools()
 			childWin.once('ready-to-show', () => {
 			  childWin.show()
 			})
-		}
-            
+		}  
     })
 });
 function loginSucess(){
