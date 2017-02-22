@@ -220,7 +220,7 @@ img{
 	position: relative;
 }
 .head_line .sort_list, .head_line .head_line_create{
-	margin: 0 0 0 20px;
+	margin: 0 0 0 10px;
 	height: 50px;
 	line-height: 50px;
 	display: inline-block;
@@ -266,6 +266,16 @@ img{
 	margin: 17px 20px 0 0;
 	background:transparent url(../img/Btn_View_List.png) no-repeat scroll 0px 0px;
 }
+.head_line .chapter_search{
+	
+}
+.head_line .chapter_search input{
+	border: 0px;
+	width: 150px;
+	height: 22px;
+	border: 1px solid #cccccc;
+}
+
 .chapter_colume{
 	position: relative;
 }
@@ -342,7 +352,7 @@ img{
 	top: 80px;
 	border: 1px solid #4595e6;
 	width: 140px;
-	height: 155px;
+	height: 215px;
 	background-color: white;
 	z-index: 1000;
 	display: none;

@@ -4,7 +4,7 @@ function resetHeight_chapterList(){
 	var chapterListHeight = noteContentHeight - $("#chapter_head").height();
 	$("#chapter_list_box").height(chapterListHeight);
 	//$("#left_column").height(noteContentHeight);
-	console.log(noteContentHeight);
+	//console.log(noteContentHeight);
 }
 
 
@@ -62,8 +62,8 @@ function callBackGetChapterList(datas){
 }
 
 function sortArray(data){
-    var next=0,result=[],id_arr=[];//photo_id_arr保存所有的photo_id
-	data.sort(function(a,b){//排序只是为了保证data[0]取到的是链表的头元素
+    var next=0,result=[],id_arr=[];
+	data.sort(function(a,b){
 		return a.pre-b.pre;
 	});
 	for (i in data) {
@@ -153,6 +153,10 @@ function bindRightClick(){
 	})
 	$("#create_dagang_id").click(function(e){
 		
+	})
+	$("#rename_chapter_id").click(function(e){
+		//console.log(e);
+		renameChapter(e);
 	})
 	$("#flash_chapter_list").click(function(e){
 		createNodeFlag = false;
@@ -310,6 +314,9 @@ function createChapterAction(){
 	datas.type = 2;
 	datas.title = $("#chapter_name_input").val();
 	creatChapter(datas);
+}
+function renameChapter(e){
+	console.log(e);
 }
 function delete_chapter(e){
 	console.log(right_click_child_id);

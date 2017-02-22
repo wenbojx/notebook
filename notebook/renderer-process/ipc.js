@@ -41,8 +41,22 @@ function creatChapterIPC(datas){
 function deleteChapterIPC(datas){
 	ipcRenderer.send('deleteChapter', datas);
 }
-function getDeleteChapterListIpc(bid){
-	ipcRenderer.send('getDeleteChapterList', bid);
+
+function getShareChapterListIpc(bid){
+	ipcRenderer.send('getShareChapterListIpc', bid);
+}
+function getDeleteChapterListIpc(datas){
+	ipcRenderer.send('getDeleteChapterList', datas);
+}
+
+function deleteDeleteChapterIPC(datas){
+	ipcRenderer.send('deleteDeleteChapter', datas);
+}
+function deleteRestoreChapterIPC(datas){
+	ipcRenderer.send('deleteRestoreChapter', datas);
+}
+function deleteCleanChapterIPC(datas){
+	ipcRenderer.send('deleteCleanChapter', datas);
 }
 
 /*

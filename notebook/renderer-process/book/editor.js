@@ -27,6 +27,15 @@ function fullScreen(){
 	fullScreenIpc(datas);
 }
 
+function bindEditorAction(){
+	$("#chapter_title").change(function(){
+		console.log("change");
+		var id = $("#chapter_id").val();
+		var value = $("#chapter_title").val();
+		$("#node_text_"+id).html(value);
+		
+	})
+}
 
 function initEditor(editor){
 	UM.delEditor(editor);
@@ -88,15 +97,18 @@ function autoSave(){
 }
 //保存内容
 var lastContent = null;
+var lastTitle = null;
 function saveContent(editor, datas){
 	var content = UM.getEditor(editor).getContent();
-  	if (content != lastContent) {
+	var title = $("#chapter_title").val();
+  	if (content != lastContent || title != lastTitle) {
 	  	datas.content = content;
-	  	datas.title = $("#chapter_title").val();
+	  	datas.title = title;
 	  	datas.cid = $("#chapter_id").val();
 	  	datas.countword = getWords('editor');
 	  	console.log(datas);
 	  	saveChapterContent(datas);
 	  	lastContent = content;
+	  	lastTitle = title;
 	}
 }

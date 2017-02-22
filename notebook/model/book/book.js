@@ -69,12 +69,12 @@ book.getChapterList = function (bid){
 	return datas;
 }
 //获取已删除章节
-book.getDeleteChapterList = function (bid){
-	common.log("getChapterList"+bid);
-	if (!bid) {return false;}
+book.getDeleteChapterList = function (datas){
+	if (!datas.bid) {return false;}
+	common.log("getDeleteChapterList"+datas.bid);
 	book.initBookDb();
-	var sql = "SELECT * FROM chapter WHERE bid = "+bid+" AND status=2 order by id asc";
-	//console.log(sql);
+	var sql = "SELECT * FROM chapter WHERE bid = "+datas.bid+" AND status=2 order by updatetime "+datas.sort;
+	console.log(sql);
 	var res = db.exec(sql);
 	var datas = common.convertDb(res);
 	//console.log(datas);
@@ -96,7 +96,7 @@ book.getChapterInfo = function (id){
 	book.initBookDb();
 	var res = db.exec("SELECT * FROM chapter WHERE id="+id+" limit 1");
 	var datas = common.convertDb(res);
-	common.log(datas[0]);
+	//common.log(datas[0]);
 	return datas[0];
 }
 //获取insert后的id
@@ -126,7 +126,8 @@ book.updatChapter = function(cid, datas, saveflag){
 		}
 	}
 
-	sql = sql.substring(0, sql.length-1);
+	//sql = sql.substring(0, sql.length-1);
+	sql += "updatetime = "+Date.now();
 	sql += " where id="+cid;
 	common.log(sql);
 	var res = db.run(sql);
@@ -160,7 +161,75 @@ book.deleteChapter = function(id){
 		book.updatChapter(chapterInfo['next'], nextData, true);
 	}
 }
+//永久删除
+book.deleteDeleteChapter = function(datas){
+	common.log("deleteDeleteChapter");
+	if(!datas.id){
+		return;
+	}
+	var data = {}
+	data.status = 4;
+	book.updatChapter(datas.id, data, true);
+}
+//恢复章节
+book.deleteRestoreChapter = function (datas){
+	common.log("deleteRestoreChapter");
+	if(!datas.id){
+		return;
+	}
+	var id = datas.id;
+	//更新前后排序，排序在最末端
+	//获取章节信息
+	var chapterDatas = book.getChapterInfo(id);
+	//根目录章节直接恢复
+	if (!chapterDatas) {
+		return;
+	}
+	var fid = chapterDatas.fid;
+	var bid = chapterDatas.bid;
+	var lastChapter = book.getSameLevelLastChapter(bid, fid);
+	if (!lastChapter) {
+		return false;
+	}
+	//common.log(lastChapter);
+	var lid = lastChapter.id;
+	//common.log(lid+"-");
+	var data = {};
+	data.next = id;
+	
+	common.log(data);
+	book.updatChapter(lid, data, true);
 
+	var updateData = {}
+	updateData.status = 1;
+	updateData.next = 0;
+	updateData.pre = lid;
+	book.updatChapter(id, updateData, true);
+	return true;
+}
+// 获取同级别排序最后的章节
+book.getSameLevelLastChapter = function(bid,fid){
+	book.initBookDb();
+	var sql = "SELECT * FROM chapter WHERE bid="+bid+" and fid="+fid+" and next=0 and status=1 limit 1";
+	var res = db.exec(sql);
+	common.log(sql);
+	var datas = common.convertDb(res);
+	//common.log(datas[0]);
+	return datas[0];
+}
+//清空回收站
+book.deleteCleanChapter = function(datas){
+	if (!datas.bid) {
+		return;
+	}
+	var sql = "UPDATE chapter SET status = 4 where bid=" + datas.bid + " and status = 2";
+	common.log(sql);
+	var res = db.run(sql);
+	if (!res) {
+		return false;
+	}
+	book.saveDb();
+}
 book.saveChapterContent = function(datas){
 	common.log("saveChapterContent");
 	if (datas == null || datas.cid == null || datas.cid==''){

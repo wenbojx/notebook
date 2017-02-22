@@ -2,15 +2,9 @@
 				<div class="chapter_head" id="chapter_head">
 					<ul class="head_line">
 		    			<li class="head_line_create">
-		    				<a href="#" id="create_node">
-		    					<span class="create_node"></span>
-		    					<span class="create_txt">新建</span>
-		    				</a>
-		    				<ul class="creat_node_box" id="creat_node_box">
-		    					<li id="create_volume">新建卷</li>
-		    					<li id="create_chapter">新建章</li>
-		    					<li id="create_dagang">新建大纲</li>
-		    				</ul>
+		    				<div class="chapter_search f_l">
+		    					<input type="text" name="search" />
+		    				</div>
 		    			</li>
 		    			<li class="sort_list f_r">
 			    			<a href="#"><span class="sort_node"></span></a>
@@ -22,21 +16,14 @@
 						<div class="chapter_list" id="chapter_list">
 						</div>
 					</div>
-					<div class="right_click_column" id="right_click_column">
-						<li id="create_dagang_id">新建大纲</li>
-		    			<li id="create_chapter_id">新建章</li>
-						<li id="create_volume_id">新建卷</li>
-		    			<li id="delete_chapter">删除</li>
-		    			<li id="share_chapter_id">分享</li>
-		    			<li id="flash_chapter_list">刷新</li>
-					</div>
 				</div>
 			</div>
 
 <script src="./renderer-process/book/chapterList.js"></script>
 <script type="text/javascript">
+
+getShareChapterListIpc(bid);
 /*
-getChapterListIpc(bid);
 resetHeight_chapterList();
 bindAction_chapterList();
 $(window).resize(
@@ -45,5 +32,6 @@ $(window).resize(
 	}
 )
 */
+
 
 </script>
