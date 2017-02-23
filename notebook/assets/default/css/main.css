@@ -406,6 +406,8 @@ img{
 }
 
 .edit_foot{
-	height: 32px;
+	height: 28px;
 	border-top: 1px solid rgb(238, 238, 238);
+	line-height: 26px;
+	padding-left: 10px;
 }

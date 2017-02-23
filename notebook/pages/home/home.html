@@ -6,6 +6,9 @@
 <script type="text/javascript">
 	var page = getQueryString("page");
 	var bid = getQueryString("bid");
+	var cid = getQueryString("cid");
+	setCurrentCid(cid);
+	//setCurrentBid(bid);
 	console.log(page+"-"+bid);
 	if (page == null) {
 		getBookListIpc(null);

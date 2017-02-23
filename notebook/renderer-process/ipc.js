@@ -10,8 +10,8 @@ function closeWindowIpc(){
 function restoreWindowIpc(){
 	ipcRenderer.send('restoreWindow', null);
 }
-function exitFullScreenIpc(){
-	ipcRenderer.send('exitFullScreen', true);
+function exitFullScreenIpc(cid){
+	ipcRenderer.send('exitFullScreen', cid);
 }
 /************** 全屏模式 start ********************/
 function fullScreenIpc(datas){
@@ -25,6 +25,9 @@ function getBookInfoIpc(bid){
 }
 function getChapterListIpc(bid){
 	ipcRenderer.send('getChapterList', bid);
+}
+function getChapterInfoIpc(cid){
+	ipcRenderer.send('getChapterInfo', cid);
 }
 function getChapterContentIpc(cid){
 	ipcRenderer.send('getChapterContent', cid);

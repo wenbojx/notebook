@@ -10,15 +10,16 @@ var bid = 0;
 ipcMain.on('fullScreen', function(event, datas) {
 	common.log("fullScreen!");
 	bid = datas.bid;
+  cid = datas.cid;
 	fullScreenWin = BrowserWindow.getFocusedWindow();
 	fullScreenWin.setFullScreen(true);
-	fullScreenWin.loadURL(path.join('file://', global.APP_PATH, '/pages/book/fullScreen.html'));
+	fullScreenWin.loadURL(path.join('file://', global.APP_PATH, '/pages/book/fullScreen.html?bid='+bid+'&cid='+cid));
 })
 
 ipcMain.on('exitFullScreen', function(event, datas){
   common.log("exitFullScreen!");
   fullScreenWin.setFullScreen(false);
-  fullScreenWin.loadURL(path.join('file://', global.APP_PATH, '/index.html?page=book&bid='+bid));
+  fullScreenWin.loadURL(path.join('file://', global.APP_PATH, '/index.html?page=book&bid='+bid+'&cid='+cid));
 })
 
 /********** 全屏 **************/

@@ -33,7 +33,13 @@ function bindEditorAction(){
 		var id = $("#chapter_id").val();
 		var value = $("#chapter_title").val();
 		$("#node_text_"+id).html(value);
-		
+		var node = "#chapter_node_"+id;
+		if($(node).length && $(node).length>0){
+			$(node).attr('d-title', value);
+		}
+		else{
+			$("#chapter_child_li_"+id).attr('d-title', value);
+		}
 	})
 }
 
@@ -56,7 +62,6 @@ function initEditor(editor){
             initialFrameHeight:300
             //更多其他参数，请参考umeditor.config.js中的配置项
        });
-	console.log(123);
 	initScrollbar('editor');
 }
 function setEditorContent(content){
@@ -101,14 +106,19 @@ var lastTitle = null;
 function saveContent(editor, datas){
 	var content = UM.getEditor(editor).getContent();
 	var title = $("#chapter_title").val();
+
   	if (content != lastContent || title != lastTitle) {
 	  	datas.content = content;
 	  	datas.title = title;
 	  	datas.cid = $("#chapter_id").val();
-	  	datas.countword = getWords('editor');
+	  	datas.countword = getWords(editor);
 	  	console.log(datas);
 	  	saveChapterContent(datas);
 	  	lastContent = content;
 	  	lastTitle = title;
 	}
+}
+
+function saveChapterContent(datas){
+	saveChapterContentIPC(datas);
 }

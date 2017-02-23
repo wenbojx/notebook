@@ -38,9 +38,10 @@ img{
 	position: relative;
 	height: 40px;
 	z-index: 999;
+	margin:5px 0 0 0;
 }
 .header .title{
-
+	width: 450px;
 }
 .header .setting{
 	width: 100px;
@@ -50,13 +51,22 @@ img{
 	height: 40px;
 	line-height: 40px;
 }
+.chapter_title {
+	height: 35px;
+	width: 100%;
+	border:0px solid #c00;
+	padding: 4px 5px;
+	font-size:20px;
+	font-weight: border; 
+}
 .edui-editor-body .edui-body-container{
 	padding: 0 10px 0 0;
 }
 
 .footer{
-	width: 800px;
-	margin: 0 auto;
-	height: 30px;
+	width: 100%;
+	height: 28px;
 	border-top: 1px solid #F8F8F8;
+	line-height: 26px;
+	padding-left: 10px;
 }

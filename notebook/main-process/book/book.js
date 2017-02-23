@@ -24,6 +24,12 @@ ipcMain.on('getChapterList', function(event, bid) {
 	//common.log(datas);
 	BrowserWindow.getFocusedWindow().webContents.send('getChapterList', datas);
 });
+ipcMain.on('getChapterInfo', function(event, cid) {
+	common.log("getChapterInfo");
+	var datas = book.getChapterInfo(cid);
+	//common.log(datas);
+	BrowserWindow.getFocusedWindow().webContents.send('getChapterInfo', datas);
+});
 ipcMain.on('getChapterContent', function(event, cid) {
 	common.log("getChapterContent");
 	var datas = book.getChapterContent(cid);
@@ -49,3 +55,4 @@ ipcMain.on('deleteChapter', function(event, datas) {
 	var datas = book.deleteChapter(datas.id);
 	BrowserWindow.getFocusedWindow().webContents.send('deleteChapter', datas);
 });
+

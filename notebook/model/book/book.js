@@ -92,9 +92,9 @@ book.getChapterContent = function (cid){
 	return datas[0];
 }
 //获取单章信息
-book.getChapterInfo = function (id){
+book.getChapterInfo = function (cid){
 	book.initBookDb();
-	var res = db.exec("SELECT * FROM chapter WHERE id="+id+" limit 1");
+	var res = db.exec("SELECT * FROM chapter WHERE id="+cid+" limit 1");
 	var datas = common.convertDb(res);
 	//common.log(datas[0]);
 	return datas[0];

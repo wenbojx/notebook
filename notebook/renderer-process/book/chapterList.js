@@ -6,7 +6,9 @@ function resetHeight_chapterList(){
 	//$("#left_column").height(noteContentHeight);
 	//console.log(noteContentHeight);
 }
-
+//默认选中的章节
+//var defaultChapterId = 186;
+//var defaultChapterDatas = null;
 
 ipcRenderer.on('getChapterList', function(event, datas) {
 	callBackGetChapterList(datas);
@@ -32,6 +34,7 @@ function callBackGetChapterList(datas){
 		string += '<i></i><span class="node_text" id="node_text_'+node['id']+'">'+node['title']+'</span></li>';
 		string += '</div>';
 		$("#chapter_list").append(string);
+		defaultSelectItem(node, false);
 		//绑定事件
 		//$('#chapter_node_'+node['id']).bind("click", {}, nodeClickHandler);
 		$('#chapter_node_'+node['id']).mousedown(function(e) {
@@ -50,15 +53,38 @@ function callBackGetChapterList(datas){
 				string += 'd-fid="'+childNode['fid']+'" d-type="'+childNode['type']+'">';
 				string += '<i></i><span class="node_text" id="node_text_'+childNode['id']+'">'+childNode['title']+'</span></li>';
 
-				$('#chapter_child_'+node['id']).append(string);
-				//$('#chapter_child_li_'+childNode['id']).bind("click", {}, childClickHandler);  
+				$('#chapter_child_'+node['id']).append(string); 
 				$('#chapter_child_li_'+childNode['id']).mousedown(function(e) {
 					clickHandler(e);
 				})
+				defaultSelectItem(childNode, true);
 			}
 		}
 	}
 	initScrollbar('chapter_list_box');
+}
+//child是否子节点
+function defaultSelectItem(datas, child){
+	var id = datas['id'];
+	var title = datas['title'];
+	var defaultChapterId = getCurrentCid();
+	if (defaultChapterId == 0 || defaultChapterId !=id) {
+		return;
+	}
+	var node = "";
+	if (child) {
+		node = "chapter_child_li_" + id;
+		$("#chapter_child_" + datas.fid).show();
+	}
+	else{
+		node = "chapter_node_" + id;
+	}
+	$("#"+node).addClass("selected");
+	lastClickNode = node;
+
+	//defaultChapterDatas = datas;
+	childClickHandler(id, title);
+	return true
 }
 
 function sortArray(data){
@@ -70,7 +96,7 @@ function sortArray(data){
 		id_arr.push(data[i].id);
 	}
 	
-	while(next!=-1){//如果元素的next(即下一个photo_id)在photo_id_arr中存在
+	while(next!=-1){
 		var cur=data[next];
 		result.push(cur);
 		next=id_arr.indexOf(cur.next);
@@ -358,18 +384,15 @@ function clickHandler(e){
 		var type = $(e.currentTarget).attr("d-type");
 	    if (1 == e.which) {
 	    	//console.log(e);
-	    	
 			var title = $(e.currentTarget).attr("d-title");
-			//console.log(fid+type+title);
 			if ((fid=="0" && type=="2") || (fid!="0" && type=="2")) {
 				childClickHandler(id, title);
 			}
 			else{
 				nodeClickHandler(id);
 			}
-			//添加选中效果
-			//addSelectClass(e.currentTarget.id);
-			//return;
+			//defaultChapterId = id;
+			setCurrentCid(id);
 
 	    } else if (3 == e.which) {
 	        //右键为3
@@ -399,15 +422,15 @@ function rightClickAction(e){
 	$("#right_click_column").css('top',y+"px");
 	$("#right_click_column").show();
 }
-var lastNode = ''; //上一个点击的元素
+var lastClickNode = ''; //上一个点击的元素
 //var currentNode = '';//当前元素
 function addSelectClass(node){
 	if (!node) {return false;} 
-	if (lastNode) {
-		$("#"+lastNode).removeClass("selected");
+	if (lastClickNode) {
+		$("#"+lastClickNode).removeClass("selected");
 	}
 	$("#"+node).addClass("selected");
-	lastNode = node;
+	lastClickNode = node;
 }
 
 /*******************************/
@@ -422,9 +445,7 @@ function callBackGetChapterContent(datas){
 	setEditorContent(content);
 }
 ////////////////////////////////////////////////////
-function saveChapterContent(datas){
-	saveChapterContentIPC(datas);
-}
+
 ipcRenderer.on('saveChapterContent', function(event, datas) {
 	callBackSaveChapterContent(datas);
 });
@@ -437,7 +458,9 @@ function creatVolume(datas){
 	creatVolumeIPC(datas);
 }
 ipcRenderer.on('creatVolume', function(event, datas) {
-	callBackCreatVolume(datas);
+	callBackCreatVolume();
+	setCurrentCid(datas);
+	//console.log(datas);
 });
 function callBackCreatVolume(){
 	getChapterListIpc(bid);
@@ -448,6 +471,8 @@ function creatChapter(datas){
 }
 ipcRenderer.on('creatChapter', function(event, datas) {
 	callBackcreatChapter(datas);
+	console.log(datas);
+	setCurrentCid(datas);
 });
 function callBackcreatChapter(datas){
 	getChapterListIpc(bid);
