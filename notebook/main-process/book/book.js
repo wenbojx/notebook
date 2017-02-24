@@ -55,4 +55,8 @@ ipcMain.on('deleteChapter', function(event, datas) {
 	var datas = book.deleteChapter(datas.id);
 	BrowserWindow.getFocusedWindow().webContents.send('deleteChapter', datas);
 });
-
+ipcMain.on('renameChapter', function(event, datas) {
+	common.log("renameChapter");
+	var datas = book.renameChapter(datas);
+	BrowserWindow.getFocusedWindow().webContents.send('renameChapter', datas);
+});

@@ -54,7 +54,7 @@ function callBackGetDeleteChapterList(datas){
 		}
 		string = '';
 		string += '<div class="'+ className + '" d-id="'+node['id']+'">';
-		
+		node['title'] = subString(node['title'], 20, "...");
 		string += '<li id="chapter_node_'+node['id']+'" d-id="'+node['id']+'" d-title="'+node['title']+'" d-fid="'+node['fid']+'" d-type="'+node['type']+'">';
 		string += '<i></i><span class="node_text" id="node_text_'+node['id']+'">'+node['title']+'</span></li>';
 		string += '</div>';

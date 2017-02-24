@@ -55,7 +55,31 @@ function getQueryString(name) {
 	var r = window.location.search.substr(1).match(reg); 
 	if (r != null) return unescape(r[2]); return null; 
 }
-/************** 全屏模式 start ********************/
+
+//处理字符长度
+function subString(str, len, addString){
+	var newLength = 0; 
+        var newStr = ""; 
+        var chineseRegex = /[^\x00-\xff]/g; 
+        var singleChar = ""; 
+        var strLength = str.replace(chineseRegex,"**").length; 
+        for(var i = 0;i < strLength;i++) { 
+                singleChar = str.charAt(i).toString(); 
+                if(singleChar.match(chineseRegex) != null) { 
+                        newLength += 2; 
+                }else { 
+                        newLength++; 
+                } 
+                if(newLength > len) { 
+                        break; 
+                } 
+                newStr += singleChar; 
+        } 
+        if(strLength > len) { 
+                newStr += addString; 
+        } 
+        return newStr; 
+}
 
 
 

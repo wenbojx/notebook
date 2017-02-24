@@ -27,11 +27,12 @@ function callBackGetChapterList(datas){
 		if (node['type'] != 1) {
 			className = 'chapter';
 		}
+		var showTitle = subString(node['title'], 20, "...");
 		string = '';
 		string += '<div class="'+ className + '" d-id="'+node['id']+'">';
 		
 		string += '<li id="chapter_node_'+node['id']+'" d-id="'+node['id']+'" d-title="'+node['title']+'" d-fid="'+node['fid']+'" d-type="'+node['type']+'">';
-		string += '<i></i><span class="node_text" id="node_text_'+node['id']+'">'+node['title']+'</span></li>';
+		string += '<i></i><span class="node_text" id="node_text_'+node['id']+'">'+showTitle+'</span></li>';
 		string += '</div>';
 		$("#chapter_list").append(string);
 		defaultSelectItem(node, false);
@@ -51,7 +52,8 @@ function callBackGetChapterList(datas){
 				string = '<li id="chapter_child_li_'+childNode['id']+'" ';
 				string += 'd-id="'+childNode['id']+'" d-title="'+childNode['title']+'" ';
 				string += 'd-fid="'+childNode['fid']+'" d-type="'+childNode['type']+'">';
-				string += '<i></i><span class="node_text" id="node_text_'+childNode['id']+'">'+childNode['title']+'</span></li>';
+				showTitle = subString(childNode['title'], 20, "...");
+				string += '<i></i><span class="node_text" id="node_text_'+childNode['id']+'">'+showTitle+'</span></li>';
 
 				$('#chapter_child_'+node['id']).append(string); 
 				$('#chapter_child_li_'+childNode['id']).mousedown(function(e) {
@@ -63,6 +65,8 @@ function callBackGetChapterList(datas){
 	}
 	initScrollbar('chapter_list_box');
 }
+
+
 //child是否子节点
 function defaultSelectItem(datas, child){
 	var id = datas['id'];
@@ -161,10 +165,12 @@ function bindCreatNode(){
 //绑定页面中点击事件
 function bindRightClick(){
 	$("#create_volume").click(function(e){
-
+		createVolume(e);
+		$("#creat_node_box").hide();
 	})
 	$("#create_chapter").click(function(e){
-		
+		createChapter(e);
+		$("#creat_node_box").hide();
 	})
 	$("#create_dagang").click(function(e){
 		
@@ -211,16 +217,26 @@ function hideRightClickClumn(){
 /************* 创建动作 *******************/
 var createNodeFlag = false;
 function createVolume(e){
-	//console.log(e);
+	var clickNode = '';
+	if (right_click_child_id != "") {
+		clickNode = right_click_child_id;
+	}
+	else if (left_click_child_id  != "" ) {
+		clickNode = left_click_child_id;
+	}
+	else{
+		clickNode = 'chapter_list';
+	}
+	console.log("clickNode:"+clickNode);
 	if (createNodeFlag) {
 		return false;
 	}
 	//1根目录  2子章节  3其它
 	var clickType = 3;
-	if (right_click_child_id == 'chapter_list') {
+	if (clickNode == 'chapter_list') {
 		clickType = 1;
 	}
-	var fdStart = right_click_child_id.indexOf("chapter_child_li_");
+	var fdStart = clickNode.indexOf("chapter_child_li_");
 	if (fdStart == 0) {
 		clickType = 2;
 	}
@@ -234,12 +250,11 @@ function createVolume(e){
 		$("#chapter_list").append(string);
 	}
 	else if(clickType == 2){
-		$("#"+right_click_child_id).parent().parent().after(string);
+		$("#"+clickNode).parent().parent().after(string);
 	}
 	else{
-		$("#"+right_click_child_id).parent().after(string);
+		$("#"+clickNode).parent().after(string);
 	}
-	console.log(right_click_child_id);
 	createNodeFlag = true;
 }
 function createVolumeAction(){
@@ -256,22 +271,34 @@ function createVolumeAction(){
 	creatVolume(datas);
 }
 function createChapter(e){
+	var clickNode = '';
+	if (right_click_child_id != "") {
+		clickNode = right_click_child_id;
+	}
+	else if (left_click_child_id  != "" ) {
+		clickNode = left_click_child_id;
+	}
+	else{
+		clickNode = 'chapter_list';
+	}
+	console.log("clickNode:"+clickNode);
+
 	//console.log(e);
 	if (createNodeFlag) {
 		return false;
 	}
 	//1、点击根元素 2、点击根章节  3、点击根卷   4、点击子章节
 	var clickType = 1;
-	var fdStart = right_click_child_id.indexOf("chapter_child_li_");
+	var fdStart = clickNode.indexOf("chapter_child_li_");
 	if (fdStart == 0) {
 		clickType = 4;
 	}
-	if (right_click_child_id == 'chapter_list') {
+	if (clickNode == 'chapter_list') {
 		clickType = 1;
 	}
-	var fvStart = right_click_child_id.indexOf("chapter_node_");
+	var fvStart = clickNode.indexOf("chapter_node_");
 	if (fvStart == 0) {
-		if ($("#"+right_click_child_id).attr('d-type') == 1) {
+		if ($("#"+clickNode).attr('d-type') == 1) {
 			clickType = 3;
 		}
 		else{
@@ -297,18 +324,20 @@ function createChapter(e){
 	//console.log(right_click_child_id);
 	
 	if(clickType == 4){
-	   	var id = $("#"+right_click_child_id).attr('d-id');
+	   	var id = $("#"+clickNode).attr('d-id');
 		$("#chapter_child_li_"+id).after(string);
 	}
 	else if(clickType == 2){
-		$("#"+right_click_child_id).parent().after(string);
+		$("#"+clickNode).parent().after(string);
 	}
 	else if (clickType == 1) {
 		$("#chapter_list").append(string);
 	}
 	else if (clickType == 3){
-		var id = $("#"+right_click_child_id).attr('d-id');
+		var id = $("#"+clickNode).attr('d-id');
 		$('#chapter_child_'+id).append(string);
+		$("#chapter_child_"+id).show();
+
 	}
 	createNodeFlag = true;
 }
@@ -342,8 +371,31 @@ function createChapterAction(){
 	creatChapter(datas);
 }
 function renameChapter(e){
-	console.log(e);
+	var cid = $("#"+right_click_child_id).attr('d-id');
+	var title = $("#"+right_click_child_id).attr('d-title');
+	if (!cid) {
+		return;
+	}
+	var content = '<input type="text" value="'+title+'" name="rename_chapter_title" class="rename_chapter_title" id="rename_chapter_title">';
+	content += '<input type="hidden" value="'+cid+'" name="rename_chapter_id"  id="rename_chapter_id">';
+	var d = dialog({
+	    title: '重命名',
+	    content: content,
+	    okValue: '确定',
+	    ok: function () {
+	    	var datas = {};
+	    	datas.cid = cid;
+	    	datas.title = $("#rename_chapter_title").val();
+	    	renameChapterIPC(datas);
+	    	setCurrentCid(cid);
+	        return true;
+	    },
+	    cancelValue: '取消',
+	    cancel: function () {}
+	});
+	d.showModal();
 }
+
 function delete_chapter(e){
 	console.log(right_click_child_id);
 	//var fvStart = right_click_child_id.indexOf("chapter_child_li");
@@ -376,6 +428,7 @@ function nodeClickHandler(id){
 	}
 	initScrollbar('chapter_list_box');
 }
+var left_click_child_id = '';
 function clickHandler(e){
 	    //console.log(e.which);
 	    //左键为1
@@ -391,6 +444,8 @@ function clickHandler(e){
 			else{
 				nodeClickHandler(id);
 			}
+			left_click_child_id = $(e.currentTarget).attr("id");
+			console.log("left_click_child_id:"+left_click_child_id);
 			//defaultChapterId = id;
 			setCurrentCid(id);
 
@@ -405,6 +460,9 @@ function clickHandler(e){
 var right_click_child_id = '';
 function rightClickAction(e){
 	right_click_child_id = e.target.id;
+	if (!right_click_child_id) {
+		return false;
+	}
 	if (right_click_child_id == "chapter_list_box"){
 		right_click_child_id = "chapter_list";
 	}
@@ -412,7 +470,7 @@ function rightClickAction(e){
 	if (fvStart == 0) {
 		right_click_child_id = $("#"+right_click_child_id).parent().attr("id");
 	}
-	console.log(right_click_child_id);
+	console.log("rightClickAction:"+right_click_child_id);
 	var offset = $("#chapter_box").offset();
 	//console.log(offset);
 	var x = e.clientX - offset.left+5;
@@ -428,6 +486,10 @@ function addSelectClass(node){
 	if (!node) {return false;} 
 	if (lastClickNode) {
 		$("#"+lastClickNode).removeClass("selected");
+	}
+	var fvStart = node.indexOf("node_text_");
+	if (fvStart == 0) {
+		node = $("#"+node).parent().attr("id");
 	}
 	$("#"+node).addClass("selected");
 	lastClickNode = node;
@@ -485,3 +547,7 @@ function callBackDeleteChapter(datas){
 	getChapterListIpc(bid);
 	//createNodeFlag = false;
 }
+
+ipcRenderer.on('renameChapter', function(event, datas) {
+	getChapterListIpc(bid);
+});

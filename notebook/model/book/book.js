@@ -139,6 +139,15 @@ book.updatChapter = function(cid, datas, saveflag){
 	}
 	return true;
 }
+book.renameChapter = function(datas){
+	if (!datas.cid || !datas.title) {
+		return false;
+	}
+	var data = {}
+	data.title = datas.title;
+	book.updatChapter(datas.cid, data, true);
+	return true;
+}
 //删除章节
 book.deleteChapter = function(id){
 	common.log("deleteChapter");

@@ -368,8 +368,9 @@ img{
 	background-color: #f8f8f8;
 }
 
-
-
+.rename_chapter_title{
+	width: 300px;
+}
 
 .right_column{
 	height: 100%;

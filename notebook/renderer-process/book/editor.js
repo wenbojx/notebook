@@ -32,7 +32,8 @@ function bindEditorAction(){
 		console.log("change");
 		var id = $("#chapter_id").val();
 		var value = $("#chapter_title").val();
-		$("#node_text_"+id).html(value);
+		var showValue = subString(value, 20, "...");
+		$("#node_text_"+id).html(showValue);
 		var node = "#chapter_node_"+id;
 		if($(node).length && $(node).length>0){
 			$(node).attr('d-title', value);

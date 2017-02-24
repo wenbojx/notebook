@@ -61,7 +61,9 @@ function deleteRestoreChapterIPC(datas){
 function deleteCleanChapterIPC(datas){
 	ipcRenderer.send('deleteCleanChapter', datas);
 }
-
+function renameChapterIPC(datas){
+	ipcRenderer.send('renameChapter', datas);
+}
 /*
 function loadBookPageIpc(datas){
 	ipcRenderer.send('getBookList', datas);
