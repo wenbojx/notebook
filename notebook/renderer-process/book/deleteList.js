@@ -2,11 +2,19 @@
 function resetHeight_deleteList(){
 	var noteContentHeight = $("body").height() - $("#head").height();
 	var chapterListHeight = noteContentHeight - $("#chapter_head").height();
-	$("#chapter_list_box").height(chapterListHeight);
+	$("#chapter_list_box").height(chapterListHeight-26);
 	//$("#left_column").height(noteContentHeight);
 	console.log(noteContentHeight);
 }
-
+function bindSortNode(){
+	$("#sort_node").click(function(){
+		if($("#sort_node_box").is(":hidden")){
+		    $("#sort_node_box").show();
+		}else{
+		    $("#sort_node_box").hide(); 
+		}
+	})
+}
 
 //绑定页面中点击事件
 function DeleteListBindRightClick(){
@@ -15,6 +23,16 @@ function DeleteListBindRightClick(){
 	        deleteListRightClickAction(e);
 	    }
 	})
+
+	$("#sort_create_asc").click(function(e){
+		sortType = 'asc';
+		getDeleteChapterList();
+	})
+	$("#sort_create_desc").click(function(e){
+		sortType = 'desc';
+		getDeleteChapterList();
+	})
+
 	$("#delete_delete").click(function(e){
 		//console.log(e);
 		deleteDeleteChapter(e);
@@ -28,18 +46,21 @@ function DeleteListBindRightClick(){
 		deleteCleanChapter(e);
 	})
 }
-
+//排序方式
+var sortType = 'desc';
 function getDeleteChapterList(){
 	var datas = {};
 	datas.bid = bid;
-	datas.sort = 'desc';
+	datas.sort = sortType;
 	getDeleteChapterListIpc(datas);
 }
 
 ipcRenderer.on('getDeleteChapterList', function(event, datas) {
 	callBackGetDeleteChapterList(datas);
 });
+var chapterCount = 0;
 function callBackGetDeleteChapterList(datas){
+	chapterCount = 0;
 	if(datas.length < 1){
 		return;
 	}
@@ -59,6 +80,7 @@ function callBackGetDeleteChapterList(datas){
 		string += '<i></i><span class="node_text" id="node_text_'+node['id']+'">'+node['title']+'</span></li>';
 		string += '</div>';
 		$("#chapter_list").append(string);
+		chapterCount++;
 		//绑定事件
 		//$('#chapter_node_'+node['id']).bind("click", {}, nodeClickHandler);
 		$('#chapter_node_'+node['id']).mousedown(function(e) {
@@ -66,6 +88,9 @@ function callBackGetDeleteChapterList(datas){
 		})
 	}
 	initScrollbar('chapter_list_box');
+	var count_string = "总共 "+chapterCount+" 项";
+	$("#chapter_count").html(count_string);
+
 }
 function deleteListClickHandler(e){
 	    //console.log(e.which);

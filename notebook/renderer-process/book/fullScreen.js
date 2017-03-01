@@ -48,7 +48,7 @@ function fullShowWords(){
 function resetHeight(){
 	var height = $("body").height() - $("#edit_head").height() - $("#footer").height() -40;
 	$("#editor").height(height);
-
+	console.log($("body").height());
 }
 //设置宽度
 function resetWidth(){

@@ -2,7 +2,7 @@
 function resetHeight_chapterList(){
 	var noteContentHeight = $("body").height() - $("#head").height();
 	var chapterListHeight = noteContentHeight - $("#chapter_head").height();
-	$("#chapter_list_box").height(chapterListHeight);
+	$("#chapter_list_box").height(chapterListHeight-26);
 	//$("#left_column").height(noteContentHeight);
 	//console.log(noteContentHeight);
 }
@@ -13,11 +13,15 @@ function resetHeight_chapterList(){
 ipcRenderer.on('getChapterList', function(event, datas) {
 	callBackGetChapterList(datas);
 });
+var volumeCount = 0;
+var chapterCount = 0;
 function callBackGetChapterList(datas){
 	if(datas.length < 1){
 		return;
 	}
-	var chapterDatas = sortChaterDatas(datas, "asc");
+	volumeCount = 0;
+	chapterCount = 0;
+	var chapterDatas = sortChaterDatas(datas);
 	var string = "";
 	$("#chapter_list").html("");
 	for (var i in chapterDatas) {
@@ -26,6 +30,10 @@ function callBackGetChapterList(datas){
 		var className = 'volume';
 		if (node['type'] != 1) {
 			className = 'chapter';
+			chapterCount++;
+		}
+		else{
+			volumeCount++;
 		}
 		var showTitle = subString(node['title'], 20, "...");
 		string = '';
@@ -35,6 +43,7 @@ function callBackGetChapterList(datas){
 		string += '<i></i><span class="node_text" id="node_text_'+node['id']+'">'+showTitle+'</span></li>';
 		string += '</div>';
 		$("#chapter_list").append(string);
+		
 		defaultSelectItem(node, false);
 		//绑定事件
 		//$('#chapter_node_'+node['id']).bind("click", {}, nodeClickHandler);
@@ -56,6 +65,7 @@ function callBackGetChapterList(datas){
 				string += '<i></i><span class="node_text" id="node_text_'+childNode['id']+'">'+showTitle+'</span></li>';
 
 				$('#chapter_child_'+node['id']).append(string); 
+				chapterCount++;
 				$('#chapter_child_li_'+childNode['id']).mousedown(function(e) {
 					clickHandler(e);
 				})
@@ -64,6 +74,8 @@ function callBackGetChapterList(datas){
 		}
 	}
 	initScrollbar('chapter_list_box');
+	var count_string = "总共 "+volumeCount+" 卷, "+chapterCount+" 章";
+	$("#chapter_count").html(count_string);
 }
 
 
@@ -90,7 +102,8 @@ function defaultSelectItem(datas, child){
 	childClickHandler(id, title);
 	return true
 }
-
+//排序方式
+var sortType = 'asc';//asc 正序  desc 倒序
 function sortArray(data){
     var next=0,result=[],id_arr=[];
 	data.sort(function(a,b){
@@ -105,9 +118,18 @@ function sortArray(data){
 		result.push(cur);
 		next=id_arr.indexOf(cur.next);
 	}
+	var descDatas = [], j=0;
+	if (sortType == 'desc') {
+		for( i = (result.length-1); i>=0; i--){
+			descDatas[j] = result[i];
+			j++;
+		}
+		result = descDatas;
+	}
+
 	return result;
 }
-function sortChaterDatas(datas, sort){
+function sortChaterDatas(datas){
 	//console.log(datas);
 	var topLevel = new Array();
 	var secendLevel = new Array();
@@ -148,6 +170,7 @@ function sortChaterDatas(datas, sort){
 //绑定事件
 function bindAction_chapterList(){
 	bindCreatNode();
+	bindSortNode();
 	bindRightClick();
 	hideRightClickClumn();
 }
@@ -159,6 +182,15 @@ function bindCreatNode(){
 		    $("#creat_node_box").show();
 		}else{
 		    $("#creat_node_box").hide(); 
+		}
+	})
+}
+function bindSortNode(){
+	$("#sort_node").click(function(){
+		if($("#sort_node_box").is(":hidden")){
+		    $("#sort_node_box").show();
+		}else{
+		    $("#sort_node_box").hide(); 
 		}
 	})
 }
@@ -174,6 +206,16 @@ function bindRightClick(){
 	})
 	$("#create_dagang").click(function(e){
 		
+	})
+	$("#sort_create_asc").click(function(e){
+		sortType = 'asc';
+		getChapterListIpc(bid);
+		$("#sort_node_box").hide();
+	})
+	$("#sort_create_desc").click(function(e){
+		sortType = 'desc';
+		getChapterListIpc(bid);
+		$("#sort_node_box").hide();
 	})
 
 	$("#create_volume_id").click(function(e){
@@ -247,13 +289,29 @@ function createVolume(e){
 	string += '<input type="text" name="volume_name" id="volume_name_input" value="卷名"/>';
 	string += '<img src="assets/default/img/save_datas.png" onclick="createVolumeAction()"/></li></div>';
 	if(clickType == 1){
-		$("#chapter_list").append(string);
+		if (sortType=='asc') {
+			$("#chapter_list").append(string);
+		}
+		else{
+			$("#chapter_list").prepend(string);
+		}
+		
 	}
 	else if(clickType == 2){
-		$("#"+clickNode).parent().parent().after(string);
+		if (sortType=='asc') {
+			$("#"+clickNode).parent().parent().after(string);
+		}
+		else {
+			$("#"+clickNode).parent().parent().before(string);
+		}
 	}
 	else{
-		$("#"+clickNode).parent().after(string);
+		if (sortType=='asc') {
+			$("#"+clickNode).parent().after(string);
+		}
+		else{
+			$("#"+clickNode).parent().before(string);
+		}
 	}
 	createNodeFlag = true;
 }
@@ -261,6 +319,12 @@ function createVolumeAction(){
 	var datas = {};
 	var pre = $("#creatVolumeDiv").prev().attr("d-id");
 	var next = $("#creatVolumeDiv").next().attr("d-id");
+	if (sortType == 'desc') {
+		var ex = '';
+		ex = pre;
+		pre = next;
+		next = ex;
+	}
 	//console.log(pre+"-"+next);
 	datas.pre = pre?pre:0;
 	datas.next = next?next:0;
@@ -325,17 +389,37 @@ function createChapter(e){
 	
 	if(clickType == 4){
 	   	var id = $("#"+clickNode).attr('d-id');
-		$("#chapter_child_li_"+id).after(string);
+	   	if (sortType=='asc') {
+			$("#chapter_child_li_"+id).after(string);
+		}
+		else{
+			$("#chapter_child_li_"+id).before(string);
+		}
 	}
 	else if(clickType == 2){
-		$("#"+clickNode).parent().after(string);
+		if (sortType=='asc') {
+			$("#"+clickNode).parent().after(string);
+		}
+		else{
+			$("#"+clickNode).parent().before(string);
+		}
 	}
 	else if (clickType == 1) {
-		$("#chapter_list").append(string);
+		if (sortType=='asc') {
+			$("#chapter_list").append(string);
+		}
+		else{
+			$("#chapter_list").prepend(string);
+		}
 	}
 	else if (clickType == 3){
 		var id = $("#"+clickNode).attr('d-id');
-		$('#chapter_child_'+id).append(string);
+		if (sortType=='asc') {
+			$('#chapter_child_'+id).append(string);
+		}
+		else {
+			$('#chapter_child_'+id).prepend(string);
+		}
 		$("#chapter_child_"+id).show();
 
 	}
@@ -356,6 +440,12 @@ function createChapterAction(){
 		fid = $("#creatChapterDiv").parent().parent().attr("d-id");
 		pre = $("#creatChapterDiv").prev().attr("d-id");
 		next = $("#creatChapterDiv").next().attr("d-id");
+	}
+	if (sortType == 'desc') {
+		var ex = '';
+		ex = pre;
+		pre = next;
+		next = ex;
 	}
 	console.log(right_click_child_id);
 	var datas = {};

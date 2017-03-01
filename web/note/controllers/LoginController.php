@@ -44,7 +44,7 @@ class LoginController extends YController
                 header("Location:$url");
                 break;
             case 'weixin':
-                echo 'error';
+                echo 'errors';
                 break;
         }
 
@@ -89,6 +89,7 @@ class LoginController extends YController
         $bind_datas = $user_bind_db->getBindByOauthId($open_id);
         $user_info_db = new UserInfo();
         $createtime = time();
+
         //如果没绑定，先绑定
         if(!$bind_datas){
             //注册用户

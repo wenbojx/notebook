@@ -7,7 +7,11 @@
 		    				</div>
 		    			</li>
 		    			<li class="sort_list f_r">
-			    			<a href="#"><span class="sort_node"></span></a>
+			    			<a href="#" id="sort_node"><span class="sort_node"></span></a>
+			    			<ul class="sort_node_box" id="sort_node_box">
+		    					<li id="sort_create_asc">正序</li>
+		    					<li id="sort_create_desc">倒序</li>
+		    				</ul>
 			    		</li>
 		    		</ul>
 				</div>
@@ -16,6 +20,7 @@
 						<div class="chapter_list" id="chapter_list">
 						</div>
 					</div>
+					<div class="chapter_count" id="chapter_count"></div>
 					<div class="right_click_column" style="height: 100px" id="right_click_column">
 						<li id="delete_delete">删除</li>
 		    			<li id="delete_restore">恢复</li>
@@ -29,7 +34,7 @@
 getDeleteChapterList();
 resetHeight_deleteList();
 DeleteListBindRightClick();
-
+bindSortNode();
 /*
 getChapterListIpc(bid);
 resetHeight_chapterList();
