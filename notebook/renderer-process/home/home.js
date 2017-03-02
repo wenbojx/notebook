@@ -7,10 +7,10 @@ ipcRenderer.on('getBookList', function(event, datas) {
 
 
 function callBackGetBookList(datas) {
-	
 	if (datas.length<1) { 
 		return;
 	}
+	$("#home_book_list").html("");
 	$.each(datas,function(i,n){
 		//console.log(n);
 		var string = '<li id="home_book_'+n['id']+'">';

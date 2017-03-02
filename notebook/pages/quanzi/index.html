@@ -1,0 +1,141 @@
+<div class="left" id="left">
+		<ul>
+			<li class="recent"></li>
+			<!--<li class="single"></li>-->
+			<li class="group"></li>
+			<li class="add"></li>
+		</ul>
+	</div>
+	<div class="center" id="center">
+		<div class="search" id="user_search">
+			<div class="input-group">
+		      <input type="text" class="form-control" placeholder="Search for...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">Go!</button>
+		      </span>
+		    </div><!-- /input-group -->
+		</div>
+		<div class="list" id="user_list">
+			<ul>
+				<li class="user-list">
+					<div class="avater"><img src="./img/quanzi/People.png"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"><img src="./img/quanzi/People.png"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"><img src="./img/quanzi/People.png"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"><img src="./img/quanzi/People.png"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"><img src="./img/quanzi/People.png"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"><img src="./img/quanzi/People.png"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"><img src="./img/quanzi/People.png"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"><img src="./img/quanzi/People.png"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="right" id="right">
+		<div class="chat_list" id="chat_list">
+			<ul id="chat_list_ul">
+	
+			</ul>
+		</div>
+		<div class="clear"></div>
+		<div class="chat_input" id="chat_input">
+			<div class="font_style"></div>
+			<div class="textarea">
+				<textarea id="text"></textarea>
+			</div>
+			<div class="submit">
+				<input type="submit" value="发送" onclick="song()">
+			</div>
+		</div>
+	</div>
+<script src="./renderer-process/quanzi/index.js"></script>
+<script type="text/javascript">
+    	resetHeight();
+		resetWidth();
+		initScrollbar();
+    
+  $(window).resize(
+	function(){
+		resetWidth();
+	resetHeight();
+	}
+)
+</script>
+
+<script>
+    var wsServer = 'ws://www.wofu-sh.com:8080';
+    //调用websocket对象建立连接：
+    //参数：ws/wss(加密)：//ip:port （字符串）
+    var websocket = new WebSocket(wsServer);
+    //onopen监听连接打开
+    websocket.onopen = function (evt) {
+        //websocket.readyState 属性：
+        /*
+        CONNECTING    0    The connection is not yet open.
+        OPEN    1    The connection is open and ready to communicate.
+        CLOSING    2    The connection is in the process of closing.
+        CLOSED    3    The connection is closed or couldn't be opened.
+        */
+    };
+
+    function song(){
+        var text = $('#text').val();
+        $('#text').val("");
+        //向服务器发送数据
+        websocket.send(text);
+    }
+      //监听连接关闭
+    websocket.onclose = function (evt) {
+        console.log("Disconnected");
+    };
+
+    //onmessage 监听服务器数据推送
+    websocket.onmessage = function (evt) {
+        //msg.innerHTML += evt.data +'<br>';
+        var msg = '<li class="chat_my">';
+        msg += '<div class="time_line">星期一 11:35</div>';
+		msg += '<div class="message">';
+		msg += '<div class="avater"><img src="./img/quanzi/People.png"></div>';
+		msg += '<div class="content_tip"></div>';
+		msg += '<div class="content">'+evt.data+'</div>';
+		msg += '</div>';
+		msg += '<div class="clear"></div>';
+		msg += '</li>';
+		$("#chat_list_ul").append(msg);
+        
+        console.log('Retrieved data from server: ' + evt.data);
+    };
+//监听连接错误信息
+    websocket.onerror = function (evt, e) {
+        console.log('Error occured: ' + evt.data);
+    };
+    </script>
