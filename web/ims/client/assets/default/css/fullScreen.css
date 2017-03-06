@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  overflow: hidden; /* Prevents rubber-band scrolling of the whole "page" */
+}
+
+body {
+  font: 14px "微软雅黑","宋体",Arial
+}
+html,body{ margin:0px; height:100%;} 
+.clear{
+	clear: both;
+}
+ul,li{ margin:0px;padding:0px;
+	list-style-type: none;
+}
+img{
+	margin: 0;
+	padding: 0;
+}
+
+.content{
+	width: 800px;
+	margin: 0 auto;
+}
+
+.f_left{
+	float: left;
+}
+.f_right{
+	float: right;
+}
+
+.header{
+	position: relative;
+	height: 40px;
+	z-index: 999;
+	margin:5px 0 0 0;
+}
+.header .title{
+	width: 450px;
+}
+.header .setting{
+	width: 100px;
+	-webkit-app-region: no-drag;
+}
+.header .title, .header .setting{
+	height: 40px;
+	line-height: 40px;
+}
+.chapter_title {
+	height: 35px;
+	width: 100%;
+	border:0px solid #c00;
+	padding: 4px 5px;
+	font-size:20px;
+	font-weight: border; 
+}
+.edui-editor-body .edui-body-container{
+	padding: 0 10px 0 0;
+}
+
+.footer{
+	width: 100%;
+	height: 28px;
+	border-top: 1px solid #F8F8F8;
+	line-height: 26px;
+	padding-left: 10px;
+}
