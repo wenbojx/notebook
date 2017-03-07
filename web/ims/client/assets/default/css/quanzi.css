@@ -1,0 +1,186 @@
+.content{
+	width: 100%;
+	height: 100%;
+}
+
+.left{
+	width: 50px;
+	height: 100%;
+	
+	float: left;
+	border-right: 1px solid gainsboro;
+}
+.left li{
+	width: 40px;
+	height: 40px;
+	
+}
+.left .single{
+	background:transparent url(../img/quanzi/single.png) no-repeat scroll 0px 0px;
+}
+
+.left .group{
+	background:transparent url(../img/quanzi/group.png) no-repeat scroll 0px 0px;
+}
+.left .recent{
+	background:transparent url(../img/quanzi/recent.png) no-repeat scroll 0px 0px;
+}
+.left .add{
+	background:transparent url(../img/quanzi/AddBtn.png) no-repeat scroll 0px 0px;
+}
+
+
+.center{
+	width: 220px;
+	height: 100%;
+	border-right: 1px solid gainsboro;
+	float: left;
+}
+.center .search{
+	width: 180px;
+	padding: 10px 0px;
+	margin: 0 auto;
+}
+.center .input-group{
+	height: 28px;
+}
+.center .form-control{
+	padding: 2px;
+	height: 28px;
+}
+.center .btn{
+	padding: 0;
+	height: 28px;
+	width: 40px;
+}
+.list{
+	margin-left: 5px;
+	position: relative;
+}
+
+.list li{
+	height: 55px;
+	line-height: 55px;
+	padding: 2px 0px 4px 0px;
+	border-bottom: 1px solid gainsboro;
+}
+.list li:hover{
+	background-color: #f8f8f8;
+}
+.user-list div{
+	line-height: 45px;
+}
+.user-list .avater{
+	width: 40px;
+	float: left;
+}
+.user-list img{
+	width: 40px;
+	height: 40px;
+}
+.user-list .name{
+	width: 80px;
+	float: left;
+}
+.user-list .time{
+	width: 60px;
+	float: right;
+}
+
+
+.right {
+	width: 300px;
+	height: 100%;
+	float: right;
+}
+.chat_list {
+	width: 98%;
+	float: right;
+	position: relative;
+}
+.chat_list .time_line{
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+}
+.chat_list .avater{
+	width: 40px;
+	height: 40px;
+}
+.chat, .chat_my{
+	margin: 5px 0;
+	width: 100%;
+}
+
+.chat .message{
+	width: 100%;
+	display: block;
+	position: relative;
+}
+.chat .avater{
+	position: absolute;
+	left: 0;
+}
+.chat .content_tip, .chat_my .content_tip{
+	height:0px;  
+    width:0px;  
+    border-width:6px;  
+    border-style:solid;  
+}
+.chat .content_tip{
+	float: left;
+	margin: 15px 0 0 45px;
+    border-color: transparent ghostwhite transparent transparent ;  
+}
+
+
+.chat .content, .chat_my .content{
+	width: 75%;
+	padding: 10px;
+	-webkit-border-radius:10px;  
+    -moz-border-radius:10px;  
+	border-radius:10px; 
+}
+.chat .content{
+	float: left;
+	margin: 5px 0 0 0;
+	background-color: ghostwhite;
+}
+.chat_my .message{
+	float: right;
+	width: 100%;
+}
+
+.chat_my .avater{
+	float: right;
+	margin-right: 30px;
+}
+
+.chat_my .content{
+	float: right;
+	margin: 5px 0 0 0;
+	background-color: lightblue;
+}
+.chat_my .content_tip{
+	float: right;
+	margin: 15px 0 0 0;
+    border-color: transparent  transparent transparent lightblue;  
+}
+
+.chat_input {
+	height: 100px;
+	border-top: 1px solid gainsboro;
+}
+.chat_input .font_style{
+	height: 25px;
+	
+}
+.chat_input textarea{
+	height: 40px;
+	width: 98%;
+	margin: 0px 5px;
+}
+.chat_input .submit{
+	float: right;
+	margin: 0 10px 0 0;
+}
