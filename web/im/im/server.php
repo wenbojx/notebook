@@ -1,90 +1,14 @@
 <?php
+use App;
 define('DEBUG', 'on');
 define('WEBPATH', realpath(__DIR__ . '/../'));
 require dirname(__DIR__) . '/libs/lib_config.php';
-
-class WebSocket extends Swoole\Protocol\WebSocket
-{
-    protected $message;
-
-    /**
-     * @param     $serv swoole_server
-     * @param int $worker_id
-     */
-    function onStart($serv, $worker_id = 0)
-    {
-        Swoole::$php->router(array($this, 'router'));
-        parent::onStart($serv, $worker_id);
-    }
-
-    function router()
-    {
-        var_dump($this->message);
-    }
-
-    /**
-     * 进入
-     * @param $client_id
-     */
-    function onEnter($client_id)
-    {
-
-    }
-
-    /**
-     * 下线时，通知所有人
-     */
-    function onExit($client_id)
-    {
-        //将下线消息发送给所有人
-        $this->log("onOffline: " . $client_id);
-        //$this->broadcast($client_id, "onOffline: " . $client_id);
-    }
-
-    function onMessage_mvc($client_id, $ws)
-    {
-        $this->log("onMessage: ".$client_id.' = '.$ws['message']);
-
-        $this->message = $ws['message'];
-        $response = Swoole::$php->runMVC();
-
-        $this->send($client_id, $response);
-        //$this->broadcast($client_id, $ws['message']);
-    }
-
-    /**
-     * 接收到消息时
-     */
-    function onMessage($client_id, $ws)
-    {
-        
-        
-        $model = model('User');
-        $user1 = $model->getByUid(11);
-
-        $this->log("onMessage: ".$client_id.' = '.$ws['message'].' username:'.$user1['username']);
-        $this->send($client_id, 'Server: '.$ws['message'].$user1['username']);
-		//$this->broadcast($client_id, $ws['message']);
-    }
-
-    function broadcast($client_id, $msg)
-    {
-        foreach ($this->connections as $clid => $info)
-        {
-            if ($client_id != $clid)
-            {
-                $this->send($clid, $msg);
-            }
-        }
-    }
-}
-        
 
 //require __DIR__'/phar://swoole.phar';
 Swoole\Config::$debug = true;
 Swoole\Error::$echo_html = false;
 
-$AppSvr = new WebSocket();
+$AppSvr = new APP\Socket\WebSocket();
 $AppSvr->loadSetting(__DIR__."/im.ini"); //加载配置文件
 $AppSvr->setLogger(new \Swoole\Log\EchoLog(true)); //Logger
 
@@ -99,7 +23,7 @@ $server = Swoole\Network\Server::autoCreate('0.0.0.0', 80, $enable_ssl);
 $server->setProtocol($AppSvr);
 //$server->daemonize(); //作为守护进程
 $server->run(array(
-    'worker_num' => 10,
+    'worker_num' => 2,
     'ssl_key_file' => __DIR__.'/ssl/ssl.key',
     'ssl_cert_file' => __DIR__.'/ssl/ssl.crt',
     //'max_request' => 1000,

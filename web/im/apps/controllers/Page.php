@@ -123,6 +123,9 @@ class Page extends Swoole\Controller
 
     function model_test()
     {
+        $model = model('Friends');
+        $users = $model->getByUid(11);
+        return ;
         $model = model('User');
         $users = $model->getByUid(11);
         var_dump($users);

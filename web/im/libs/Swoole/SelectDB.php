@@ -640,17 +640,19 @@ class SelectDB
             unset($params['walk']);
         }
         //处理其他参数
-        foreach ($params as $key => $value)
-        {
-            if (strpos($key, '_') !== 0)
+            foreach ($params as $key => $value)
             {
-                $this->_call($key, $value);
+                if (strpos($key, '_') !== 0)
+                {
+                    $this->_call($key, $value);
+                }
+                else
+                {
+                    $this->extraParmas[substr($key, 1)] = $value;
+                }
             }
-            else
-            {
-                $this->extraParmas[substr($key, 1)] = $value;
-            }
-        }
+        
+        
     }
 
     /**

@@ -4,7 +4,9 @@ $cache['session'] = array(
     'cache_dir' => WEBPATH . '/cache/filecache/',
 );
 $cache['master'] = array(
-    'type' => 'Memcache',
+    'type' => 'Redis',
+
+    /*
     'use_memcached' => true, //使用memcached扩展
     'compress' => true, //启用压缩
     'servers' => array(
@@ -21,5 +23,6 @@ $cache['master'] = array(
             'persistent' => true,
         ),
     ),
+    */
 );
 return $cache;

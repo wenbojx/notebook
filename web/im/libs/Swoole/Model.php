@@ -110,7 +110,7 @@ class Model
 			$selectdb->paging();
 			$pager = $selectdb->pager;
 		}
-
+		//echo $selectdb->getsql();
 		return $selectdb->getall();
 	}
 
