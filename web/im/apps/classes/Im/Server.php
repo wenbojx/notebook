@@ -21,13 +21,6 @@ class Server extends Swoole\Protocol\CometServer
 
     function __construct($config = array())
     {
-        //将配置写入config.js
-        $config_js = <<<HTML
-var webim = {
-    'server' : '{$config['server']['url']}'
-}
-HTML;
-        file_put_contents(WEBPATH . '/config.js', $config_js);
 
         //检测日志目录是否存在
         $log_dir = dirname($config['webim']['log_file']);
@@ -45,11 +38,6 @@ HTML;
         }
         $this->setLogger($logger);   //Logger
 
-        /**
-         * 使用文件或redis存储聊天信息
-         */
-        //$this->storage = new Storage($config['webim']['storage']);
-        //$this->origin = $config['server']['origin'];
         parent::__construct($config);
     }
 
@@ -58,6 +46,7 @@ HTML;
      */
     function onExit($client_id)
     {
+        /*
         $userInfo = $this->storage->getUser($client_id);
         if ($userInfo)
         {
@@ -74,10 +63,13 @@ HTML;
             $this->broadcastJson($client_id, $resMsg);
         }
         $this->log("onOffline: " . $client_id);
+        */
     }
 
     function onTask($serv, $task_id, $from_id, $data)
     {
+        $this->log($serv."serv");
+        /*
         $req = unserialize($data);
         if ($req)
         {
@@ -106,6 +98,7 @@ HTML;
                     break;
             }
         }
+        */
     }
 
     function onFinish($serv, $task_id, $data)
@@ -114,6 +107,83 @@ HTML;
     }
 
     /**
+     * 接收到消息时
+     * @see WSProtocol::onMessage()
+     */
+    function onMessage($client_id, $ws)
+    {
+
+        $this->send($client_id, $ws['message'].':aaa');
+        return;
+
+        $this->log("onMessage #$client_id: " . $ws['message']);
+        $msg = json_decode($ws['message'], true);
+        if (empty($msg['cmd']))
+        {
+            $this->sendErrorMessage($client_id, 101, "invalid command");
+            return;
+        }
+        $func = 'cmd_'.$msg['cmd'];
+        if (method_exists($this, $func))
+        {
+            $this->$func($client_id, $msg);
+        }
+        else
+        {
+            $this->sendErrorMessage($client_id, 102, "command $func no support.");
+            return;
+        }
+    }
+
+    /**
+     * 发送错误信息
+    * @param $client_id
+    * @param $code
+    * @param $msg
+     */
+    function sendErrorMessage($client_id, $code, $msg)
+    {
+        $this->sendJson($client_id, array('cmd' => 'error', 'code' => $code, 'msg' => $msg));
+    }
+
+    /**
+     * 发送JSON数据
+     * @param $client_id
+     * @param $array
+     */
+    function sendJson($client_id, $array)
+    {
+        $msg = json_encode($array);
+        if ($this->send($client_id, $msg) === false)
+        {
+            $this->close($client_id);
+        }
+    }
+
+    /**
+     * 广播JSON数据
+     * @param $client_id
+     * @param $array
+     */
+    function broadcastJson($sesion_id, $array)
+    {
+        $msg = json_encode($array);
+        $this->broadcast($sesion_id, $msg);
+    }
+
+    function broadcast($current_session_id, $msg)
+    {
+        foreach ($this->users as $client_id => $name)
+        {
+            if ($current_session_id != $client_id)
+            {
+                $this->send($client_id, $msg);
+            }
+        }
+    }
+
+
+     /**
      * 获取在线列表
      */
     function cmd_getOnline($client_id, $msg)
@@ -217,82 +287,6 @@ HTML;
         {
             $this->sendJson($msg['to'], $resMsg);
             //$this->store->addHistory($client_id, $msg['data']);
-        }
-    }
-
-    /**
-     * 接收到消息时
-     * @see WSProtocol::onMessage()
-     */
-    function onMessage($client_id, $ws)
-    {
-
-        $this->send($client_id, $ws['message'].':aaa');
-        return;
-
-        $this->log("onMessage #$client_id: " . $ws['message']);
-        $msg = json_decode($ws['message'], true);
-        if (empty($msg['cmd']))
-        {
-            $this->sendErrorMessage($client_id, 101, "invalid command");
-            return;
-        }
-        $func = 'cmd_'.$msg['cmd'];
-        if (method_exists($this, $func))
-        {
-            $this->$func($client_id, $msg);
-        }
-        else
-        {
-            $this->sendErrorMessage($client_id, 102, "command $func no support.");
-            return;
-        }
-    }
-
-    /**
-     * 发送错误信息
-    * @param $client_id
-    * @param $code
-    * @param $msg
-     */
-    function sendErrorMessage($client_id, $code, $msg)
-    {
-        $this->sendJson($client_id, array('cmd' => 'error', 'code' => $code, 'msg' => $msg));
-    }
-
-    /**
-     * 发送JSON数据
-     * @param $client_id
-     * @param $array
-     */
-    function sendJson($client_id, $array)
-    {
-        $msg = json_encode($array);
-        if ($this->send($client_id, $msg) === false)
-        {
-            $this->close($client_id);
-        }
-    }
-
-    /**
-     * 广播JSON数据
-     * @param $client_id
-     * @param $array
-     */
-    function broadcastJson($sesion_id, $array)
-    {
-        $msg = json_encode($array);
-        $this->broadcast($sesion_id, $msg);
-    }
-
-    function broadcast($current_session_id, $msg)
-    {
-        foreach ($this->users as $client_id => $name)
-        {
-            if ($current_session_id != $client_id)
-            {
-                $this->send($client_id, $msg);
-            }
         }
     }
 }
