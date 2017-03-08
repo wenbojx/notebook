@@ -17,11 +17,10 @@ class Friends extends Swoole\Model
         }
         $where = array(
                 'where'=>array('uid='.$uid, 'status in(1,2)'),
-                //'orwhere'=>array('uid' => '3'),
                 'order'=>'addtime desc',
                 'limit'=>$limit,
             );
-        $this->select = 'uid, fuid, status';
+        //$this->select = 'uid, fuid, status';
         $user = $this->gets($where); 
         //var_dump($user);
         return $user;

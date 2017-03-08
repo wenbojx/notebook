@@ -3,6 +3,7 @@ namespace App\Controller;
 use Hoa\Core\Exception\Exception;
 use Swoole;
 use App;
+use App\Friends;
 
 class Page extends Swoole\Controller
 {
@@ -21,7 +22,29 @@ class Page extends Swoole\Controller
 
     function detail()
     {
-        var_dump($this->request->get);
+
+        $CFriends = new App\DAO\Friends();
+        $datas = $CFriends->getFriendsDetail(11);
+        print_r($datas);
+        return false;
+
+        $this->cache->set('a', 'b', 300000);
+        echo $this->cache->get('a');
+        $aaa = $this->cache->getMultiple(array('a', 'b', 'c'));
+        var_dump($aaa);
+        //var_dump($this->config['redis']);
+        $CFriends = new App\DAO\UserInfo();
+        $datas = $CFriends->getByUid(11);
+        return;
+        print_r($datas);
+        
+
+       // $CFriends = new App\Friends\Friends();
+       // $CFriends->getFriendsList(11);
+
+        $model = model('UserInfo');
+        $friendsDatas = $model->getByUid(11);
+        //var_dump($this->request->get);
     }
 
     //数据库测试
@@ -62,7 +85,9 @@ class Page extends Swoole\Controller
     function session_test()
     {
         $this->session->start();
+        echo $this->session->getId();
         $_SESSION['hello'] = 'swoole';
+         return $this->showTrace(true);
     }
 
     function redirect()
@@ -125,6 +150,7 @@ class Page extends Swoole\Controller
     {
         $model = model('Friends');
         $users = $model->getByUid(11);
+        var_dump($users);
         return ;
         $model = model('User');
         $users = $model->getByUid(11);

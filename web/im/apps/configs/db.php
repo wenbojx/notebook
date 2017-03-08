@@ -1,12 +1,12 @@
 <?php
 $db['master'] = array(
     'type'       => Swoole\Database::TYPE_MYSQLi,
-    'host'       => "vpn.yiluhao.com",
+    'host'       => "www.wofu-sh.com",
     'port'       => 3306,
     'dbms'       => 'mysql',
     'engine'     => 'MyISAM',
-    'user'       => "root",
-    'passwd'     => "wenbojx0513",
+    'user'       => "notebook",
+    'passwd'     => "wenbo123456",
     'name'       => "notebook",
     'charset'    => "utf8",
     'setname'    => true,

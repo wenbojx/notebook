@@ -48,6 +48,14 @@ class Redis implements Swoole\IFace\Cache
     {
         return unserialize($this->redis->get($key));
     }
+    /**
+     * 批量获取缓存值
+     * @param $keys
+     * @return mixed
+     */
+    function getMultiple($keys){
+        return $this->redis->getMultiple($keys);
+    }
 
     /**
      * 删除缓存值

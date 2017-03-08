@@ -1,7 +1,7 @@
 <?php
 $cache['session'] = array(
-    'type' => 'FileCache',
-    'cache_dir' => WEBPATH . '/cache/filecache/',
+    'type' => 'Redis',
+    //'cache_dir' => WEBPATH . '/cache/filecache/',
 );
 $cache['master'] = array(
     'type' => 'Redis',

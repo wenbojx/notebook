@@ -11,9 +11,9 @@ class User extends Swoole\Model
     public $table = 'user';
 
 
-    function getByUid($uid)
+    public function getByUid($uid)
     {
-        $user = $this->get($uid); //id = 1
+        $user = $this->get($uid);
         return $user->get();
     }
 }
