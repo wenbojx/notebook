@@ -13,6 +13,5 @@ class Base extends Swoole\Object
 	function __construct()
 	{
 		$this->cache = Swoole::getInstance()->cache($this->cacheMaster);
-		//$this->session = Swoole::getInstance()->Session();
 	}
 }

@@ -1,15 +1,18 @@
 <?php
 namespace App\Im;
 use Swoole;
+use App;
 use Swoole\Filter;
 
-class Server extends Swoole\Protocol\CometServer
+class Server extends App\CometServer
 {
     /**
      * @var Store\File;
      */
-    protected $storage;
+    //protected $storage;
     protected $users;
+    //public $cacheMaster = 'master'; 
+    //public $cache_prefix = "phpsess_";
     /**
      * 上一次发送消息的时间
      * @var array
@@ -21,7 +24,7 @@ class Server extends Swoole\Protocol\CometServer
 
     function __construct($config = array())
     {
-        $this->setLog($config);
+        //$this->setLog($config);
         parent::__construct($config);
     }
 
@@ -46,8 +49,11 @@ class Server extends Swoole\Protocol\CometServer
     function onEnter($client_id)
     {
         echo "onEnter: " . $client_id;
-        $session = $this->createNewSession();
-        echo $session->id;
+        //$session = $this->createNewSession();
+        //echo $session->id;
+        //echo Swoole::getInstance()->cache($this->cacheMaster)->get('c95004a613231e41628bc5d3d5a57c43');
+        $datas = $this->cache->get($this->cache_prefix.'c95004a613231e41628bc5d3d5a57c43');
+        var_dump(unserialize($datas));
     }
 
     /**
