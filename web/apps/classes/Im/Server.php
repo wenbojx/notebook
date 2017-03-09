@@ -28,23 +28,7 @@ class Server extends App\CometServer
         parent::__construct($config);
     }
 
-    function setLog($config){
-        //检测日志目录是否存在
-        $log_dir = dirname($config['webim']['log_file']);
-        if (!is_dir($log_dir))
-        {
-            mkdir($log_dir, 0777, true);
-        }
-        if (!empty($config['webim']['log_file']))
-        {
-            $logger = new Swoole\Log\FileLog($config['webim']['log_file']);
-        }
-        else
-        {
-            $logger = new Swoole\Log\EchoLog(true);
-        }
-        $this->setLogger($logger);   //Logger
-    }
+    
 
     function onEnter($client_id)
     {
@@ -52,8 +36,8 @@ class Server extends App\CometServer
         //$session = $this->createNewSession();
         //echo $session->id;
         //echo Swoole::getInstance()->cache($this->cacheMaster)->get('c95004a613231e41628bc5d3d5a57c43');
-        $datas = $this->cache->get($this->cache_prefix.'c95004a613231e41628bc5d3d5a57c43');
-        var_dump(unserialize($datas));
+        //$datas = $this->cache->get($this->cache_prefix.'c95004a613231e41628bc5d3d5a57c43');
+        //var_dump(unserialize($datas));
     }
 
     /**

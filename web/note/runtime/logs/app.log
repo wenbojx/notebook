@@ -1,0 +1,1742 @@
+2016-11-30 13:14:10 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:14:09 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49480'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480511649.7969
+    'REQUEST_TIME' => 1480511649
+]
+2016-11-30 13:14:48 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:14:48 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49480'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480511688.2831
+    'REQUEST_TIME' => 1480511688
+]
+2016-11-30 13:14:49 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:14:48 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49480'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480511688.8555
+    'REQUEST_TIME' => 1480511688
+]
+2016-11-30 13:14:50 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:14:49 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49480'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480511689.8835
+    'REQUEST_TIME' => 1480511689
+]
+2016-11-30 13:14:51 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:14:50 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49480'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480511690.6951
+    'REQUEST_TIME' => 1480511690
+]
+2016-11-30 13:19:34 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:19:34 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49916'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480511973.8812
+    'REQUEST_TIME' => 1480511973
+]
+2016-11-30 13:19:36 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:19:36 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49916'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480511976.5849
+    'REQUEST_TIME' => 1480511976
+]
+2016-11-30 13:19:39 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:19:39 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49916'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480511979.3306
+    'REQUEST_TIME' => 1480511979
+]
+2016-11-30 13:20:12 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(12): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:20:12 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49916'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480512012.4293
+    'REQUEST_TIME' => 1480512012
+]
+2016-11-30 13:20:13 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(12): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:20:13 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49916'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480512013.6461
+    'REQUEST_TIME' => 1480512013
+]
+2016-11-30 13:22:00 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:22:00 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49958'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480512120.682
+    'REQUEST_TIME' => 1480512120
+]
+2016-11-30 13:22:02 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:22:02 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49958'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480512121.9511
+    'REQUEST_TIME' => 1480512121
+]
+2016-11-30 13:22:14 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-11-30 13:22:14 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '49958'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480512134.5702
+    'REQUEST_TIME' => 1480512134
+]
+2016-11-30 13:35:55 [192.168.99.1][-][86ipgep4sups0q7sop0sjk7sm1][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined variable: serial in /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php:36
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(36): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', '/var/www/vpn.yi...', 36, Array)
+#1 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(43): app\controllers\LoginController->createToken()
+#2 [internal function]: app\controllers\LoginController->actionLoginqq()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#9 {main}
+2016-11-30 13:35:55 [192.168.99.1][-][86ipgep4sups0q7sop0sjk7sm1][info][application] $_COOKIE = [
+    'PHPSESSID' => '86ipgep4sups0q7sop0sjk7sm1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'uid' => '1234567890'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=86ipgep4sups0q7sop0sjk7sm1'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '50216'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480512954.9693
+    'REQUEST_TIME' => 1480512954
+]
+2016-11-30 13:48:41 [192.168.99.1][-][86ipgep4sups0q7sop0sjk7sm1][error][yii\base\ErrorException:2] yii\base\ErrorException: Missing argument 1 for app\controllers\LoginController::createToken(), called in /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php on line 46 and defined in /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php:34
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(34): yii\base\ErrorHandler->handleError(2, 'Missing argumen...', '/var/www/vpn.yi...', 34, Array)
+#1 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(46): app\controllers\LoginController->createToken()
+#2 [internal function]: app\controllers\LoginController->actionLoginqq()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#9 {main}
+2016-11-30 13:48:40 [192.168.99.1][-][86ipgep4sups0q7sop0sjk7sm1][info][application] $_COOKIE = [
+    'PHPSESSID' => '86ipgep4sups0q7sop0sjk7sm1'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'uid' => '1234567890'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=86ipgep4sups0q7sop0sjk7sm1'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '50739'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480513720.8371
+    'REQUEST_TIME' => 1480513720
+]
+2016-11-30 13:56:18 [192.168.99.1][-][-][error][ParseError] ParseError: syntax error, unexpected '}', expecting ';' in /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php:40
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(564): class_exists('app\\controllers...')
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(522): yii\base\Module->createControllerByID('login')
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(448): yii\base\Module->createController('loginqq')
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#8 {main}
+2016-11-30 13:56:18 [192.168.99.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.99.1
+2016-11-30 13:56:17 [192.168.99.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '86ipgep4sups0q7sop0sjk7sm1'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=86ipgep4sups0q7sop0sjk7sm1'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '50798'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480514177.7171
+    'REQUEST_TIME' => 1480514177
+]
+2016-11-30 14:28:53 [192.168.99.1][-][86ipgep4sups0q7sop0sjk7sm1][error][yii\base\ErrorException:2] yii\base\ErrorException: Missing argument 2 for app\models\user\User::encrypt(), called in /var/www/vpn.yiluhao.com/web/note/models/user/User.php on line 49 and defined in /var/www/vpn.yiluhao.com/web/note/models/user/User.php:59
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/models/user/User.php(59): yii\base\ErrorHandler->handleError(2, 'Missing argumen...', '/var/www/vpn.yi...', 59, Array)
+#1 /var/www/vpn.yiluhao.com/web/note/models/user/User.php(49): app\models\user\User->encrypt('E7D636F5ADF7E78...')
+#2 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(139): app\models\user\User->addUser('E7D636F5ADF7E78...', 2, 'E7D636F5ADF7E78...')
+#3 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(82): app\controllers\LoginController->createUser('E7D636F5ADF7E78...', 'E7D636F5ADF7E78...', 2)
+#4 [internal function]: app\controllers\LoginController->actionLoginqq()
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#9 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#11 {main}
+2016-11-30 14:28:43 [192.168.99.1][-][86ipgep4sups0q7sop0sjk7sm1][info][application] $_GET = [
+    'code' => '5590CFB7BB2E794B6800572F7083AD51'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '86ipgep4sups0q7sop0sjk7sm1'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=86ipgep4sups0q7sop0sjk7sm1'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '51411'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq?code=5590CFB7BB2E794B6800572F7083AD51'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'code=5590CFB7BB2E794B6800572F7083AD51'
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480516123.9117
+    'REQUEST_TIME' => 1480516123
+]
+2016-11-30 14:57:43 [192.168.99.1][-][-][error][yii\base\ErrorException:64] yii\base\ErrorException: Cannot redeclare app\components\helpers\CommonTools::encryptToken() in /var/www/vpn.yiluhao.com/web/note/components/helpers/CommonTools.php:28
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-11-30 14:57:43 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '52168'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/login'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480517863.4828
+    'REQUEST_TIME' => 1480517863
+]
+2016-11-30 14:58:28 [192.168.99.1][-][4r0aohovmjat8fdrt6skvpqkr2][error][yii\base\ErrorException:2] yii\base\ErrorException: Missing argument 4 for app\controllers\LoginController::saveLoginState(), called in /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php on line 94 and defined in /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php:100
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(100): yii\base\ErrorHandler->handleError(2, 'Missing argumen...', '/var/www/vpn.yi...', 100, Array)
+#1 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(94): app\controllers\LoginController->saveLoginState(10, '\xE6\x96\x87\xE5\x8D\x9A', 'http://qzapp.ql...')
+#2 [internal function]: app\controllers\LoginController->actionLoginqq()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#9 {main}
+2016-11-30 14:58:04 [192.168.99.1][-][4r0aohovmjat8fdrt6skvpqkr2][info][application] $_GET = [
+    'code' => '1DC2D1EEF80E8C04DE32339199859447'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '4r0aohovmjat8fdrt6skvpqkr2'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'uid' => 10
+    'nickname' => '文博'
+    'figureurl' => 'http://qzapp.qlogo.cn/qzapp/101358269/E7D636F5ADF7E7839DCD2865705F81BF/30'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=4r0aohovmjat8fdrt6skvpqkr2'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '52178'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq?code=1DC2D1EEF80E8C04DE32339199859447'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'code=1DC2D1EEF80E8C04DE32339199859447'
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480517883.9397
+    'REQUEST_TIME' => 1480517883
+]
+2016-11-30 15:01:44 [192.168.99.1][-][4r0aohovmjat8fdrt6skvpqkr2][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined variable: token in /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php:123
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(123): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', '/var/www/vpn.yi...', 123, Array)
+#1 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(94): app\controllers\LoginController->saveLoginState(10, '\xE6\x96\x87\xE5\x8D\x9A', 'http://qzapp.ql...', 1480516163)
+#2 [internal function]: app\controllers\LoginController->actionLoginqq()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#9 {main}
+2016-11-30 15:01:26 [192.168.99.1][-][4r0aohovmjat8fdrt6skvpqkr2][info][application] $_GET = [
+    'code' => '0CA5F2745A00BE3D4CE071B58C151E7C'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '4r0aohovmjat8fdrt6skvpqkr2'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'uid' => 10
+    'nickname' => '文博'
+    'figureurl' => 'http://qzapp.qlogo.cn/qzapp/101358269/E7D636F5ADF7E7839DCD2865705F81BF/30'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=4r0aohovmjat8fdrt6skvpqkr2'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '52250'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq?code=0CA5F2745A00BE3D4CE071B58C151E7C'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'code=0CA5F2745A00BE3D4CE071B58C151E7C'
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1480518086.7284
+    'REQUEST_TIME' => 1480518086
+]
+2016-12-18 05:18:13 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2016-12-18 05:18:13 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '55548'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1482038293.2704
+    'REQUEST_TIME' => 1482038293
+]
+2017-02-06 13:00:55 [192.168.99.1][-][vp25sg7jq75lm364v46pri5ig2][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1129] Host '172.17.0.1' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php:602
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(602): PDO->__construct('mysql:host=vpn....', 'root', 'wenbojx0513', NULL)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(544): yii\db\Connection->createPdoInstance()
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(863): yii\db\Connection->open()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(850): yii\db\Connection->getMasterPdo()
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Schema.php(478): yii\db\Connection->getSlavePdo()
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(759): yii\db\Schema->quoteValue('E7D636F5ADF7E78...')
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(175): yii\db\Connection->quoteValue('E7D636F5ADF7E78...')
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(869): yii\db\Command->getRawSql()
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(376): yii\db\Command->queryInternal('fetch', NULL)
+#9 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Query.php(247): yii\db\Command->queryOne()
+#10 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/ActiveQuery.php(295): yii\db\Query->one(NULL)
+#11 /var/www/vpn.yiluhao.com/web/note/models/user/UserBind.php(32): yii\db\ActiveQuery->one()
+#12 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(69): app\models\user\UserBind->getBindByOauthId('E7D636F5ADF7E78...')
+#13 [internal function]: app\controllers\LoginController->actionLoginqq()
+#14 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#17 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#18 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#20 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1129] Host '172.17.0.1' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php:549
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(863): yii\db\Connection->open()
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(850): yii\db\Connection->getMasterPdo()
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Schema.php(478): yii\db\Connection->getSlavePdo()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(759): yii\db\Schema->quoteValue('E7D636F5ADF7E78...')
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(175): yii\db\Connection->quoteValue('E7D636F5ADF7E78...')
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(869): yii\db\Command->getRawSql()
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(376): yii\db\Command->queryInternal('fetch', NULL)
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Query.php(247): yii\db\Command->queryOne()
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/ActiveQuery.php(295): yii\db\Query->one(NULL)
+#9 /var/www/vpn.yiluhao.com/web/note/models/user/UserBind.php(32): yii\db\ActiveQuery->one()
+#10 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(69): app\models\user\UserBind->getBindByOauthId('E7D636F5ADF7E78...')
+#11 [internal function]: app\controllers\LoginController->actionLoginqq()
+#12 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#15 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#16 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#18 {main}
+Additional Information:
+
+2017-02-06 13:00:55 [192.168.99.1][-][vp25sg7jq75lm364v46pri5ig2][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.99.1
+2017-02-06 13:00:46 [192.168.99.1][-][vp25sg7jq75lm364v46pri5ig2][info][application] $_GET = [
+    'code' => 'C78142EF204B178543365E1CCFA7FDD9'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'vp25sg7jq75lm364v46pri5ig2'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=vp25sg7jq75lm364v46pri5ig2'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ??/0.0.1 Chrome/53.0.2785.143 Electron/1.4.12 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '50761'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq?code=C78142EF204B178543365E1CCFA7FDD9'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'code=C78142EF204B178543365E1CCFA7FDD9'
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1486386045.9192
+    'REQUEST_TIME' => 1486386045
+]
+2017-02-06 13:08:11 [192.168.99.1][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1129] Host '172.17.0.1' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php:602
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(602): PDO->__construct('mysql:host=vpn....', 'root', 'wenbojx0513', NULL)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(544): yii\db\Connection->createPdoInstance()
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(863): yii\db\Connection->open()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(850): yii\db\Connection->getMasterPdo()
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Schema.php(478): yii\db\Connection->getSlavePdo()
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(759): yii\db\Schema->quoteValue('E7D636F5ADF7E78...')
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(175): yii\db\Connection->quoteValue('E7D636F5ADF7E78...')
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(869): yii\db\Command->getRawSql()
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(376): yii\db\Command->queryInternal('fetch', NULL)
+#9 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Query.php(247): yii\db\Command->queryOne()
+#10 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/ActiveQuery.php(295): yii\db\Query->one(NULL)
+#11 /var/www/vpn.yiluhao.com/web/note/models/user/UserBind.php(32): yii\db\ActiveQuery->one()
+#12 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(69): app\models\user\UserBind->getBindByOauthId('E7D636F5ADF7E78...')
+#13 [internal function]: app\controllers\LoginController->actionLoginqq()
+#14 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#17 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#18 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#20 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1129] Host '172.17.0.1' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php:549
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(863): yii\db\Connection->open()
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(850): yii\db\Connection->getMasterPdo()
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Schema.php(478): yii\db\Connection->getSlavePdo()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(759): yii\db\Schema->quoteValue('E7D636F5ADF7E78...')
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(175): yii\db\Connection->quoteValue('E7D636F5ADF7E78...')
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(869): yii\db\Command->getRawSql()
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(376): yii\db\Command->queryInternal('fetch', NULL)
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Query.php(247): yii\db\Command->queryOne()
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/ActiveQuery.php(295): yii\db\Query->one(NULL)
+#9 /var/www/vpn.yiluhao.com/web/note/models/user/UserBind.php(32): yii\db\ActiveQuery->one()
+#10 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(69): app\models\user\UserBind->getBindByOauthId('E7D636F5ADF7E78...')
+#11 [internal function]: app\controllers\LoginController->actionLoginqq()
+#12 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#15 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#16 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#18 {main}
+Additional Information:
+
+2017-02-06 13:08:11 [192.168.99.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.99.1
+2017-02-06 13:08:05 [192.168.99.1][-][-][info][application] $_GET = [
+    'code' => '2F29EE83A964C9D2E2C7B6B339A1CA83'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'vp25sg7jq75lm364v46pri5ig2'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=vp25sg7jq75lm364v46pri5ig2'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ??/0.0.1 Chrome/53.0.2785.143 Electron/1.4.12 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '51219'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq?code=2F29EE83A964C9D2E2C7B6B339A1CA83'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'code=2F29EE83A964C9D2E2C7B6B339A1CA83'
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1486386485.5532
+    'REQUEST_TIME' => 1486386485
+]
+2017-02-06 13:08:20 [192.168.99.1][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1129] Host '172.17.0.1' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php:602
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(602): PDO->__construct('mysql:host=vpn....', 'root', 'wenbojx0513', NULL)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(544): yii\db\Connection->createPdoInstance()
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(863): yii\db\Connection->open()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(850): yii\db\Connection->getMasterPdo()
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Schema.php(478): yii\db\Connection->getSlavePdo()
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(759): yii\db\Schema->quoteValue('E7D636F5ADF7E78...')
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(175): yii\db\Connection->quoteValue('E7D636F5ADF7E78...')
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(869): yii\db\Command->getRawSql()
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(376): yii\db\Command->queryInternal('fetch', NULL)
+#9 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Query.php(247): yii\db\Command->queryOne()
+#10 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/ActiveQuery.php(295): yii\db\Query->one(NULL)
+#11 /var/www/vpn.yiluhao.com/web/note/models/user/UserBind.php(32): yii\db\ActiveQuery->one()
+#12 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(69): app\models\user\UserBind->getBindByOauthId('E7D636F5ADF7E78...')
+#13 [internal function]: app\controllers\LoginController->actionLoginqq()
+#14 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#17 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#18 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#20 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1129] Host '172.17.0.1' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php:549
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(863): yii\db\Connection->open()
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(850): yii\db\Connection->getMasterPdo()
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Schema.php(478): yii\db\Connection->getSlavePdo()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(759): yii\db\Schema->quoteValue('E7D636F5ADF7E78...')
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(175): yii\db\Connection->quoteValue('E7D636F5ADF7E78...')
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(869): yii\db\Command->getRawSql()
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(376): yii\db\Command->queryInternal('fetch', NULL)
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Query.php(247): yii\db\Command->queryOne()
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/ActiveQuery.php(295): yii\db\Query->one(NULL)
+#9 /var/www/vpn.yiluhao.com/web/note/models/user/UserBind.php(32): yii\db\ActiveQuery->one()
+#10 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(69): app\models\user\UserBind->getBindByOauthId('E7D636F5ADF7E78...')
+#11 [internal function]: app\controllers\LoginController->actionLoginqq()
+#12 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#15 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#16 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#18 {main}
+Additional Information:
+
+2017-02-06 13:08:20 [192.168.99.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.99.1
+2017-02-06 13:08:11 [192.168.99.1][-][-][info][application] $_GET = [
+    'code' => 'C7F9C4CEA1F92674804EF5A9C464EDE1'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'vp25sg7jq75lm364v46pri5ig2'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=vp25sg7jq75lm364v46pri5ig2'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ??/0.0.1 Chrome/53.0.2785.143 Electron/1.4.12 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '51251'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq?code=C7F9C4CEA1F92674804EF5A9C464EDE1'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'code=C7F9C4CEA1F92674804EF5A9C464EDE1'
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1486386491.6255
+    'REQUEST_TIME' => 1486386491
+]
+2017-02-06 13:08:22 [192.168.99.1][-][vp25sg7jq75lm364v46pri5ig2][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1129] Host '172.17.0.1' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php:602
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(602): PDO->__construct('mysql:host=vpn....', 'root', 'wenbojx0513', NULL)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(544): yii\db\Connection->createPdoInstance()
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(863): yii\db\Connection->open()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(850): yii\db\Connection->getMasterPdo()
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Schema.php(478): yii\db\Connection->getSlavePdo()
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(759): yii\db\Schema->quoteValue('E7D636F5ADF7E78...')
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(175): yii\db\Connection->quoteValue('E7D636F5ADF7E78...')
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(869): yii\db\Command->getRawSql()
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(376): yii\db\Command->queryInternal('fetch', NULL)
+#9 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Query.php(247): yii\db\Command->queryOne()
+#10 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/ActiveQuery.php(295): yii\db\Query->one(NULL)
+#11 /var/www/vpn.yiluhao.com/web/note/models/user/UserBind.php(32): yii\db\ActiveQuery->one()
+#12 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(69): app\models\user\UserBind->getBindByOauthId('E7D636F5ADF7E78...')
+#13 [internal function]: app\controllers\LoginController->actionLoginqq()
+#14 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#17 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#18 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#20 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1129] Host '172.17.0.1' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php:549
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(863): yii\db\Connection->open()
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(850): yii\db\Connection->getMasterPdo()
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Schema.php(478): yii\db\Connection->getSlavePdo()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(759): yii\db\Schema->quoteValue('E7D636F5ADF7E78...')
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(175): yii\db\Connection->quoteValue('E7D636F5ADF7E78...')
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(869): yii\db\Command->getRawSql()
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(376): yii\db\Command->queryInternal('fetch', NULL)
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Query.php(247): yii\db\Command->queryOne()
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/ActiveQuery.php(295): yii\db\Query->one(NULL)
+#9 /var/www/vpn.yiluhao.com/web/note/models/user/UserBind.php(32): yii\db\ActiveQuery->one()
+#10 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(69): app\models\user\UserBind->getBindByOauthId('E7D636F5ADF7E78...')
+#11 [internal function]: app\controllers\LoginController->actionLoginqq()
+#12 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#15 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#16 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#18 {main}
+Additional Information:
+
+2017-02-06 13:08:22 [192.168.99.1][-][vp25sg7jq75lm364v46pri5ig2][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.99.1
+2017-02-06 13:08:18 [192.168.99.1][-][vp25sg7jq75lm364v46pri5ig2][info][application] $_GET = [
+    'code' => '2AE83BCBD56A294F42EAE0ADC6BDB15D'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'vp25sg7jq75lm364v46pri5ig2'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=vp25sg7jq75lm364v46pri5ig2'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ??/0.0.1 Chrome/53.0.2785.143 Electron/1.4.12 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '51260'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq?code=2AE83BCBD56A294F42EAE0ADC6BDB15D'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'code=2AE83BCBD56A294F42EAE0ADC6BDB15D'
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1486386498.1893
+    'REQUEST_TIME' => 1486386498
+]
+2017-02-06 13:14:09 [192.168.99.1][-][vp25sg7jq75lm364v46pri5ig2][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1129] Host '172.17.0.1' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php:602
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(602): PDO->__construct('mysql:host=vpn....', 'root', 'wenbojx0513', NULL)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(544): yii\db\Connection->createPdoInstance()
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(863): yii\db\Connection->open()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(850): yii\db\Connection->getMasterPdo()
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Schema.php(478): yii\db\Connection->getSlavePdo()
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(759): yii\db\Schema->quoteValue('E7D636F5ADF7E78...')
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(175): yii\db\Connection->quoteValue('E7D636F5ADF7E78...')
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(869): yii\db\Command->getRawSql()
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(376): yii\db\Command->queryInternal('fetch', NULL)
+#9 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Query.php(247): yii\db\Command->queryOne()
+#10 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/ActiveQuery.php(295): yii\db\Query->one(NULL)
+#11 /var/www/vpn.yiluhao.com/web/note/models/user/UserBind.php(32): yii\db\ActiveQuery->one()
+#12 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(69): app\models\user\UserBind->getBindByOauthId('E7D636F5ADF7E78...')
+#13 [internal function]: app\controllers\LoginController->actionLoginqq()
+#14 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#15 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#16 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#17 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#18 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#20 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1129] Host '172.17.0.1' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts' in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php:549
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(863): yii\db\Connection->open()
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(850): yii\db\Connection->getMasterPdo()
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Schema.php(478): yii\db\Connection->getSlavePdo()
+#3 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Connection.php(759): yii\db\Schema->quoteValue('E7D636F5ADF7E78...')
+#4 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(175): yii\db\Connection->quoteValue('E7D636F5ADF7E78...')
+#5 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(869): yii\db\Command->getRawSql()
+#6 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Command.php(376): yii\db\Command->queryInternal('fetch', NULL)
+#7 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/Query.php(247): yii\db\Command->queryOne()
+#8 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/db/ActiveQuery.php(295): yii\db\Query->one(NULL)
+#9 /var/www/vpn.yiluhao.com/web/note/models/user/UserBind.php(32): yii\db\ActiveQuery->one()
+#10 /var/www/vpn.yiluhao.com/web/note/controllers/LoginController.php(69): app\models\user\UserBind->getBindByOauthId('E7D636F5ADF7E78...')
+#11 [internal function]: app\controllers\LoginController->actionLoginqq()
+#12 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#13 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#14 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('loginqq', Array)
+#15 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/loginqq', Array)
+#16 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#18 {main}
+Additional Information:
+
+2017-02-06 13:14:09 [192.168.99.1][-][vp25sg7jq75lm364v46pri5ig2][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.99.1
+2017-02-06 13:14:07 [192.168.99.1][-][vp25sg7jq75lm364v46pri5ig2][info][application] $_GET = [
+    'code' => 'C4958BDDD390F7B8827B50E6FE5B0CFA'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'vp25sg7jq75lm364v46pri5ig2'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=vp25sg7jq75lm364v46pri5ig2'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ??/0.0.1 Chrome/53.0.2785.143 Electron/1.4.12 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '51420'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/loginqq?code=C4958BDDD390F7B8827B50E6FE5B0CFA'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'code=C4958BDDD390F7B8827B50E6FE5B0CFA'
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1486386847.8992
+    'REQUEST_TIME' => 1486386847
+]
+2017-03-06 12:59:56 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2017-03-06 12:59:56 [192.168.99.1][-][-][info][application] $_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '50125'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1488805196.1617
+    'REQUEST_TIME' => 1488805196
+]
+2017-03-06 13:00:12 [192.168.99.1][-][tqrk2rg1buc769g966crio91m6][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: login/qqlogin in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('qqlogin', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/qqlogin', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2017-03-06 13:00:12 [192.168.99.1][-][tqrk2rg1buc769g966crio91m6][info][application] $_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '50125'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/login/qqlogin'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1488805212.3117
+    'REQUEST_TIME' => 1488805212
+]
+2017-03-06 13:01:10 [192.168.99.1][-][tqrk2rg1buc769g966crio91m6][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: login/login in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('login', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('login/login', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(11): yii\base\Application->run()
+#2 {main}
+2017-03-06 13:01:10 [192.168.99.1][-][tqrk2rg1buc769g966crio91m6][info][application] $_COOKIE = [
+    'PHPSESSID' => 'tqrk2rg1buc769g966crio91m6'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=tqrk2rg1buc769g966crio91m6'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '50125'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/login'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1488805270.4641
+    'REQUEST_TIME' => 1488805270
+]
+2017-03-06 13:16:29 [192.168.99.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/ in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Controller.php:125
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('', Array)
+#1 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php(100): yii\base\Module->runAction('', Array)
+#2 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /var/www/vpn.yiluhao.com/web/note/web/index.php(12): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/web/Application.php:112
+Stack trace:
+#0 /var/www/vpn.yiluhao.com/web/note/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/vpn.yiluhao.com/web/note/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2017-03-06 13:16:29 [192.168.99.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'tqrk2rg1buc769g966crio91m6'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'PHPSESSID=tqrk2rg1buc769g966crio91m6'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'www.yiluhao.com'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'www.yiluhao.com'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.17.0.2'
+    'REMOTE_PORT' => '50718'
+    'REMOTE_ADDR' => '192.168.99.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/var/www/vpn.yiluhao.com/web/note/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/var/www/vpn.yiluhao.com/web/note/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1488806188.9258
+    'REQUEST_TIME' => 1488806188
+]
