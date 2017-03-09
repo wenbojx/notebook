@@ -138,23 +138,34 @@
 </script>
 
 <script>
-
+var sid = '74d2418c19b13a1ae14d883b4e01c49e';
+//var cmd = 'getFriends';
     var wsServer = 'ws://www.yiluhao.com:80';
     //调用websocket对象建立连接：
     //参数：ws/wss(加密)：//ip:port （字符串）
     var websocket = new WebSocket(wsServer);
     //onopen监听连接打开
     websocket.onopen = function (evt) {
+    	send(sid, 'login', '');
+    	//send(sid, 'getFriends', '');
+
+    	//send(sid, 'setOnline', '');
     };
 
     function song(){
     	
         var text = $('#text').val();
+        var text = 'test';
         $('#text').val("");
         
         //var text = "text:"+i+"\n";
         //向服务器发送数据
-        websocket.send(text);
+        //var msg = {'cmd':cmd,'sid':sid,'msg':text};
+        var msg = new Object();
+        msg.cmd = cmd;
+        msg.sid = sid;
+        msg.msg = text;
+        websocket.send(JSON.stringify(msg));
     }
     //song(i);
    	//song(i);
@@ -185,8 +196,15 @@
         console.log('Error occured: ' + evt.data);
     };
 
+function send(sid, cmd, text){
+	var msg = new Object();
+    msg.cmd = cmd;
+    msg.sid = sid;
+    msg.msg = text;
+    websocket.send(JSON.stringify(msg));
+}
 
-
+//song();
     </script>
 
 

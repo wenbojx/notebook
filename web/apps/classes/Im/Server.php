@@ -10,9 +10,12 @@ class Server extends App\CometServer
      * @var Store\File;
      */
     //protected $storage;
-    protected $users;
+    //protected $users;
     //public $cacheMaster = 'master'; 
     //public $cache_prefix = "phpsess_";
+    //protected $uid = 0;
+    protected $clientUsers = array();  //存储每个连接对应的用户
+    protected $userClients = array();    //存储每个用户对应的连接
     /**
      * 上一次发送消息的时间
      * @var array
@@ -33,11 +36,6 @@ class Server extends App\CometServer
     function onEnter($client_id)
     {
         echo "onEnter: " . $client_id;
-        //$session = $this->createNewSession();
-        //echo $session->id;
-        //echo Swoole::getInstance()->cache($this->cacheMaster)->get('c95004a613231e41628bc5d3d5a57c43');
-        //$datas = $this->cache->get($this->cache_prefix.'c95004a613231e41628bc5d3d5a57c43');
-        //var_dump(unserialize($datas));
     }
 
     /**
@@ -45,24 +43,9 @@ class Server extends App\CometServer
      */
     function onExit($client_id)
     {
-        /*
-        $userInfo = $this->storage->getUser($client_id);
-        if ($userInfo)
-        {
-            $resMsg = array(
-                'cmd' => 'offline',
-                'fd' => $client_id,
-                'from' => 0,
-                'channal' => 0,
-                'data' => $userInfo['name'] . "下线了",
-            );
-            $this->storage->logout($client_id);
-            unset($this->users[$client_id]);
-            //将下线消息发送给所有人
-            $this->broadcastJson($client_id, $resMsg);
-        }
-        $this->log("onOffline: " . $client_id);
-        */
+        $uid = $this->clientUsers[$client_id];
+        unset($this->userClients[$uid]);
+        unset($this->clientUsers[$client_id]);
     }
 
     function onTask($serv, $task_id, $from_id, $data)
@@ -111,27 +94,22 @@ class Server extends App\CometServer
      */
     function onMessage($client_id, $ws)
     {
-        $this->log("onMessage #$client_id: " . $ws['message']);
-        $this->send($client_id, $ws['message'].':aaa');
-        return;
-
-        $this->log("onMessage #$client_id: " . $ws['message']);
         $msg = json_decode($ws['message'], true);
-        if (empty($msg['cmd']))
-        {
-            $this->sendErrorMessage($client_id, 101, "invalid command");
-            return;
-        }
         $func = 'cmd_'.$msg['cmd'];
-        if (method_exists($this, $func))
-        {
-            $this->$func($client_id, $msg);
-        }
-        else
-        {
-            $this->sendErrorMessage($client_id, 102, "command $func no support.");
+        if (empty($msg['cmd']) || !method_exists($this, $func) ){
+            $this->closeClient($client_id, 102, 'cmdError');
             return;
         }
+        if ($msg['cmd'] == 'login') {
+            $uid = $this->cmd_login($client_id, $msg);
+            return;
+        }
+        if (!$uid) {
+            $this->closeClient($client_id, 101, 'noLogin');
+            return;
+        }
+        $this->$func($client_id, $uid, $msg['msg']);
+
     }
 
     /**
@@ -181,6 +159,55 @@ class Server extends App\CometServer
         }
     }
 
+    /**
+    登录认证
+    */
+    public function cmd_login($client_id, $msg){
+        if (!$msg['sid']) {
+            $this->closeClient($client_id, 101, 'noLogin');
+        }
+        //根据sid获取UID
+        $uidString = $this->cache->get($this->cache_prefix.$msg['sid']);
+        $uid = unserialize($uidString)['uid'];
+        if(!$uid){
+            $this->closeClient($client_id, 101, 'noLogin');
+        }
+        if(isset($this->userClients[$uid])){
+            $client_id_tmp = $this->userClients[$uid];
+            unset($this->clientUsers[$client_id_tmp]);
+            unset($client_id_tmp);
+        }
+        $this->clientUsers[$client_id] = $uid;
+        $this->userClients[$uid] = $client_id;
+        return $uid;
+    }
+    /**
+        关闭
+    */
+    public function closeClient($client_id, $code, $err_msg){
+        $this->sendErrorMessage($client_id, $code, $err_msg);
+        $this->close($client_id);
+        return false;
+    }
+    /**
+     * 设置用户上线状态
+    */
+    public function cmd_setOnline($uid){
+
+    }
+    /**
+     * 获取好友列表
+    */
+    public function cmd_getFriends($client_id, $uid, $msg){
+        if (!$uid) {
+            return false;
+        }
+        $friendsDAO = new App\DAO\Friends();
+        $friendList = $friendsDAO->getFriendsList($uid);
+        $friends = $friendsDAO->getFriendsDetail($friendList);
+        //var_dump($friends);
+        $this->sendJson($client_id, $friends);
+    }
 
      /**
      * 获取在线列表
@@ -197,12 +224,7 @@ class Server extends App\CometServer
         $this->sendJson($client_id, $resMsg);
     }
 
-    /**
-     * 获取好友列表
-    */
-    function cmd_getFriends($uid){
-        
-    }
+    
     
     /**
      * 获取历史聊天记录
@@ -221,6 +243,7 @@ class Server extends App\CometServer
      * @param $client_id
      * @param $msg
      */
+    /*
     function cmd_login($client_id, $msg)
     {
         $info['name'] = Filter::escape(strip_tags($msg['name']));
@@ -253,7 +276,7 @@ class Server extends App\CometServer
         );
         $this->broadcastJson($client_id, $loginMsg);
     }
-
+*/
     /**
      * 发送信息请求
      */

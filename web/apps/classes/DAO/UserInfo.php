@@ -6,13 +6,14 @@ use Swoole;
 class UserInfo extends App\Base
 {
 	private $userInfoMod = null;
+	private $commonObj = null;
 
     public function getByUid($uid)
     {
     	$keyPre = Swoole::$php->config['keyprefix']['userinfo']['key'];
     	$expireTime = Swoole::$php->config['keyprefix']['userinfo']['expireTime'];
 
-        $cacheKey = APP\Common::getCacheKey($keyPre, $uid);
+		$cacheKey = $this->gCommonObj()->getCacheKey($keyPre, $uid);
 		$userInfo = $this->cache->get($cacheKey);
 		if ($userInfo) {
 			$userInfo = json_decode($userInfo, true);
@@ -31,5 +32,11 @@ class UserInfo extends App\Base
 			return $this->userInfoMod;
 		}
 		return model('UserInfo');
+	}
+	private function gCommonObj(){
+		if (!$this->commonObj) {
+			$this->commonObj = new APP\Common();
+		}
+		return $this->commonObj;
 	}
 }

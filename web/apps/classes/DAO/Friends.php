@@ -11,13 +11,14 @@ class Friends extends App\Base
 {
 	private $userInfoObj = null;
 	private $friendsMod = null;
+	private $commonObj = null;
     //获取好友ID
 	public function getFriendsList($uid){
 
 		$keyPre = Swoole::$php->config['keyprefix']['friends']['key'];
     	$expireTime = Swoole::$php->config['keyprefix']['friends']['expireTime'];
 
-		$cacheKey = APP\Common::getCacheKey($keyPre, $uid);
+		$cacheKey = $this->gCommonObj()->getCacheKey($keyPre, $uid);
 		$friends = $this->cache->get($cacheKey);
 		if ($friends) {
 			$friends = json_decode($friends, true);
@@ -35,22 +36,22 @@ class Friends extends App\Base
 		return $friends;
 	}
 	//获取好友详细信息
-	public function getFriendsDetail($uid){
-		$baseData = $this->getFriendsList($uid);
-		if(!$baseData){
+	public function getFriendsDetail($friendList){
+		//$friendList = $this->getFriendsList($uid);
+		if(!$friendList){
 			return false;
 		}
 		$keyPre = Swoole::$php->config['keyprefix']['userinfo']['key'];
 		$keys = array();
-		foreach ($baseData as $value) {
-			$keys[] = APP\Common::getCacheKey($keyPre, $value);
+		foreach ($friendList as $value) {
+			$keys[] = $this->gCommonObj()->getCacheKey($keyPre, $value);
 		}
 		//
 		$noInfo = array();
 		$friendsDatas = $this->cache->getMultiple($keys);
 		foreach ($friendsDatas as $k=> $v) {
 			if (!$v) {
-				$uid = $baseData[$k];
+				$uid = $friendList[$k];
 				$friendsDatas[$k] = $this->getUserInfoObject()->getByUid(intval($uid));
 			}
 			else{
@@ -71,5 +72,11 @@ class Friends extends App\Base
 			return $this->friendsMod;
 		}
 		return model('Friends');
+	}
+	private function gCommonObj(){
+		if (!$this->commonObj) {
+			$this->commonObj = new APP\Common();
+		}
+		return $this->commonObj;
 	}
 }

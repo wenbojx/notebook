@@ -12,7 +12,7 @@ class Friends extends Swoole\Model
 
 
     function getByUid($uid, $limit=100000){
-        if (!is_int($uid)) {
+        if (!$uid) {
             return false;
         }
         $where = array(
