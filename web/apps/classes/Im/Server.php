@@ -43,6 +43,9 @@ class Server extends App\CometServer
      */
     function onExit($client_id)
     {
+        if (!isset($this->clientUsers[$client_id])) {
+            return false;
+        }
         $uid = $this->clientUsers[$client_id];
         unset($this->userClients[$uid]);
         unset($this->clientUsers[$client_id]);
@@ -104,60 +107,14 @@ class Server extends App\CometServer
             $uid = $this->cmd_login($client_id, $msg);
             return;
         }
+        $uid = $this->clientUsers[$client_id];
         if (!$uid) {
             $this->closeClient($client_id, 101, 'noLogin');
             return;
         }
-        $this->$func($client_id, $uid, $msg['msg']);
-
+        $this->$func($client_id, $uid, $msg);
     }
-
-    /**
-     * 发送错误信息
-    * @param $client_id
-    * @param $code
-    * @param $msg
-     */
-    function sendErrorMessage($client_id, $code, $msg)
-    {
-        $this->sendJson($client_id, array('cmd' => 'error', 'code' => $code, 'msg' => $msg));
-    }
-
-    /**
-     * 发送JSON数据
-     * @param $client_id
-     * @param $array
-     */
-    function sendJson($client_id, $array)
-    {
-        $msg = json_encode($array);
-        if ($this->send($client_id, $msg) === false)
-        {
-            $this->close($client_id);
-        }
-    }
-
-    /**
-     * 广播JSON数据
-     * @param $client_id
-     * @param $array
-     */
-    function broadcastJson($sesion_id, $array)
-    {
-        $msg = json_encode($array);
-        $this->broadcast($sesion_id, $msg);
-    }
-
-    function broadcast($current_session_id, $msg)
-    {
-        foreach ($this->users as $client_id => $name)
-        {
-            if ($current_session_id != $client_id)
-            {
-                $this->send($client_id, $msg);
-            }
-        }
-    }
+    
 
     /**
     登录认证
@@ -207,6 +164,23 @@ class Server extends App\CometServer
         $friends = $friendsDAO->getFriendsDetail($friendList);
         //var_dump($friends);
         $this->sendJson($client_id, $friends);
+    }
+    /**
+    发送消息
+    */
+    public function cmd_sendMsg($client_id, $uid, $msg){
+        if(!isset($msg['to']) || !$msg['to']){
+            return;
+        }
+        //判断是否互为好友
+        $to = $msg['to'];
+        $toClientId = $this->userClients[$to];
+
+        $tomsg['from'] = $uid;
+        $tomsg['msg'] = $msg['msg'];
+        $msgString = json_encode($tomsg);
+        $state = $this->send($toClientId, $msgString);
+        echo "\nsendstate:". $state;
     }
 
      /**
@@ -316,6 +290,53 @@ class Server extends App\CometServer
         {
             $this->sendJson($msg['to'], $resMsg);
             //$this->store->addHistory($client_id, $msg['data']);
+        }
+    }
+
+    /**
+     * 发送错误信息
+    * @param $client_id
+    * @param $code
+    * @param $msg
+     */
+    function sendErrorMessage($client_id, $code, $msg)
+    {
+        $this->sendJson($client_id, array('cmd' => 'error', 'code' => $code, 'msg' => $msg));
+    }
+
+    /**
+     * 发送JSON数据
+     * @param $client_id
+     * @param $array
+     */
+    function sendJson($client_id, $array)
+    {
+        $msg = json_encode($array);
+        if ($this->send($client_id, $msg) === false)
+        {
+            $this->close($client_id);
+        }
+    }
+
+    /**
+     * 广播JSON数据
+     * @param $client_id
+     * @param $array
+     */
+    function broadcastJson($sesion_id, $array)
+    {
+        $msg = json_encode($array);
+        $this->broadcast($sesion_id, $msg);
+    }
+
+    function broadcast($current_session_id, $msg)
+    {
+        foreach ($this->users as $client_id => $name)
+        {
+            if ($current_session_id != $client_id)
+            {
+                $this->send($client_id, $msg);
+            }
         }
     }
 }

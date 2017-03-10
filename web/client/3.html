@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="assets/default/css/main.css">
+    <link type="text/css" rel="stylesheet" href="assets/default/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/default/css/perfect-scrollbar.css">
+	<link type="text/css" rel="stylesheet" href="assets/default/css/editor.css">
+	<link type="text/css" rel="stylesheet" href="assets/default/css/ui-dialog.css">
+	<link type="text/css" rel="stylesheet" href="assets/default/css/quanzi.css">
+    
+    
+    <script src="./script/plugs/jquery-3.0.0.min.js"></script>
+
+    <script src="./script/plugs/jquery.hotkeys.js"></script>
+	<script src="./script/plugs/bootstrap.js"></script>
+	<script src="./script/plugs/perfect-scrollbar.jquery.min.js"></script>
+	<script src="./script/plugs/vue.js"></script>
+	<script src="./script/plugs/bootstrap-contextmenu.js"></script>
+	<script src="./script/plugs/artDialog/dialog-min.js"></script>
+	<script src="./renderer-process/core.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="head" class="head">
+	<div class="nav-left f_l">
+		<div class="avater"><img src="assets/default/img/logo.png"></div>
+	</div>
+	<div class="nav-center f_l">
+		<ul>
+			<li><a class="active" href="#!" onclick="goToXiezuo()">记事本</a></li>
+	      	<li><a class="" href="#!" onclick="goToQuanzi()">圈子</a></li>
+	      	<li><a class="" href="#">大杂烩</a></li>
+	  	</ul>
+	</div>
+	<div class="nav-right f_r">
+		<ul>
+			<li><a class="close" href="#!" onclick="javascript:window.close()"></a></li>
+	      	<li><a class="full" href="#!" onclick="alert(222)"></a></li>
+	      	<li><a class="normal" href="#!"></a></li>
+	  </ul>
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="content" class="content">
+<div class="left" id="left">
+		<ul>
+			<li class="recent"></li>
+			<!--<li class="single"></li>-->
+			<li class="group"></li>
+			<li class="add"></li>
+		</ul>
+	</div>
+	<div class="center" id="center">
+		<div class="search" id="user_search">
+			<div class="input-group">
+		      <input type="text" class="form-control" placeholder="Search for...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">Go!</button>
+		      </span>
+		    </div><!-- /input-group -->
+		</div>
+		<div class="list" id="user_list">
+			<ul>
+				<li class="user-list">
+					<div class="avater"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+				<li class="user-list">
+					<div class="avater"></div>
+					<div class="name">小鸟纷飞</div>
+					<div class="time">05-22</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="right" id="right">
+		<div class="chat_list" id="chat_list">
+			<ul id="chat_list_ul">
+	
+			</ul>
+		</div>
+		<div class="clear"></div>
+		<div class="chat_input" id="chat_input">
+			<div class="font_style"></div>
+			<div class="textarea">
+				<textarea id="text"></textarea>
+			</div>
+			<div class="submit">
+				<input type="submit" value="发送" onclick="sendMsg()">
+			</div>
+		</div>
+	</div>
+</div>
+<script src="./renderer-process/quanzi/index.js"></script>
+<script type="text/javascript">
+    	resetHeight();
+		resetWidth();
+		initScrollbar();
+    
+  $(window).resize(
+	function(){
+		resetWidth();
+	resetHeight();
+	}
+)
+</script>
+
+<script>
+var sid = '703c57b7f7d2f754da3261b0531008ae';
+//var sid = '4878833d8f2a1b19b97daecdd9fae4af';
+//var cmd = 'getFriends';
+    var wsServer = 'ws://www.yiluhao.com:80';
+    //调用websocket对象建立连接：
+    //参数：ws/wss(加密)：//ip:port （字符串）
+    var websocket = new WebSocket(wsServer);
+    //onopen监听连接打开
+    websocket.onopen = function (evt) {
+    	send(sid, 'login', '');
+    	//send(sid, 'getFriends', '');
+
+    	//send(sid, 'setOnline', '');
+    };
+
+    function sendMsg(){
+        var text = $('#text').val();
+        //var text = 'test';
+        $('#text').val("");
+        
+        //var text = "text:"+i+"\n";
+        //向服务器发送数据
+        //var msg = {'cmd':cmd,'sid':sid,'msg':text};
+        var msg = new Object();
+        msg.cmd = 'sendMsg';
+        msg.sid = sid;
+        msg.to = 16;
+        msg.msg = text;
+        websocket.send(JSON.stringify(msg));
+    }
+    //song(i);
+   	//song(i);
+      //监听连接关闭
+    websocket.onclose = function (evt) {
+        console.log("Disconnected");
+    };
+
+    //onmessage 监听服务器数据推送
+    websocket.onmessage = function (evt) {
+    	
+        //msg.innerHTML += evt.data +'<br>';
+        var msg = '<li class="chat_my">';
+        msg += '<div class="time_line">星期一 11:35</div>';
+		msg += '<div class="message">';
+		msg += '<div class="avater"></div>';
+		msg += '<div class="content_tip"></div>';
+		msg += '<div class="content">'+evt.data+'</div>';
+		msg += '</div>';
+		msg += '<div class="clear"></div>';
+		msg += '</li>';
+		$("#chat_list_ul").append(msg);
+        
+        console.log('Retrieved data from server: ' + evt.data);
+    };
+//监听连接错误信息
+    websocket.onerror = function (evt, e) {
+        console.log('Error occured: ' + evt.data);
+    };
+
+function send(sid, cmd, text){
+	var msg = new Object();
+    msg.cmd = cmd;
+    msg.sid = sid;
+    msg.msg = text;
+    websocket.send(JSON.stringify(msg));
+}
+
+//song();
+    </script>
+
+
+
+</body>
+</html>

@@ -28,6 +28,7 @@
 	<script src="./renderer-process/core.js"></script>
 	<script src="./renderer-process/ipc.js"></script>
 	<script src="./renderer-process/index/index.js"></script>
+	<script src="./renderer-process/quanzi/websocket.js"></script>
     <title>Title</title>
 </head>
 <body>
@@ -56,14 +57,14 @@
 </div>
 
 <script type="text/javascript">
-	window.onload = function() {  
+	window.onload = function() {
 		//加载书架页
 		var loadpage = "pages/home/home.html";
 		var callBackLoadPage = function (result){
 			$("#content").html(result);
 		}
 		loadPage(loadpage, callBackLoadPage);
-		
+		createConnect();
 	}
 
 </script>

@@ -16,3 +16,12 @@ function initScrollbar(){
 	$('#user_list').perfectScrollbar();
 	$('#chat_list').perfectScrollbar();
 }
+
+function sendMsg(to, text){
+	var msg = new Object();
+    msg.cmd = 'sendMsg';
+    msg.to = to;
+    msg.msg = text;
+    ws.send(JSON.stringify(msg));
+}
+
